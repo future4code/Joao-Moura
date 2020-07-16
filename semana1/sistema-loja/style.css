@@ -1,0 +1,75 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: #a8bac5;
+    display: flex;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+main{
+    background-color: white;
+    width: 95vw;
+    height: 100vh;
+}
+header{
+    background-color: #f47d1f;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    border-bottom:5px solid  #a8bac5;
+    height: 25%;
+}
+.nome-do-site {
+    padding: 1%;
+}
+
+.nome-do-site h1{
+    font-size: 36px;
+    line-height: 46px;
+}
+.nome-do-site p{
+    font-size: 16px;
+    line-height: 26px;
+}
+
+.menu {
+   
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    padding: 0;
+}
+.menu a {
+    text-decoration: none;
+    color: rgb(253, 253, 253);
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 28px;
+}
+
+.menu a:hover {
+    background-color: white;
+    color:#f47d1f;
+}
+
+.conteudo {
+    height: 65%;
+}
+
+footer{
+    height: 10%;
+    text-align: center; 
+}
+
+
+.rodape-imagens img {
+    margin: 2%;
+    width: 2%;
+    max-width: ;
+}

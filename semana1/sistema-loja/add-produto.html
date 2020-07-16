@@ -4,48 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
     <title>Adicionar Produto</title>
 </head>
 <body>
-    <div>
-        <p>Mundo dos Duelos</p>
-    </div>
-    
-    <div>
-        <a href="./index.html">Página Inicial</a>
-        <a href="./ctrl-estoque.html">Controle de Estoque</a>
-        <a href="./add-produto.html">Adicionar Produto</a>
-        <a href="./funcionarios.html">Funcionários</a>
-    </div>
-
-    
-    <h2>Adicionar Produto</h2>
-    <form action="">
-        <div>
-            <label for="link-foto">Link para foto: </label>
-            <input type="url" id="link-foto" name="link-foto">
-        </div>
+    <main>
+        <header>
+            <div class="nome-do-site">
+                <h1>Bem-vindo ao Mundo dos Duelos!</h1>
+                <p>Tudo para você se torna o <strong>Rei dos Jogos!</strong></p>
+            </div>
         
-        <div>
-            <label for="descricao">Descrição do produto: </label>
-            <input type="text" id="descricao" name="descrição">
-        </div>
+            <div class="menu">
+                <a href="./index.html">Página Inicial</a>
+                <a href="./ctrl-estoque.html">Controle de Estoque</a>
+                <a href="./add-produto.html">Adicionar Produto</a>
+                <a href="./funcionarios.html">Funcionários</a>
+            </div>
+        </header>
+        <div class="conteudo">
+            
+            <h2>Adicionar Produto</h2>
+            <form action="">
+                <div>
+                    <label for="link-foto">Link para foto: </label>
+                    <input type="url" id="link-foto" name="link-foto">
+                </div>
+                
+                <div>
+                    <label for="descricao">Descrição do produto: </label>
+                    <input type="text" id="descricao" name="descrição">
+                </div>
+                
+                <div>
+                    <label for="preco">Preço (em R$): </label>
+                    <input type="number" id="preco" name="preço">
+                </div>
+                
+                <div>
+                    <label for="quatidade">Quantidade disponível: </label>
+                    <input type="number" id="quantidade" name="quantidade-disponivel">
+                </div>
         
-        <div>
-            <label for="preco">Preço (em R$): </label>
-            <input type="number" id="preco" name="preço">
-        </div>
+                <div class="form-add">
+                    <button type="submit">Adicionar</button>
+                </div>
         
-        <div>
-            <label for="quatidade">Quantidade disponível: </label>
-            <input type="number" id="quantidade" name="quantidade-disponivel">
+            </form>
         </div>
 
-        <div class="form-add">
-            <button type="submit">Adicionar</button>
-        </div>
-
-    </form>
+        <footer>
+            <p>Siga-nos nas redes sociais!</p>
+            <div class="rodape-imagens">
+                <img src="https://image.flaticon.com/icons/png/512/25/25305.png" alt="Icone do Facebook"/>
+                <img src="https://image.flaticon.com/icons/png/512/25/25425.png" alt="Icone do Intagram"/>
+                <img src="https://image.flaticon.com/icons/png/512/8/8800.png" alt="Icone do Twitter"/>
+            </div>
+        </footer>
+    </main>
 
 </body>
 </html>
