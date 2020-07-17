@@ -1,0 +1,138 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body{
+    background-color: #082b40; 
+    display: flex;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+main{
+    background-color: white;
+    width: 80vw;
+    height: 100vh;
+    box-shadow: 0px 1px 13px 5px black;
+}
+header{
+    background-color: #17374a;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    height: 25%;
+}
+.cabecalho {
+    display:flex;
+    justify-content:space-around;
+    height: 70%;
+}
+
+.logo img{
+    width: 140px;
+    height: 110px; 
+}
+
+.nome-do-site {
+    padding: 1%; 
+    display: inline-block;
+    text-align: end;   
+}
+
+.nome-do-site h1{
+    font-size: 36px;
+    line-height: 46px;
+}
+.nome-do-site p{
+    font-size: 16px;
+    line-height: 26px;
+    color: #69e5f9;
+}
+
+.menu {
+    display: flex;
+    justify-content: flex-end;
+    height: 30%;
+}
+
+.links {
+    display: flex;
+    align-items: flex-end;
+}
+.links a {
+    text-decoration: none;
+    color: rgb(253, 253, 253);
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 26px;
+    padding: 10px;
+}
+
+.links a:hover {
+    background-color: rgb(253, 253, 253);
+    color:#69e5f9;
+}
+
+.conteudo {
+    height: 70%;
+}
+.localizacao {
+    color: #17374a;
+    border-bottom: solid 1px #17374a;
+    display: inline;
+    margin: 10px;
+    padding: 5px;
+}
+.banner{
+    margin-top: 10px;
+}
+.banner img {
+    width: 50%;
+}
+.sobre {
+   margin: 15px 40px 15px 40px;
+}
+.sobre h2{
+    color: #17374a;
+    margin-bottom: 10px;
+}
+.sobre p{
+    text-align:justify ;
+    font-size: 16px;
+    line-height: 20px
+}
+#fonte {
+    font-size: 13px;
+    text-align: right;
+}
+
+footer{
+    display: flex;
+    height: 10%;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #17374a;
+    color: white;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+footer p {
+    width: 50%;
+    text-align: center;
+}
+
+.redes-sociais{
+   
+    display: flex;
+    justify-content:  space-around;
+    align-items: center;
+    width: 50%; 
+}
+
+.redes-sociais img {
+    width: 40px;
+    height: 40px;
+    margin: 2%;
+}
