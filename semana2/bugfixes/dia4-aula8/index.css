@@ -30,7 +30,8 @@ img {
 }
 
 div>p:first-child {
-    display: inline;
+    display: inline-block;
+    width: 190px;
 }
 
 div img {
