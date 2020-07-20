@@ -2,18 +2,22 @@
     margin: 0;
     padding: 0;
     border: 0;
-    font-family: 'Roboto Mono', monospace;
 }
 :root {
     --cor-roxa: blueviolet;
 }
 
-/* PAGINA BASE-SOBRE */
+/* ESTILO COMUM DAS PAGINAS - HEADER */
+body{
+    font-family: 'Sora', sans-serif;
+}
+
 header {
     display: flex;
     justify-content: space-between;
     padding: 20px;
     color: var(--cor-roxa);
+    
 }
 
 .menu {
@@ -22,9 +26,8 @@ header {
     list-style-type: none;
 }
 #localizacao {
-    font-size: 50px;
-    line-height: 60px;
-   
+    font-size: 40px;
+    line-height: 50px; 
 }
 .menu {
     align-items: flex-end;
@@ -45,38 +48,49 @@ header {
    line-height: 34px;
    transition: ease;  
 }
+
+
+/* CONTEUDO DA PAGINA - Contato */
 section{
-    margin-top: 40px;
+    padding: 0px 50px 30px 50px;
+    background-color: #f1f1f1;
 }
-.topico {
+
+article{
+   padding-top: 30px;
+}
+
+.titulo {
     font-size: 25px;
     line-height: 35px;
     font-weight: bold;
     color: var(--cor-roxa);
-    margin: 40px 30px;
+    margin: 0px 30px;
     padding: 5px 15px;
     border-left: 4px solid var(--cor-roxa);
 }
 
-.informacao {
+.conteudo {
     background-color: #a2a2a2;
-    margin: 10px 50px;
+    margin: 30px 50px;
     width: 800px;
     padding: 5px;
+    border-radius: 20px;
+    box-shadow: 0px 1px 5px #A2A2A2;
 }
 
-.informacao h2{
+.conteudo h2{
     font-size: 19px;
     line-height: 29px;
     color: #463c3c;
     margin: 10px;
 }
 
-.informacao ul{
+.conteudo ul{
     list-style-type: none;
 }
 
-.informacao ul li {
+.conteudo ul li {
     font-size: 17px;
     line-height: 27px;
     color: #fdfdfd;
@@ -84,28 +98,18 @@ section{
 }
 
 
-
-
-
-
-
+/* ESTILO COMUM DAS PAGINAS - FOOTER */
 footer {
     width: 100%;
-    bottom: 0;
-    align-items: center;
     text-align: center;
-    margin-top: 20px;
     color: var(--cor-roxa);
     font-weight: bold;
-    border-top: 1px solid var(--cor-roxa);
-    
 }
 
 .links-rodape{
     display: flex;
     justify-content: center;
-    padding: 10px;
-   
+    padding: 10px; 
 }
 
 .links-rodape li{
@@ -122,6 +126,34 @@ footer {
     border-bottom: 2px solid var(--cor-roxa) ;
     transition: ease;  
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
