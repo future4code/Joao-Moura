@@ -39,11 +39,6 @@ div>p:first-child {
     display: inline;
 }
 
-#container-de-descricao p{
-    display: inline-block;
-    width: 190px;
-}
-
 div img {
     background: black;
 }
@@ -88,8 +83,13 @@ div img {
     padding-top: 100px;
 }
 
-#container-de-descricao>ol {
-    padding: 15px 0px;
+#container-de-descricao p{
+    display: inline-block;
+    width: 220px;
+}
+
+#container-de-descricao>ol{
+    padding: 15px 500px;
 }
 
 #container-para-comprar {
