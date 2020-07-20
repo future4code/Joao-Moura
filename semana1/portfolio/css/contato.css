@@ -1,0 +1,191 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+:root {
+    --cor-roxa: blueviolet;
+}
+
+/* ESTILO COMUM DAS PAGINAS - HEADER */
+body{
+    font-family: 'Sora', sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    color: var(--cor-roxa);
+    
+}
+
+.menu {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+}
+#localizacao {
+    font-size: 40px;
+    line-height: 50px; 
+}
+.menu {
+    align-items: flex-end;
+    font-size: 22px;
+    line-height: 32px;
+}
+
+.item a{
+    padding: 10px;
+    text-decoration: none;
+    color: var(--cor-roxa);
+    outline: none; 
+}
+
+.item a:hover{
+   border-bottom: 2px solid var(--cor-roxa) ;
+   font-size: 24px;
+   line-height: 34px;
+   transition: ease;  
+}
+
+
+
+
+
+/* CONTEUDO DA PAGINA - Projetos */
+section{
+    padding: 0px 50px 30px 50px;
+    background-color: #f1f1f1;
+}
+
+article{
+   padding-top: 30px;
+}
+
+.titulo {
+    font-size: 25px;
+    line-height: 35px;
+    font-weight: bold;
+    color: var(--cor-roxa);
+    margin: 0px 30px;
+    padding: 5px 15px;
+    border-left: 4px solid var(--cor-roxa);
+}
+
+.formulario {
+    display: flex;
+    width: 100%;
+    justify-content: center; 
+    
+}
+
+.formulario form{
+    padding: 10px;
+    background-color: rgb(255, 255, 255);
+    width: 500px;
+    height: 530px;
+    margin: 10px;
+    border-radius: 20px;
+    box-shadow: 0px 1px 5px #A2A2A2;
+}
+
+.campo{
+    width: 100%;
+    margin: 20px;
+    position: relative;
+}
+.campo-texto{
+    font-size: 19px;
+    line-height: 29px;
+    color: #463c3c;
+    margin: 10px;
+}
+
+.campo input{
+    width: 400px;
+    height: 40px;
+    background-color: #f1f1f1;
+    border-radius: 20px;
+}
+
+#msg-form{
+    width: 400px;
+    height: 150px;
+    border-radius: 20px;
+    background-color: #f1f1f1;
+}
+.botao {
+    padding: 10px;
+    position: absolute;
+    background-color: var(--cor-roxa);
+    color: white;
+    font-size: 20px;
+    border-radius: 20px;
+    right: 50px;
+}
+
+
+
+
+
+/* ESTILO COMUM DAS PAGINAS - FOOTER */
+footer {
+    width: 100%;
+    text-align: center;
+    color: var(--cor-roxa);
+    font-weight: bold;
+}
+
+.links-rodape{
+    display: flex;
+    justify-content: center;
+    padding: 10px; 
+}
+
+.links-rodape li{
+    margin-left: 15px;
+    list-style-type: none;
+}
+
+.links-rodape a{
+    text-decoration: none;
+    color: var(--cor-roxa);
+}
+
+.links-rodape a:hover{
+    border-bottom: 2px solid var(--cor-roxa) ;
+    transition: ease;  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Super Contador</title>
+    <link rel="stylesheet" href="estilo.css"/>
+</head>
+<body>
+    <header>
+        <h1>Vamos contar</h1>
+    </header>
+    
+    <section>
+        <div id="formulario">
+          <p class="form">Início:
+              <input type="number"name="inicio" id="inicio">
+          </p>
+          <p class="form">Fim:
+              <input type="number" name="fim" id="fim">
+          </p>
+          <p class="form">Passo:
+              <input type="number" name="passo" id="passo">
+          </p>
+          <p class="form">
+              <input id="bntcontar" type="button" value="Contar" onclick="contar()">
+              <input id="bntlimpar"type="button" value="Limpar" onclick="limpar()">
+          </p>
+
+          <p id="status" class="form">Preparando contagem...</p>
+
+        </div>
+        <div id="resultado"></div>
+
+    </section>
+    <footer>
+        <p>&copy;JPauloMoura</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
