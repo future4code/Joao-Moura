@@ -30,6 +30,10 @@ img {
 }
 
 div>p:first-child {
+    display: inline;
+}
+
+#container-de-descricao p{
     display: inline-block;
     width: 190px;
 }
