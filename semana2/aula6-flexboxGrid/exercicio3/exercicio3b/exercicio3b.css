@@ -7,30 +7,72 @@ body {
     color: white;
 }
 
+#top-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    height: 10vh;
+}
+
 .green-background {
     background-color: green;
+    display: grid;
+    justify-items: center;
+    align-items: center;
 }
 
 .yellow-background {
     background-color: yellow;
+    display: grid;
+    justify-items: center;
+    align-items: center;
 }
 
 .pink-background {
     background-color: fuchsia;
+    height: 55vh;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+#middle-container{
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    height: 25vh;
 }
 
 .blue-background {
     background-color: blue;
+    height: 100%;
+    display: grid;
+    justify-items: center;
+    align-items: center;
 }
 
+#vertical-middle-container{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
 .red-background {
     background-color: red;
+    height: 100%;
+    display: grid;
+    justify-items: center;
+    align-items: center;
 }
 
 .lightgreen-background {
     background-color: lightgreen;
+    height: 100%;
+    display: grid;
+    justify-items: center;
+    align-items: center;
 }
 
 .purple-background {
     background-color: purple;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    height: 10vh;
 }
