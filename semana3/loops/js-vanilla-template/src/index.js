@@ -77,3 +77,91 @@
     //     } 
     // }
     // console.log(`O maior valor é ${valorMaximo} e o menor é ${valorMinimo}`)
+
+
+
+
+//            ========== DESAFIOS =======
+
+// -------> Desafio de interpretação de código <---------
+// DESAFIO 1
+// RESPOSTA:
+    // 0
+    // 00
+    // 000
+    // 0000
+
+
+// -------> Desafios de escrita de código <---------
+//DESAFIO 2 ---------------------
+//RESPOSTA:
+    // let numeroSecreto = Number(prompt("Informe um numero: "))
+    // let acertou = false
+    // let tentativas = 0
+    // let chute 
+
+    // console.log("==== ADIVINHE OQUE ESTOU PENSANDO ! ====")
+    // console.log("--- Vamos Começar! ---")
+
+    // while(!acertou){
+    //     chute = Number(prompt("Qual numero estou pensando?"))
+    //     tentativas++
+
+    //     if(chute > numeroSecreto){
+    //         console.log(`O número chutado foi: ${chute}`)
+    //         console.log(`Errrrrou! hahah! o numero é menor`)
+
+    //     } else if(chute < numeroSecreto){
+    //         console.log(`O número chutado foi: ${chute}`)
+    //         console.log(`Errrrrou! hahah! o numero é maior`)
+
+    //     } else {
+    //         console.log(`O número chutado foi: ${chute}`)
+    //         console.log(`======================================`)
+    //         console.log(`>>> Parabéns Você acertou!! Era o numero ${numeroSecreto}`)
+    //         console.log(`>>> O número de tentativas  foi: ${tentativas}`)
+    //         acertou = true
+    //     }
+
+    // }
+
+
+
+//DESAFIO 3 --------------------
+//RESPOSTA:
+
+    // let numeroSecreto = Math.floor(Math.random() * 10) 
+
+    // let acertou = false
+    // let tentativas = 0
+    // let chute 
+
+    // console.log("==== ADIVINHE OQUE ESTOU PENSANDO ! ====")
+    // console.log("--- Vamos Começar! ---")
+
+    // while(!acertou){
+    //     chute = Number(prompt("Qual numero estou pensando?"))
+    //     tentativas++
+
+    //     if(chute > numeroSecreto){
+    //         console.log(`O número chutado foi: ${chute}`)
+    //         console.log(`Errrrrou! hahah! o numero é menor`)
+
+    //     } else if(chute < numeroSecreto){
+    //         console.log(`O número chutado foi: ${chute}`)
+    //         console.log(`Errrrrou! hahah! o numero é maior`)
+
+    //     } else {
+    //         console.log(`O número chutado foi: ${chute}`)
+    //         console.log(`======================================`)
+    //         console.log(`>>> Parabéns Você acertou!! Era o numero ${numeroSecreto}`)
+    //         console.log(`>>> O número de tentativas  foi: ${tentativas}`)
+    //         acertou = true
+    //     }
+
+    // }
+
+// OBS: para fazer a alteraçao no código e gera um numero aleatorio até que foi simple
+// olhei a documentação e entendi um pouco do metodo Math.random(), que gera um numerio
+// aleatorio entre 0-1 sem incluir o 1,  e Math.floor() que pelo que entendi aredonda um 
+// numeo para cima.
