@@ -71,21 +71,19 @@ if(jogar){
    alert(`As cartas do computador são ${comptxtCards}. A pontuação do computador é ${somaComputador}.`)
    let ganhador = ''
 
-   // =====  FALTA CONCETAR A PARTE QUE VERIFICA QUEM GANHOU ===============
-
-   // if( (somaUsuario > somaComputador) || ((somaUsuario < 22) && (somaComputador > 21)) ){
-   //    ganhador = " *** O usuário ganhou ***"
-   //    alert(ganhador)
-   // } else if( (somaComputador > somaUsuario) || ((somaComputador < 22) && (somaUsuario > 21)) ){
-   //    ganhador = " *** O computador ganhou ***"
-   //    alert(ganhador)
-   // } else if(somaUsuario === somaComputador){
-   //    ganhador = " *** Deu empate! haha! ***"
-   //    alert(ganhador)
-   // } else {
-   //    ganhador = " *** Os dois Perderam! haha! ***"
-   //    alert(ganhador)
-   // }
+   if( somaUsuario > somaComputador && somaUsuario < 22 ){
+         ganhador = " *** O usuário ganhou ***"
+         alert(ganhador)
+   } else if( somaComputador > somaUsuario && somaComputador < 22){
+         ganhador = " *** O computador ganhou ***"
+         alert(ganhador)
+   } else if(somaUsuario === somaComputador){
+      ganhador = " *** Deu empate! haha! ***"
+      alert(ganhador)
+   } else {
+      ganhador = " *** Os dois Perderam! haha! ***"
+      alert(ganhador)
+   }
 
    //Resultado no console
    console.log(`Suas cartas são ${usertxtCards} . Sua pontuação é ${somaUsuario}.` )
