@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <section id="secao-cadastro" class="secao">
+            <h1>Controlador de Despesa</h1>
+            <h3>Cadastrar despesa</h3>
+            <form action="">
+                <div>
+                    <label for="valor">Valor</label>
+                    <input type="number" name="valor" id="valor">
+                </div>
+
+                <div id="div-despesa"> 
+                    <label for="valor">Tipo de Despesa</label>
+                    <select name="despesa" id="despesa">
+                        <option value="Despesa da Casa">Casa</option>
+                        <option value="Despesa com Alimentação">Alimentação</option>
+                        <option value="Despesa com Transporte">Transporte</option>
+                        <option value="Outras Despesas">Outros</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="descricao">Descrição</label>
+                    <input type="text" name="descricao" id="descricao">
+                </div>
+                <button id="bnt-cadastrar" onclick="dadosCadastro(event)">Cadastrar Despesa</button>
+            </form>
+        </section>
+
+        <section id="secao-despesa" class="secao">
+            <h1>Despesas Detalhadas</h1>
+            <form action="">
+                <div id="div-despesa"> 
+                    <label for="valor">Tipo de Despesa</label>
+                    <select name="despesa" id="despesa">
+                        <option value="casa">Casa</option>
+                        <option value="alimentacao">Alimentação</option>
+                        <option value="transporte">Transporte</option>
+                        <option value="outros">Outros</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="valor-min">Valor Mínimo</label>
+                    <input type="number" name="valor-min" id="valor-min">
+                </div>
+
+
+                <div>
+                    <label for="valor-max">Valor Máximo</label>
+                    <input type="number" name="valor-max" id="valor-max">
+                </div>
+
+                <div>
+                    <button id="bnt-filtrar" onclick="dadosFiltro(event)">Filtra</button>
+                    <button id="bnt-limpar-filtros" onclick="limparFiltros(event)">Limpar Filtros</button>
+                </div>
+            </form>
+        </section>
+        <section id="secao-extrato" class="secao">
+            
+        </section>
+    </main>
+   <section id='exibicao'>
+       <ul id='lista'>
+          
+       </ul>
+   </section>
+    
+</body>
+</html>
