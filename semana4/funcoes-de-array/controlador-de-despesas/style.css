@@ -1,0 +1,62 @@
+body{
+    font-family: monospace;
+    margin: 0;
+    background-color: rgb(127, 205, 236);
+}
+
+main{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100vw;
+}
+
+.secao {
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    width: 320px;
+    
+    height: 350px;
+    margin: 15px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 10px;
+    width: 350px;
+    height: 200px;
+    
+}
+ #despesa {
+     width: 120px;
+ }
+
+#bnt-cadastrar {
+    width: 150px;
+}
+
+#bnt-filtrar {
+    width: 80px;
+}
+
+#bnt-limpar-filtros {
+    width: 150px ;
+}
+
+#lista {
+   
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#lista li {
+    width: 260px;
+    background-color: white;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+}
