@@ -144,3 +144,50 @@
     // }
 
     // comparcao(10, 40)
+
+
+
+    
+// >>>>>>>>> EXERCÍCIOS DE FUNÇÕES <<<<<<<
+
+// EXERCICIO 1) 
+// RESPOSTA
+    // function segundoMaiorMenor(array){
+    //     let maior = array[0]
+    //     let menor = array[0]
+
+    //     for(let i of array){
+    //         if(i > maior){
+    //             maior = i
+    //         } else if(i < menor) {
+    //             menor = i
+    //         }
+    //     }
+
+    //     array.splice(array.indexOf(maior), 1)
+    //     array.splice(array.indexOf(menor), 1)
+
+    //     maior = array[0]
+    //     menor = array[0]
+
+    //     for(let i of array){
+    //         if(i > maior){
+    //             maior = i
+    //         } else if(i < menor) {
+    //             menor = i
+    //         }
+    //     }
+    //     console.log(maior, menor)
+
+    // }
+
+    // const array = [10,25,30,5,4,9] //maior= 20 menor= 5
+    // segundoMaiorMenor(array)
+
+
+// EXERCICIO 2) 
+// RESPOSTA
+    // const mensagem = () => {
+    //     alert("Hello Future4")
+    // }
+    // mensagem()
