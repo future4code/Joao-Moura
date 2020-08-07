@@ -41,11 +41,11 @@
             <form action="">
                 <div id="div-despesa"> 
                     <label for="valor">Tipo de Despesa</label>
-                    <select name="despesa" id="despesa">
-                        <option value="casa">Casa</option>
-                        <option value="alimentacao">Alimentação</option>
-                        <option value="transporte">Transporte</option>
-                        <option value="outros">Outros</option>
+                    <select name="despesa" id="filtro-despesa">
+                        <option value="Despesa da Casa">Casa</option>
+                        <option value="Despesa com Alimentação">Alimentação</option>
+                        <option value="Despesa com Transporte">Transporte</option>
+                        <option value="Outras Despesas">Outros</option>
                     </select>
                 </div>
 
@@ -61,12 +61,15 @@
                 </div>
 
                 <div>
-                    <button id="bnt-filtrar" onclick="dadosFiltro(event)">Filtra</button>
+                    <button id="bnt-filtrar" onclick="dadosFiltro(event)">Filtrar</button>
                     <button id="bnt-limpar-filtros" onclick="limparFiltros(event)">Limpar Filtros</button>
                 </div>
             </form>
         </section>
         <section id="secao-extrato" class="secao">
+            <h1>Extrato</h1>
+            <h3>Valor Total</h3>
+            <div id="total"></div>
             
         </section>
     </main>
