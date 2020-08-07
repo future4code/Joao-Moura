@@ -61,3 +61,86 @@
         // segundo console.log: -10
         
 
+    
+// >>>>>>>>> EXERCÍCIOS DE LÓGICA DE PROGAMAÇÃO <<<<<<<
+
+// EXERCICIO 1)
+// RESPOSTA:
+        //const lista = [10, 20, 30]
+    //usando um "for"
+        // for(let i = 0; i < lista.length; i++){
+        //     console.log(lista[i])
+        // }
+    //usando "while"
+        // let i = 0
+        // while(i < lista.length){
+        //     console.log(lista[i])
+        //     i++
+        // }
+    //usando o "foreach"
+        // lista.forEach(item =>{ console.log(item) })
+
+// EXERCICIO 2) 
+// RESPOSTA:
+    //a) false
+    //b) false
+    //c) true
+    //d) true
+    //e) true
+
+// EXERCICIO 3) 
+// RESPOSTA:
+    //nao funcionava, era necessario atribuir um valor a'quantidadeDeNumerosPares'
+    //mudar a comparação do while de (<=) para (<), e adiciona +1 a svariavel 'i' dentro so while
+        // const quantidadeDeNumerosPares = 5
+        // let i = 0
+        // while(i < quantidadeDeNumerosPares) {
+        //     console.log(i*2)
+        //     i++
+        // }
+
+// EXERCICIO 4) 
+// RESPOSTA:
+    // function tipoTriagulo(a,b,c){
+    //     if(a === b && b === c){
+    //         return 'triagulo equilátero'
+    //     } else if( a !== b && b !== c) {
+    //         return 'triagulo escaleno'
+    //     } else {
+    //         return 'triangulo isósceles'
+    //     }
+    // }
+    // console.log(tipoTriagulo(9,8,10))
+
+// EXERCICIO 5) 
+// RESPOSTA:
+    // function comparcao(num1, num2){
+    //     let maior = num1
+    //     let menor = num2
+
+    //     if(num1 > num2){
+    //         maior = num1
+    //         menor = num2
+    //     } else if (num2 > num1){
+    //         maior = num2
+    //         menor = num1
+    //     } 
+        
+    //     console.log(`O maior é: ${maior}`)
+
+    //     if(num1 % num2 === 0){
+    //         console.log(`${num1} é divisivel por ${num2}`)
+    //     } else {
+    //         console.log(`${num1} não é divisivel por ${num2}`)
+    //     }
+
+    //     if(num2 % num1 === 0){
+    //         console.log(`${num2} é divisivel por ${num1}`)
+    //     } else {
+    //         console.log(`${num2} não é divisivel por ${num1}`)
+    //     }
+
+    //     console.log('A diferença entre eles é', maior-menor)
+    // }
+
+    // comparcao(10, 40)
