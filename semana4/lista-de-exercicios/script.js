@@ -151,7 +151,7 @@
 // >>>>>>>>> EXERCÍCIOS DE FUNÇÕES <<<<<<<
 
 // EXERCICIO 1) 
-// RESPOSTA
+// RESPOSTA:
     // function segundoMaiorMenor(array){
     //     let maior = array[0]
     //     let menor = array[0]
@@ -186,8 +186,70 @@
 
 
 // EXERCICIO 2) 
-// RESPOSTA
+// RESPOSTA:
     // const mensagem = () => {
     //     alert("Hello Future4")
     // }
     // mensagem()
+
+
+// >>>>>>>>> EXERCÍCIOS DE OBJETOS <<<<<<<
+
+// EXERCICIO 1) 
+// RESPOSTA:
+    // Array é uma estrutura de dado que armazena varias variaveis e
+    // de tipos diferente, e podem ser acessadas atraves de indices.
+    // Podemos usar um array quando queremos amazena um conjunto de variaveis
+    // como se separacemos em um grupo.
+
+    // Objeto é um tipo de estrutura de dados que possui propriedades, cada uma 
+    // com uma chave e um valor.
+    // Usamos um objeto quando abstraimos algo do mundo real para o codigo.
+    // Eles possui um nivel de abstração mais proximo do ser humano.
+
+// EXERCICIO 2) 
+// RESPOSTA:
+    // function criaRetangulo(lado1, lado2){
+
+    //     return {
+    //         largura: lado1,
+    //         altura: lado2,
+    //         perimetro: 2 * (lado1 + lado2),
+    //         area: lado1 + lado2
+    //     }
+
+    // }
+
+    // console.log(criaRetangulo(10,8))
+
+
+// EXERCICIO 3) 
+// RESPOSTA:
+    // const filme = {
+    //     titulo: 'karate kid',
+    //     ano: 1984,
+    //     diretor: 'John G. Avildsen',
+    //     atores: ['Ralph Macchio', 'Pat Morita']
+    // }
+
+    // console.log(`Venha assistir ao filme ${filme.titulo}, de ${filme.ano},
+    //  dirigido por ${filme.diretor} e estrelado por ${filme.atores} `)
+
+
+// EXERCICIO 4) 
+// RESPOSTA:
+    // const fulano = {
+    //     nome: 'Bruna',
+    //     idade: 22,
+    //     email: 'bruna@hotmail.com',
+    //     endereco: 'rua Cesa Galvão N°123'
+    // }
+
+    // function anonimizarPessoa(pessoa){
+    //     let anonimar = {...pessoa}
+    //     anonimar.nome = 'Anonima'
+    //     return anonimar
+    // }
+
+    // console.log(anonimizarPessoa(fulano))
+    // console.log(fulano)
