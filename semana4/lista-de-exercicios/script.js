@@ -253,3 +253,159 @@
 
     // console.log(anonimizarPessoa(fulano))
     // console.log(fulano)
+
+
+
+// >>>>>>>>> EXERCÍCIOS FUNÇÕES DE ARRAY <<<<<<<<
+
+// EXERCICIO 1) 
+// RESPOSTA:
+    // const array = [
+    // 	{ nome: "Pedro", idade: 20 },
+    // 	{ nome: "João", idade: 10 },
+    // 	{ nome: "Paula", idade: 12 },
+    // 	{ nome: "Artur", idade: 89 } 
+    // ]
+
+    //a) 
+        // function adultos(array){
+        //     let arrayAdultos = array.filter(i => i.idade >=20) 
+        //     return arrayAdultos
+        // }
+        // console.table(adultos(array))
+
+    //b)
+        // function adultos(array){
+        //         let arrayCriancas = array.filter(i => i.idade < 20) 
+        //         return arrayCriancas
+        // }
+        // console.table(adultos(array))
+
+
+// EXERCICIO 2) 
+// RESPOSTA:
+//const array = [1, 2, 3, 4, 5, 6]
+//a)
+    //  function dobro(array){
+    //      let novoArray = array.map(i => i * 2)
+    //      return novoArray
+    //  }
+    //  console.log(dobro(array))
+
+//b)
+    // function dobro(array){
+    //     let novoArray = array.map(i => String(i * 3))
+    //     return novoArray
+    // }
+    // console.log(dobro(array))
+
+//c)
+    // function dobro(array){
+    //     let novoArray = array.map(i => {
+    //         if(i % 2 === 0){
+    //             return `${i} é par`
+    //         } else {
+    //             return `${i} é impar`
+    //         }
+    //     })
+
+    //     return novoArray
+    // }
+    // console.log(dobro(array))
+
+
+// EXERCICIO 3) 
+// RESPOSTA:
+    // const pessoas = [
+    //     { nome: "Paula", idade: 12, altura: 1.8},
+    //     { nome: "João", idade: 20, altura: 1.3},
+    //     { nome: "Pedro", idade: 15, altura: 1.9},
+    //     { nome: "Luciano", idade: 22, altura: 1.8},
+    //     { nome: "Artur", idade: 10, altura: 1.2},
+    //     { nome: "Soter", idade: 70, altura: 1.9}
+    // ]
+//a)
+    // function pessoasPermitidas(array){
+    //     let permitidas = array.filter( pessoa => {
+    //         if(pessoa.altura >= 1.5 && pessoa.idade > 14 && pessoa.idade < 60 ){
+    //             return true
+    //         } else {
+    //             return false
+    //         }
+    //     })
+    //     return permitidas
+    // }
+    // console.log(pessoasPermitidas(pessoas))
+
+//b)
+    // function pessoasPermitidas(array){
+    //     let proibidas = array.filter( pessoa => {
+    //         if(pessoa.altura >= 1.5 && pessoa.idade > 14 && pessoa.idade < 60 ){
+    //             return false
+    //         } else {
+    //             return true
+    //         }
+    //     })
+    //     return proibidas
+    // }
+    // console.log(pessoasPermitidas(pessoas))
+
+
+// EXERCICIO 4) 
+// RESPOSTA:
+    // const consultas = [
+    // 	{ nome: "João", genero: "masculino", cancelada: true, dataDaConsulta: "01/10/2019" },
+    // 	{ nome: "Pedro", genero: "masculino", cancelada: false, dataDaConsulta: "02/10/2019" },
+    // 	{ nome: "Paula", genero: "feminino", cancelada: true, dataDaConsulta: "03/11/2019" },
+    // 	{ nome: "Márcia", genero: "feminino", cancelada: false, dataDaConsulta: "04/11/2019" }
+    // ]
+
+
+    // function enviarEmail(array){
+    //     let mensagens = array.map(paciente =>{
+    //         let txt1,txt2
+    //         if(paciente.genero === 'masculino'){
+    //             txt1 = 'Sr.'
+    //             txt2 ='lembrá-lo'
+    //         } else {
+    //             txt1 = 'Sra.'
+    //             txt2 ='lembrá-la'
+    //         }
+
+    //         if(paciente.cancelada){
+    //             return `Olá, ${txt1} ${paciente.nome}. Infelizmente, sua consulta marcada para o dia ${paciente.dataDaConsulta} foi cancelada. Se quiser, pode entrar em contato conosco para remarcá-la`
+    //         } else {
+    //             return `Olá, ${txt1} ${paciente.nome}. Estamos enviando esta mensagem para ${txt2} da sua consulta no dia ${paciente.dataDaConsulta}. Por favor, acuse o recebimento deste e-mail.`
+    //         }
+    //     })
+
+    //     return mensagens
+    // }
+
+    // console.log(enviarEmail(consultas))
+
+
+
+// EXERCICIO 5) 
+// RESPOSTA:
+    // const contas = [
+    // 	{ cliente: "João", saldoTotal: 1000, compras: [100, 200, 300] },
+    // 	{ cliente: "Paula", saldoTotal: 7500, compras: [200, 1040] },
+    // 	{ cliente: "Pedro", saldoTotal: 10000, compras: [5140, 6100, 100, 2000] },
+    // 	{ cliente: "Luciano", saldoTotal: 100, compras: [100, 200, 1700] },
+    // 	{ cliente: "Artur", saldoTotal: 1800, compras: [200, 300] },
+    // 	{ cliente: "Soter", saldoTotal: 1200, compras: [] }
+    // ]
+
+    // function atualizarSaldo(array){
+    //     array.forEach(conta =>{
+    //         for(let i of conta.compras){
+    //             conta.saldoTotal -= i
+    //         }
+    //         return conta.saldoTotal
+    //     })
+
+    //     return array
+    // }
+
+    // console.table(atualizarSaldo(contas))
