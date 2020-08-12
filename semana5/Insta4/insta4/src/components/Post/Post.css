@@ -6,9 +6,15 @@
 
 .post-header {
     height: 40px;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 5fr;
     align-items: center;
     padding-left: 10px;
+}
+
+.header-icon-save {
+    justify-self: end;
+    margin-right: 5px;
 }
 
 .post-footer {

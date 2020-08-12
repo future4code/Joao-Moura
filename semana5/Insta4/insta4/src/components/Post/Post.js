@@ -8,12 +8,17 @@ import iconeCoracaoPreto from '../../img/favorite.svg'
 import iconeComentario from '../../img/comment_icon.svg'
 import {SecaoComentario} from '../SecaoComentario/SecaoComentario'
 
+import {IconeSave} from '../IconeSave/IconeSave'
+import iconePreto from '../../img/icon-save.svg'
+import iconeBranco from '../../img/icon-not-save.svg'
+
 class Post extends React.Component {
   state = {
     curtido: false,
     numeroCurtidas: 0,
     comentando: false,
-    numeroComentarios: 0
+    numeroComentarios: 0,
+    salvo: false
   }
 
   onClickCurtida = () => {
@@ -46,14 +51,23 @@ class Post extends React.Component {
     })
   }
 
+  onClickSave = () => {
+    this.setState({
+      salvo: !this.state.salvo
+    }) 
+  }
+
   render() {
     let iconeCurtida
+    let iconeSalvar 
 
     if(this.state.curtido) {
       iconeCurtida = iconeCoracaoPreto
     } else {
       iconeCurtida = iconeCoracaoBranco
     }
+
+    this.state.salvo? iconeSalvar = iconePreto : iconeSalvar = iconeBranco
 
     let componenteComentario
 
@@ -66,6 +80,7 @@ class Post extends React.Component {
       <div className={'post-header'}>
         <img className={'user-photo'} src={this.props.fotoUsuario} alt={'Imagem do usuario'}/>
         <p>{this.props.nomeUsuario}</p>
+        <IconeSave icone={iconeSalvar}  onClickSave={this.onClickSave}/>
       </div>
 
       <img className={'post-photo'} src={this.props.fotoPost} alt={'Imagem do post'}/>
