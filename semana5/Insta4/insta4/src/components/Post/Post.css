@@ -10,7 +10,9 @@
     grid-template-columns: 1fr 1fr 5fr;
     align-items: center;
     padding-left: 10px;
+    font-weight: bold;
 }
+
 
 .header-icon-save {
     justify-self: end;

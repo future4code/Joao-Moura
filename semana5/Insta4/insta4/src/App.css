@@ -3,27 +3,5 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
-}
-
-.formulario{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  height: 150px;
-  width: 300px;
-}
-
-.formulario input {
-  width: 230px;
-  height: 20px;
-}
-
-.formulario button {
-  border: none;
-  background-color: rgb(44, 255, 44);
-  width: 110px;
-  height: 40px;
-  border-radius: 10px;
- 
+  
 }

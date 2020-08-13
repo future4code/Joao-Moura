@@ -121,8 +121,8 @@ render() {
     <div className={'post-container'}>
       
       <div className={'post-header'}>
-      <img className={'user-photo'} src={this.props.fotoUsuario} alt={'Imagem do usuario'}/>
-      <p>{this.props.nomeUsuario}</p>
+        <img className={'user-photo'} src={this.props.fotoUsuario} alt={'Imagem do usuario'}/>
+        <p>{this.props.nomeUsuario}</p>
         <IconeSave icone={iconeSalvar}  onClickSave={this.salvar}/>
       </div>
       

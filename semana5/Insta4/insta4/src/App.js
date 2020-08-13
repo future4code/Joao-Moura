@@ -1,6 +1,30 @@
 import React from 'react';
 import './App.css';
 import Post from './components/Post/Post';
+import styled from 'styled-components';
+
+const Formulario  = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 170px;
+  width: 300px;
+  margin: 10px;
+`
+
+const CamposInput = styled.input `
+  width: 230px;
+  height: 30px;
+`
+
+const BotaoPostar = styled.button `
+  border: none;
+  background-color: rgb(44, 255, 44);
+  width: 110px;
+  height: 40px;
+  border-radius: 10px;
+`
 
 class App extends React.Component {
   state = {
@@ -45,9 +69,15 @@ class App extends React.Component {
       imgPost: this.state.inputFotoPost
     } 
 
-    const novoArray = [...this.state.posts, novoPost]
+    const novoArray = [novoPost,...this.state.posts ]
 
     this.setState({ posts: novoArray })
+
+    //limpar os campos
+    this.setState({ inputNomeUsuario: '' })
+    this.setState({ inputFotoPerfil: '' })
+    this.setState({ inputFotoPost: '' })
+
   }
 
   render() {
@@ -63,26 +93,26 @@ class App extends React.Component {
 
     return (
       <div className={'app-container'}>
-        <div className={'formulario'}>
-          <input
+        <Formulario>
+          <CamposInput
               value={this.state.inputNomeUsuario}
               onChange={this.addNomeUsuario}
               placeholder={"Seu nome"}
           />
 
-          <input
+          <CamposInput
               value={this.state.inputFotoPerfil}
               onChange={this.addFotoPerfil}
               placeholder={"link da foto de perfil"}
           />
 
-          <input 
+          <CamposInput 
               value={this.state.inputFotoPost}
               onChange={this.addFotoPost}
               placeholder={"link da foto de postagem"}
           />
-          <button onClick={this.postar}>Postar</button>
-       </div>
+          <BotaoPostar onClick={this.postar}>Postar</BotaoPostar>
+       </Formulario>
         {listaDePosts}
       </div>
     );
