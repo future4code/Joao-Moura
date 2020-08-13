@@ -15,6 +15,7 @@
 .header-icon-save {
     justify-self: end;
     margin-right: 5px;
+    cursor: pointer;
 }
 
 .post-footer {

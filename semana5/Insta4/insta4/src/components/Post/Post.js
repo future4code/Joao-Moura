@@ -12,13 +12,22 @@ import {IconeSave} from '../IconeSave/IconeSave'
 import iconePreto from '../../img/icon-save.svg'
 import iconeBranco from '../../img/icon-not-save.svg'
 
+import {IconeCompartilhar} from '../IconeCompartilhar/IconeCompartilhar'
+import iconeShare from '../../img/icon-share.svg'
+
+import {CampoCompartilhar} from '../CampoCompartilhar/CampoCompartilhar'
+import instagram from '../../img/instagram-logo.svg'
+import facebook from  '../../img/facebook.svg'
+import twitter from  '../../img/twitter.svg'
+
 class Post extends React.Component {
   state = {
     curtido: false,
     numeroCurtidas: 0,
     comentando: false,
     numeroComentarios: 0,
-    salvo: false
+    salvo: false,
+    compartilhar: false
   }
 
   onClickCurtida = () => {
@@ -42,6 +51,7 @@ class Post extends React.Component {
     this.setState({
       comentando: !this.state.comentando
     })
+    
   }
 
   aoEnviarComentario = () => {
@@ -51,10 +61,21 @@ class Post extends React.Component {
     })
   }
 
-  onClickSave = () => {
+  salvar = () => {
     this.setState({
       salvo: !this.state.salvo
     }) 
+  }
+
+  abaCompartilhar = () => {
+    this.setState({
+      compartilhar: !this.state.compartilhar
+    })
+    
+  }
+
+  compartilhar = (event) => {
+    console.log("Post compartilhado no",event.target.alt)
   }
 
   render() {
@@ -76,11 +97,21 @@ class Post extends React.Component {
       componenteComentario = <SecaoComentario aoEnviar={this.aoEnviarComentario}/>
     }
 
+    let secaoCampartilhar
+    if(this.state.compartilhar){
+      secaoCampartilhar = <CampoCompartilhar 
+        onClickCampo={this.compartilhar} 
+        imgInstagram={instagram}
+        imgFacebook={facebook}
+        imgTwitter={twitter}
+        />
+    }
+
     return <div className={'post-container'}>
       <div className={'post-header'}>
         <img className={'user-photo'} src={this.props.fotoUsuario} alt={'Imagem do usuario'}/>
         <p>{this.props.nomeUsuario}</p>
-        <IconeSave icone={iconeSalvar}  onClickSave={this.onClickSave}/>
+        <IconeSave icone={iconeSalvar}  onClickSave={this.salvar}/>
       </div>
 
       <img className={'post-photo'} src={this.props.fotoPost} alt={'Imagem do post'}/>
@@ -92,12 +123,18 @@ class Post extends React.Component {
           valorContador={this.state.numeroCurtidas}
         />
 
+        <IconeCompartilhar 
+          icone={iconeShare}
+          onClickShare={this.abaCompartilhar}
+        />
+
         <IconeComContador
           icone={iconeComentario}
           onClickIcone={this.onClickComentario}
           valorContador={this.state.numeroComentarios}
         />
       </div>
+      {secaoCampartilhar}
       {componenteComentario}
     </div>
   }
