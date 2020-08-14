@@ -1,0 +1,10 @@
+.comment-social-media {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 5px;
+}
+
+.comment-social-media img {
+    width: 25px;
+    cursor: pointer;
+}
