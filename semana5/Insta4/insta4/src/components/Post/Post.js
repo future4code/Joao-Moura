@@ -1,5 +1,4 @@
 import React from 'react'
-import './Post.css'
 
 import {IconeComContador} from '../IconeComContador/IconeComContador'
 
@@ -20,6 +19,14 @@ import instagram from '../../img/instagram-logo.svg'
 import facebook from  '../../img/facebook.svg'
 import twitter from  '../../img/twitter.svg'
 
+import {
+  PostContainer,
+  PostHeader,
+  UserPhoto,
+  PostPhoto,
+  PostFooter
+} from './PostStyle'
+
 class Post extends React.Component {
   state = {
     curtido: false,
@@ -27,7 +34,10 @@ class Post extends React.Component {
     comentando: false,
     numeroComentarios: 0,
     salvo: false,
-    compartilhar: false
+    compartilhar: false,
+
+    comentarios: [],
+    inputComentario: ''
 }
 
 //faz o coração contar +1 ou diminuir
@@ -57,11 +67,16 @@ onClickComentario = () => {
 }
 
 //comentario adiciona +1 quando é enviado
+pegarComentario = (event) => {
+  this.setState({ inputComentario: event.target.value })
+}
+
 aoEnviarComentario = () => {
   this.setState({
-    comentando: false,
     numeroComentarios: this.state.numeroComentarios + 1
   })
+
+
 }
 
 //icone salvar muda
@@ -103,7 +118,10 @@ render() {
   
   if(this.state.comentando) {
     //SecaoComentario  é um componete
-    componenteComentario = <SecaoComentario aoEnviar={this.aoEnviarComentario}/>
+    componenteComentario = <SecaoComentario 
+      aoEnviar={this.aoEnviarComentario}
+      onChangeComentario={this.pegarComentario}
+      valor={this.state.inputComentario}/>
   }
   
   let secaoCampartilhar
@@ -118,17 +136,17 @@ render() {
   }
   
   return (
-    <div className={'post-container'}>
+    <PostContainer>
       
-      <div className={'post-header'}>
-        <img className={'user-photo'} src={this.props.fotoUsuario} alt={'Imagem do usuario'}/>
+      <PostHeader>
+        <UserPhoto src={this.props.fotoUsuario} alt={'Imagem do usuario'}/>
         <p>{this.props.nomeUsuario}</p>
         <IconeSave icone={iconeSalvar}  onClickSave={this.salvar}/>
-      </div>
+      </PostHeader>
       
-      <img className={'post-photo'} src={this.props.fotoPost} alt={'Imagem do post'}/>
+      <PostPhoto src={this.props.fotoPost} alt={'Imagem do post'}/>
       
-      <div className={'post-footer'}>
+      <PostFooter>
         <IconeComContador
         icone={iconeCurtida}
         onClickIcone={this.onClickCurtida}
@@ -145,10 +163,10 @@ render() {
         onClickIcone={this.onClickComentario}
         valorContador={this.state.numeroComentarios}
         />
-      </div>
+      </PostFooter>
       {secaoCampartilhar}
       {componenteComentario}
-    </div>
+    </PostContainer>
   )
 }
 }
