@@ -1,5 +1,4 @@
 import React from 'react'
-import './Post.css'
 
 import {IconeComContador} from '../IconeComContador/IconeComContador'
 
@@ -20,6 +19,14 @@ import instagram from '../../img/instagram-logo.svg'
 import facebook from  '../../img/facebook.svg'
 import twitter from  '../../img/twitter.svg'
 
+import {
+  PostContainer,
+  PostHeader,
+  UserPhoto,
+  PostPhoto,
+  PostFooter
+} from './PostStyle'
+
 class Post extends React.Component {
   state = {
     curtido: false,
@@ -27,117 +34,141 @@ class Post extends React.Component {
     comentando: false,
     numeroComentarios: 0,
     salvo: false,
-    compartilhar: false
-  }
+    compartilhar: false,
 
-  onClickCurtida = () => {
+    comentarios: [],
+    inputComentario: ''
+}
+
+//faz o coração contar +1 ou diminuir
+onClickCurtida = () => {
+  this.setState({
+    curtido: !this.state.curtido
+  })
+
+  if(this.state.curtido){
     this.setState({
-      curtido: !this.state.curtido
+      numeroCurtidas: this.state.numeroCurtidas - 1
     })
-    
-    if(this.state.curtido){
-      this.setState({
-        numeroCurtidas: this.state.numeroCurtidas - 1
-      })
-    } else {
-      this.setState({
-        numeroCurtidas: this.state.numeroCurtidas + 1
-      })
-    }
-
-  }
-
-  onClickComentario = () => {
+  } else {
     this.setState({
-      comentando: !this.state.comentando
-    })
-    
-  }
-
-  aoEnviarComentario = () => {
-    this.setState({
-      comentando: false,
-      numeroComentarios: this.state.numeroComentarios + 1
+      numeroCurtidas: this.state.numeroCurtidas + 1
     })
   }
 
-  salvar = () => {
-    this.setState({
-      salvo: !this.state.salvo
-    }) 
+}
+
+//Abri a secao de comentarios
+onClickComentario = () => {
+  this.setState({
+    comentando: !this.state.comentando
+  })
+  
+}
+
+//comentario adiciona +1 quando é enviado
+pegarComentario = (event) => {
+  this.setState({ inputComentario: event.target.value })
+}
+
+aoEnviarComentario = () => {
+  this.setState({
+    numeroComentarios: this.state.numeroComentarios + 1
+  })
+
+
+}
+
+//icone salvar muda
+salvar = () => {
+  this.setState({
+    salvo: !this.state.salvo
+  }) 
+}
+
+//Abri a secao de compartilhamento
+abaCompartilhar = () => {
+  this.setState({
+    compartilhar: !this.state.compartilhar
+  })
+  
+}
+
+//mostra no console que onde foi compartilhado
+compartilhar = (event) => {
+  console.log("Post compartilhado no",event.target.alt)
+}
+
+
+
+
+render() {
+  let iconeCurtida
+  let iconeSalvar 
+  
+  if(this.state.curtido) {
+    iconeCurtida = iconeCoracaoPreto
+  } else {
+    iconeCurtida = iconeCoracaoBranco
   }
-
-  abaCompartilhar = () => {
-    this.setState({
-      compartilhar: !this.state.compartilhar
-    })
-    
+  
+  this.state.salvo? iconeSalvar = iconePreto : iconeSalvar = iconeBranco
+  
+  let componenteComentario
+  
+  if(this.state.comentando) {
+    //SecaoComentario  é um componete
+    componenteComentario = <SecaoComentario 
+      aoEnviar={this.aoEnviarComentario}
+      onChangeComentario={this.pegarComentario}
+      valor={this.state.inputComentario}/>
   }
+  
+  let secaoCampartilhar
 
-  compartilhar = (event) => {
-    console.log("Post compartilhado no",event.target.alt)
+  if(this.state.compartilhar){
+    secaoCampartilhar = <CampoCompartilhar 
+    onClickCampo={this.compartilhar} 
+    imgInstagram={instagram}
+    imgFacebook={facebook}
+    imgTwitter={twitter}
+    />
   }
-
-  render() {
-    let iconeCurtida
-    let iconeSalvar 
-
-    if(this.state.curtido) {
-      iconeCurtida = iconeCoracaoPreto
-    } else {
-      iconeCurtida = iconeCoracaoBranco
-    }
-
-    this.state.salvo? iconeSalvar = iconePreto : iconeSalvar = iconeBranco
-
-    let componenteComentario
-
-    if(this.state.comentando) {
-      //SecaoComentario  é um componete
-      componenteComentario = <SecaoComentario aoEnviar={this.aoEnviarComentario}/>
-    }
-
-    let secaoCampartilhar
-    if(this.state.compartilhar){
-      secaoCampartilhar = <CampoCompartilhar 
-        onClickCampo={this.compartilhar} 
-        imgInstagram={instagram}
-        imgFacebook={facebook}
-        imgTwitter={twitter}
-        />
-    }
-
-    return <div className={'post-container'}>
-      <div className={'post-header'}>
-        <img className={'user-photo'} src={this.props.fotoUsuario} alt={'Imagem do usuario'}/>
+  
+  return (
+    <PostContainer>
+      
+      <PostHeader>
+        <UserPhoto src={this.props.fotoUsuario} alt={'Imagem do usuario'}/>
         <p>{this.props.nomeUsuario}</p>
         <IconeSave icone={iconeSalvar}  onClickSave={this.salvar}/>
-      </div>
-
-      <img className={'post-photo'} src={this.props.fotoPost} alt={'Imagem do post'}/>
-
-      <div className={'post-footer'}>
+      </PostHeader>
+      
+      <PostPhoto src={this.props.fotoPost} alt={'Imagem do post'}/>
+      
+      <PostFooter>
         <IconeComContador
-          icone={iconeCurtida}
-          onClickIcone={this.onClickCurtida}
-          valorContador={this.state.numeroCurtidas}
+        icone={iconeCurtida}
+        onClickIcone={this.onClickCurtida}
+        valorContador={this.state.numeroCurtidas}
         />
-
+        
         <IconeCompartilhar 
-          icone={iconeShare}
-          onClickShare={this.abaCompartilhar}
+        icone={iconeShare}
+        onClickShare={this.abaCompartilhar}
         />
-
+        
         <IconeComContador
-          icone={iconeComentario}
-          onClickIcone={this.onClickComentario}
-          valorContador={this.state.numeroComentarios}
+        icone={iconeComentario}
+        onClickIcone={this.onClickComentario}
+        valorContador={this.state.numeroComentarios}
         />
-      </div>
+      </PostFooter>
       {secaoCampartilhar}
       {componenteComentario}
-    </div>
-  }
+    </PostContainer>
+  )
+}
 }
 
 export default Post
