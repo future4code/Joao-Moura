@@ -30,13 +30,14 @@ export function DadosGerais (){
 const DivDadosGerais = styled.div`
     display: flex;
     flex-direction: column;
-    background-color: #bbb;
     width: 500px;
-    height: 500px;
+    height: 400px;
     align-items: center;
     margin: 0 auto;
 `
-const Titulo = styled.h1``
+const Titulo = styled.h1`
+    font-size: 22px;
+`
 
 const Form = styled.form`
     display: flex;

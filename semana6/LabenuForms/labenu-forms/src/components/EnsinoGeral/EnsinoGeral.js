@@ -1,22 +1,22 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export function EnsinoSuperior (){
+export function EnsinoGeral (){
     return(
-        <DivEnsinoSuperior>
-            <Titulo>ETAPA 2 - Informações do Ensino Superior</Titulo>
+        <DivEnsinoGeral>
+            <Titulo>ETAPA 3 - INFORMAÇÕES GERAIS DE ENSINO</Titulo>
             <Form>
-                <Label>5. Qual curso?</Label>
+                <Label>5. Por que você não terminou um curso de graduação?</Label>
                 <Input />
 
-                <Label>6. Qual a unidade de ensino?</Label>
+                <Label>6. Você fez algum curso complementar?</Label>
                 <Input />
             </Form>
-        </DivEnsinoSuperior>
+        </DivEnsinoGeral>
     )
 }
 
-const DivEnsinoSuperior = styled.div`
+const DivEnsinoGeral = styled.div`
     display: flex;
     flex-direction: column;
     width: 500px;
@@ -27,6 +27,7 @@ const DivEnsinoSuperior = styled.div`
 const Titulo = styled.h1`
     font-size: 22px;
 `
+
 const Form = styled.form`
     display: flex;
     flex-direction: column;
