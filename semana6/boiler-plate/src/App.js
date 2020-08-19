@@ -20,18 +20,7 @@ const InputsContainer = styled.div`
 
 class App extends React.Component {
     state = {
-      tarefas: [
-        {
-          id: Date.now(),
-          texto: 'Tomar banho',
-          completa: false
-        },
-        // {
-        //   id: Date.now(),
-        //   texto: 'Estudar React',
-        //   completa: true
-        // }
-      ],
+      tarefas: [],
       inputValue: '',
       filtro: ''
     }
@@ -41,9 +30,15 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    const atualizarTarefas = JSON.parse(localStorage.getItem("tarefa"))
-    this.setState({tarefas: atualizarTarefas})
-  };
+
+      const atualizarTarefas = localStorage.getItem("tarefa")
+      if(atualizarTarefas){
+        const x = JSON.parse(atualizarTarefas)
+        this.setState({tarefas: x})
+
+      }
+      
+  }
 
   //armazena o texto do input no state
   onChangeInput = (event) => {
@@ -51,14 +46,18 @@ class App extends React.Component {
   }
 
   criaTarefa = () => {
-    const novaTarefa = {
-          id: Date.now(),
-          texto: this.state.inputValue,
-          completa: false
+    if(this.state.inputValue !== ''){
+      const novaTarefa = {
+            id: Date.now(),
+            texto: this.state.inputValue,
+            completa: false
+      }
+      const novaListaDeTarefas = [...this.state.tarefas, novaTarefa]
+      this.setState({tarefas: novaListaDeTarefas})
+      this.setState({inputValue: ''})  
+    } else {
+      alert('Campos vazios')
     }
-    const novaListaDeTarefas = [...this.state.tarefas, novaTarefa]
-    this.setState({tarefas: novaListaDeTarefas})
-    this.setState({inputValue: ''})
   }
 
 
@@ -83,7 +82,7 @@ class App extends React.Component {
 
   render() {
 
-    const listaFiltrada = this.state.tarefas.filter(tarefa => {
+    const listaFiltrada = this.state.tarefas.filter((tarefa) => {
       switch (this.state.filtro) {
         case 'pendentes':
           return !tarefa.completa
