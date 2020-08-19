@@ -10,6 +10,22 @@ const TarefaList = styled.ul`
 const Tarefa = styled.li`
   text-align: left;
   text-decoration: ${({completa}) => (completa ? 'line-through' : 'none')};
+  margin: 5px 0 ;
+`
+const BntExcluir = styled.button`
+  border-radius: 50%;
+  border: none;
+  margin-left: 50px;
+  font-size: 10px;
+  background: #ccc;
+  :hover {
+    background: #aaa;
+  }
+`
+const ContaineTarefa = styled.div`
+  display: flex;
+  justify-content:start;
+  align-items: center;
 `
 
 const InputsContainer = styled.div`
@@ -74,6 +90,15 @@ class App extends React.Component {
     this.setState({tarefas: tarefaSelecionada})
   }
 
+  apagarTarefa = (id) => {
+    const tarefaApagada = this.state.tarefas.filter((tarefa)=>{
+      return tarefa.id !== id
+    })
+    console.log(tarefaApagada)
+
+    this.setState({tarefas: tarefaApagada})
+  } 
+
 
   //amazena o tipo de filtro selecionado, no state
   onChangeFilter = (event) => {
@@ -114,12 +139,15 @@ class App extends React.Component {
         <TarefaList>
           {listaFiltrada.map(tarefa => {
             return (
-              <Tarefa
-                completa={tarefa.completa}
-                onClick={() => this.selectTarefa(tarefa.id)}
-              >
-                {tarefa.texto}
-              </Tarefa>
+              <ContaineTarefa>
+                <Tarefa
+                  completa={tarefa.completa}
+                  onClick={() => this.selectTarefa(tarefa.id)}
+                >
+                  {tarefa.texto}
+                </Tarefa>
+                <BntExcluir onClick={()=> this.apagarTarefa(tarefa.id)}>X</BntExcluir>
+              </ContaineTarefa>
             )
           })}
         </TarefaList>
