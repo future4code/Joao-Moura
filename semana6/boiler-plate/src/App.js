@@ -41,18 +41,8 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-     
-        const armazenamento = localStorage.getItem("tarefa")
-        const arrayFormatado = armazenamento.map((tarefa)=>{
-          return {
-            id: tarefa.id,
-            texto: tarefa.texto,
-            completa: tarefa.completo
-          }
-        })
-        
-        console.log(armazenamento)
-   
+    const atualizarTarefas = JSON.parse(localStorage.getItem("tarefa"))
+    this.setState({tarefas: atualizarTarefas})
   };
 
   //armazena o texto do input no state
