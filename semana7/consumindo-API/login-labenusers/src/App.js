@@ -2,29 +2,41 @@ import React from 'react'
 import styled from 'styled-components'
 import Login from './components/Login/Login'
 import Usuarios from './components/Usuarios/Usuarios'
+import Detalhes from './components/Usuarios/Detalhes'
 
 export default class App extends React.Component {
   state = {
-    telaLogin: true
+    telaAtual: 'login',
+    idDetalhes: ''
   }
 
 
-  trocarTela = () =>{
-    this.setState({telaLogin: !this.state.telaLogin})
+  trocarTela = (tela, idUser) =>{
+    this.setState({telaAtual: tela, idDetalhes: idUser})
   }
 
     render(){
-      let tela = <Login onClickVerUsuarios={this.trocarTela}/>
+      let tela
 
-      if(!this.state.telaLogin){
-         tela = <Usuarios onClickVerUsuarios={this.trocarTela}/>
+      switch(this.state.telaAtual){
+        case 'login':
+          tela = <Login telaUsuarios={this.trocarTela}/>
+          break
+        case 'usuarios':
+          tela =  <Usuarios telaLogin={this.trocarTela} telaDetalhes={this.trocarTela}/>
+          break
+        case 'detalhes':
+          tela =  <Detalhes telaLogin={this.trocarTela} idUser={this.state.idDetalhes}/>
+          break
+        default:
+           break
       }
-     
-        return(
-          <ContainerApp>
-           {tela}
-          </ContainerApp>
-        )
+
+      return(
+        <ContainerApp>
+          {tela}
+        </ContainerApp>
+      )
     }
 }
 

@@ -31,15 +31,19 @@ export default class Usuarios extends React.Component {
   
   
   //=========== Deleta um usuario =======================
-  deleteUser = async (id) => {
-    
-    try {
-      await axios.delete(`${apiUrl}/${id}`, headers)
-      alert('Usuário deletado com sucesso!')
-      this.buscarLista()
+  deleteUser = async (nome, id) => {
+    let resp = window.confirm(`Deseja deletar ${nome} ?`)
+
+    if(resp){
       
-    } catch (error) {
-      alert('Erro ao deletar usuários')
+      try {
+        await axios.delete(`${apiUrl}/${id}`, headers)
+        alert('Usuário deletado com sucesso!')
+        this.buscarLista()
+        
+      } catch (error) {
+        alert('Erro ao deletar usuários')
+      }
     }
     
   }
@@ -53,13 +57,13 @@ export default class Usuarios extends React.Component {
           {this.state.listaUsuarios.map((user, indice) => {
             return (
               <ItemLista key={indice}>
-                <li>{user.name}</li>
-                <img src={IconDelete} onClick={()=>this.deleteUser(user.id)} alt={'icone excluir'}/>
+                <li onClick={()=>this.props.telaDetalhes('detalhes',user.id)}>{user.name}</li>
+                <img src={IconDelete} onClick={()=>this.deleteUser(user.name, user.id)} alt={'icone excluir'}/>
               </ItemLista>
             ) 
           })}
         </Lista>
-        <button onClick={this.props.onClickVerUsuarios}>Voltar</button>
+        <button onClick={()=>this.props.telaLogin('login')}>Voltar</button>
       </ContainerUsuarios>
     )
     }

@@ -73,7 +73,7 @@ export default class Login extends React.Component {
                         />
                     </Email>
                     <div>
-                        <button onClick={this.props.onClickVerUsuarios}>Ver lista</button>
+                        <button onClick={()=>this.props.telaUsuarios('usuarios')}>Ver lista</button>
                         <button onClick={this.CriarUsuario}>Criar</button>
                     </div>
                 </Formulario>
