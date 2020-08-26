@@ -71,23 +71,6 @@ export default class App extends React.Component {
 
 
 
-//========== Buscar todos os usuarios =============
-BuscarUsuarios = () => {
-  const lista = axios.get('https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users', {
-    headers: {
-      Authorization: 'joao-paulo-moura-jackson'
-    }
-  })
-
-  lista.then((resposta)=>{
-    console.log(resposta)
-  }).catch((erro)=>{
-    alert('ocorreu um erro:',erro)
-    console.log(erro)
-  })
-
-}
-
 
 //===============
   trocarTela = () =>{
