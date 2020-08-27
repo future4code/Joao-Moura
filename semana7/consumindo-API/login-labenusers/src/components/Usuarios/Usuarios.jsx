@@ -7,7 +7,8 @@ import {apiUrl, headers} from '../ApiConfig/ApiConfig'
 export default class Usuarios extends React.Component {
   
   state = {
-    listaUsuarios:[ ]
+    listaUsuarios:[ ],
+    valueBusca: ''
   }
   
   
@@ -15,8 +16,13 @@ export default class Usuarios extends React.Component {
     this.buscarLista()
   }
   
+     
+//===== Monitorando campo de busca =========
+  InputBusca = (event) =>{
+    this.setState({valueBusca: event.target.value})
+  }
   
-  //========== Buscar todos os usuarios =============
+//========== Buscar todos os usuarios =============
   buscarLista = async () => {
     
     try {
@@ -30,7 +36,7 @@ export default class Usuarios extends React.Component {
   }
   
   
-  //=========== Deleta um usuario =======================
+//=========== Deleta um usuario =======================
   deleteUser = async (nome, id) => {
     let resp = window.confirm(`Deseja deletar ${nome} ?`)
 
@@ -47,12 +53,33 @@ export default class Usuarios extends React.Component {
     }
     
   }
+
+//========== Buscar um usuário =============
+  buscarUsuario = async () => {
+    try {
+      const resposta = await axios.get(`${apiUrl}/search?name=${this.state.valueBusca}`, headers)
+      this.setState({listaUsuarios: resposta.data})
+      
+    } catch (error) {
+      alert('Erro ao buscar usuário')
+    }
+    
+  }
+  
   
   
   render(){
+    const mensagem = () =>{
+      return <p>Nenhum usuário encontrado...</p>
+    }
+
     return(
       <ContainerUsuarios>
         <h1>Lista de Usuários</h1>
+        <div>
+          <input  placeholder={'Nome usuário'} onChange={this.InputBusca}/>
+          <button onClick={this.buscarUsuario}>Buscar</button>
+        </div>
         <Lista>
           {this.state.listaUsuarios.map((user, indice) => {
             return (
@@ -62,6 +89,7 @@ export default class Usuarios extends React.Component {
               </ItemLista>
             ) 
           })}
+          {this.state.listaUsuarios.length < 1 && mensagem()}
         </Lista>
         <button onClick={()=>this.props.telaLogin('login')}>Voltar</button>
       </ContainerUsuarios>

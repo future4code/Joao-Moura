@@ -8,7 +8,7 @@ export default class Detalhes extends React.Component {
   
   state = {
     detalhes: '',
-    editar: true,
+    editar: false,
     valueName:'',
     valueEmail:''
   }
@@ -25,7 +25,6 @@ export default class Detalhes extends React.Component {
     try {
       const resposta = await axios.get(`${apiUrl}/${this.props.idUser}`, headers)
       this.setState({detalhes: resposta.data})
-      console.log(resposta.data)
     } catch (error) {
       alert('Erro ao buscar detalhes')
     }
@@ -77,9 +76,11 @@ abrirCampos = () =>{
         name: this.state.valueName,
         email: this.state.valueEmail
     }
-
+    
     try {
-        await axios.get(`${apiUrl}/${this.props.idUser}`, body, headers)
+        const response = await axios.put(`${apiUrl}/${this.state.detalhes.id}`, body, headers)
+        alert("Usuário alterado com sucesso!")
+        this.abrirCampos()
         this.buscarDetalhes()
     } catch (error) {
         alert('Não foi possivel salva')
@@ -88,12 +89,16 @@ abrirCampos = () =>{
   
   
   render(){
-      const campoEdicao = 
-                        <div>
-                            <input placeholder={'Nome'} onChange={this.InputNome}/>
-                            <input placeholder={'E-mail'} onChange={this.InputEmail}/>
-                            <button onClick={this.salvar}>Salvar</button>
-                        </div>
+      const campoEdicao = () =>{
+          return(
+            <div>
+                <input placeholder={'Nome'} onChange={this.InputNome}/>
+                <input placeholder={'E-mail'} onChange={this.InputEmail}/>
+                <button onClick={this.salvar}>Salvar</button>
+            </div>
+          )
+      }
+                        
 
 
     return(
@@ -104,7 +109,7 @@ abrirCampos = () =>{
             <li>Email: {this.state.detalhes.email}</li>
             <img src={IconDelete} onClick={()=>this.deleteUser(this.state.detalhes.name, this.state.detalhes.id)} alt={'icone excluir'}/>
         </Lista>
-        {this.state.editar && campoEdicao}
+        {this.state.editar && campoEdicao()}
         <div>
             <button onClick={()=>this.props.telaLogin('usuarios')}>Voltar</button>
             <button onClick={this.abrirCampos}>Editar</button>

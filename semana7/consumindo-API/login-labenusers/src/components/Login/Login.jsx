@@ -15,11 +15,9 @@ export default class Login extends React.Component {
     naoRecarregar = (event) =>{
         event.preventDefault()
     }
+     
     
-    
-    
-    
-    //===== Monitorando campos de input =========
+//===== Monitorando campos de input =========
     InputNome = (event) =>{
         this.setState({valueName: event.target.value})
     }
@@ -30,7 +28,7 @@ export default class Login extends React.Component {
     
     
     
-    //======== Criando um novo usuario =======
+//======== Criando um novo usuario =======
     CriarUsuario = async () =>{
         const body = {
             name: this.state.valueName,
@@ -78,36 +76,34 @@ export default class Login extends React.Component {
                     </div>
                 </Formulario>
             </ContainerLogin>
-            )
-        }
+        )
     }
-
+}
+    
 const ContainerLogin = styled.div `
 background-color: #198;
 width: 400px;
 height: 500px;
 display: flex;
 flex-direction: column;
-/* justify-content: center; */
 align-items: center;
 `
 
 const Formulario = styled.form`
-/* background-color: #bbb; */
 width: 80%;
 `
 const Nome = styled.div`
-    display: flex;
-    align-items: center;
-    span img {
-        width: 20px;
-        
-    }
+display: flex;
+align-items: center;
+span img {
+    width: 20px;
+    
+}
 
 `
 const Email = styled.div`
-    span img {
-        width: 20px;
-    }
+span img {
+    width: 20px;
+}
 
 `
