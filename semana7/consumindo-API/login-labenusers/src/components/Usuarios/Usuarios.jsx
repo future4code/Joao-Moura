@@ -76,10 +76,10 @@ export default class Usuarios extends React.Component {
     return(
       <ContainerUsuarios>
         <h1>Lista de Usuários</h1>
-        <div>
+        <Busca>
           <input  placeholder={'Nome usuário'} onChange={this.InputBusca}/>
           <button onClick={this.buscarUsuario}>Buscar</button>
-        </div>
+        </Busca>
         <Lista>
           {this.state.listaUsuarios.map((user, indice) => {
             return (
@@ -91,32 +91,102 @@ export default class Usuarios extends React.Component {
           })}
           {this.state.listaUsuarios.length < 1 && mensagem()}
         </Lista>
-        <button onClick={()=>this.props.telaLogin('login')}>Voltar</button>
+        <Botao onClick={()=>this.props.telaLogin('login')}>Voltar</Botao>
       </ContainerUsuarios>
     )
     }
   }
 
 const ContainerUsuarios = styled.div `
+font-family:'Lucida Sans', 'Lucida Sans Regular';
+color: #fff;
+line-height:40px;
+font-size: 18px;
 background-color: #198;
-width: 400px;
-height: 500px;
+width: 90%;
+max-width:500px;
+padding: 10px;
+border-radius: 10px;
+box-shadow: -6px 6px 13px #212121;
+height:70vh;
 display: flex;
 flex-direction: column;
-/* justify-content: center; */
 align-items: center;
 `
 
-const Lista = styled.ol`
-/* background-color: #bbb; */
-width: 80%;
+const Busca = styled.div`
+display: flex;
+align-items: center;
+justify-content: space-between;
+width: 90%;
+height: 50px;
+  input{
+  width: 75%;
+  height: 75%;
+  border-radius: 10px;
+  border: none;
+  font-size: 20px;
+  }
+
+  button {
+  width: 20%;
+  height: 40px;
+  border: none;
+  font-size: 20px;
+  color: #333;
+  background-color: #eee;
+  :hover{
+      color: #333;
+      width: 21%;
+      height: 40px;
+      background-color: #ddd;
+  }
+}
 `
+
+const Lista = styled.ol`
+background-color: #efefef;
+width: 80%;
+max-height:50%;
+overflow-y: scroll;
+color: #333;
+font-size: 23px;
+`
+
 const ItemLista = styled.li`
   display: flex;
-  justify-content: space-around;
-  width: 50%;
+  justify-content: space-between;
+  width: 90%;
+  margin: 10px 0;
+  color: #333;
+  font-size: 23px;
+  cursor: pointer;
+
+  :hover{
+    font-size: 24px;
+    }
+
   img {
-    width: 20px;
+    width: 25px;
+    height: 25px;
     cursor: pointer;
+    :hover{
+      width: 26px;
+      height: 26px;
+    }
   }
+`
+
+const Botao = styled.button`
+width: 88%;
+height: 40px;
+border: none;
+font-size: 20px;
+color: #333;
+background-color: #eee;
+:hover{
+    color: #333;
+    height: 40px;
+    background-color: #ddd;
+}
 `

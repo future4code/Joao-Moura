@@ -91,11 +91,11 @@ abrirCampos = () =>{
   render(){
       const campoEdicao = () =>{
           return(
-            <div>
+            <Editar>
                 <input placeholder={'Nome'} onChange={this.InputNome}/>
                 <input placeholder={'E-mail'} onChange={this.InputEmail}/>
                 <button onClick={this.salvar}>Salvar</button>
-            </div>
+            </Editar>
           )
       }
                         
@@ -104,15 +104,15 @@ abrirCampos = () =>{
     return(
       <ContainerUsuarios>
         <h1>Detalhes do Usuário</h1>
-        <Lista>
-            <li>Nome: {this.state.detalhes.name}</li>
-            <li>Email: {this.state.detalhes.email}</li>
-            <img src={IconDelete} onClick={()=>this.deleteUser(this.state.detalhes.name, this.state.detalhes.id)} alt={'icone excluir'}/>
-        </Lista>
+        <Info>
+            <p>Nome: {this.state.detalhes.name}</p>
+            <p>Email: {this.state.detalhes.email}</p>
+        </Info>
         {this.state.editar && campoEdicao()}
         <div>
-            <button onClick={()=>this.props.telaLogin('usuarios')}>Voltar</button>
-            <button onClick={this.abrirCampos}>Editar</button>
+            <Botao onClick={this.abrirCampos}>Editar</Botao>
+            <Botao onClick={()=>this.deleteUser(this.state.detalhes.name, this.state.detalhes.id)}>Excluir</Botao>
+            <Botao onClick={()=>this.props.telaLogin('usuarios')}>Voltar</Botao>
         </div>
       </ContainerUsuarios>
     )
@@ -120,29 +120,72 @@ abrirCampos = () =>{
   }
 
 const ContainerUsuarios = styled.div `
+font-family:'Lucida Sans', 'Lucida Sans Regular';
+color: #fff;
+line-height:40px;
+font-size: 18px;
 background-color: #198;
-width: 400px;
-height: 500px;
+width: 90%;
+max-width:500px;
+padding: 10px;
+border-radius: 10px;
+box-shadow: -6px 6px 13px #212121;
+height:70vh;
 display: flex;
 flex-direction: column;
 align-items: center;
+  div{
+    width: 80%;
+  }
+`
 
-div {
-    display:flex;
+const Info = styled.div`
+  background-color: #efefef;
+  width: 80%;
+  color: #333;
+  font-size: 23px;
+`
+
+const Botao = styled.button`
+margin-top:5px;
+width: 100%;
+height: 40px;
+border: none;
+font-size: 20px;
+color: #333;
+background-color: #eee;
+:hover{
+    color: #333;
+    height: 40px;
+    background-color: #ddd;
 }
 `
 
-const Lista = styled.ul`
-  list-style-type: none;
-  width: 80%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  width: 50%;
-  img {
-    width: 20px;
-    cursor: pointer;
-    grid-column: 2/3;
-    grid-row: 1/1;
+const Editar = styled.div`
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+justify-content: space-between;
+width: 90%;
+height: 100px;
+  input{
+  width: 48%;
+  height: 40%;
+  border: none;
+  font-size: 20px;
   }
+  
+  button {
+  width: 100%;
+  height: 40px;
+  margin-top:5px;
+  border: none;
+  font-size: 20px;
+  color: #333;
+  background-color: #eee;
+  :hover{
+      color: #333;
+      background-color: #ddd;
+  }
+}
 `

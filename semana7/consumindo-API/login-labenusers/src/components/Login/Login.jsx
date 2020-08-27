@@ -53,27 +53,21 @@ export default class Login extends React.Component {
                 <h1>Cadastro de usuário</h1>
                 <Formulario onSubmit={this.naoRecarregar}>
                     <Nome>
-                        <span>
-                            <img src={IconUser} alt="icone usuario"/>
-                        </span>
+                        <img src={IconUser} alt="icone usuario"/>
                         <input 
                         placeholder={'Nome'}
                         onChange={this.InputNome}
                         />
                     </Nome>
                     <Email>
-                        <span>
-                            <img src={IconEmail} alt="icone email"/>
-                        </span>
+                        <img src={IconEmail} alt="icone email"/>
                         <input 
                         placeholder={'E-mail'}
                         onChange={this.InputEmail}
                         />
                     </Email>
-                    <div>
-                        <button onClick={()=>this.props.telaUsuarios('usuarios')}>Ver lista</button>
-                        <button onClick={this.CriarUsuario}>Criar</button>
-                    </div>
+                    <Botao onClick={this.CriarUsuario}>Criar</Botao>
+                    <Botao onClick={()=>this.props.telaUsuarios('usuarios')}>Ver lista</Botao>
                 </Formulario>
             </ContainerLogin>
         )
@@ -81,29 +75,82 @@ export default class Login extends React.Component {
 }
     
 const ContainerLogin = styled.div `
+font-family:'Lucida Sans', 'Lucida Sans Regular';
+color: #fff;
+line-height:40px;
+font-size: 18px;
 background-color: #198;
-width: 400px;
-height: 500px;
+width: 90%;
+max-width:500px;
+padding: 10px;
+border-radius: 10px;
+box-shadow: -6px 6px 13px #212121;
+height:70vh;
 display: flex;
 flex-direction: column;
 align-items: center;
 `
 
 const Formulario = styled.form`
-width: 80%;
+width: 100%;
+height: 45%;
+box-sizing:border-box;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-evenly;
 `
+
 const Nome = styled.div`
 display: flex;
 align-items: center;
-span img {
-    width: 20px;
-    
-}
+justify-content: space-evenly;
+width: 90%;
+height: 50px;
+    img {
+        width: 30px;  
+    }
 
+    input{
+    width: 80%;
+    height: 75%;
+    border-radius: 10px;
+    border: none;
+    font-size: 20px;
+    }
 `
-const Email = styled.div`
-span img {
-    width: 20px;
-}
 
+const Email = styled.div`
+display: flex;
+align-items: center;
+justify-content: space-evenly;
+width: 90%;
+height: 50px;
+    img {
+        width: 30px;  
+    }
+    
+    input{
+    width: 80%;
+    height: 75%;
+    border-radius: 10px;
+    border: none;
+    font-size: 20px;
+    }
+`
+
+const Botao = styled.button`
+width: 72%;
+height: 40px;
+margin-left:30px;
+border: none;
+font-size: 20px;
+color: #333;
+background-color: #eee;
+:hover{
+    color: #333;
+    width: 73%;
+    height: 40px;
+    background-color: #ddd;
+}
 `
