@@ -31,6 +31,12 @@ export const detalhesMusicas = [
         "name": "musica2", 
         "artist": "artista2",
         "url": "http://spoti4.future4.com.br/3.mp3"
+    },
+    {
+        "id": "222", 
+        "name": "Voce", 
+        "artist": "Dead Fish",
+        "url": "http://85.25.218.198/tb/8/cd/dead_fish_voce_mp3_76131.mp3"
     }
 ]
 

@@ -7,6 +7,8 @@ import {apiUrl, headers, detalhesMusicas} from '../../config/configApi'
 class ListaDeMusicas extends React.Component {
     state = {
         listaMusicas: [],
+        idLista: this.props.idPlayList,
+        nomeLista: this.props.nomePlaylist,
         valueMusica: '',
         valueArtista: '',
         valueLink: ''
@@ -32,66 +34,85 @@ class ListaDeMusicas extends React.Component {
  
     AdicionarMusica = async () => {
         const novaMusica = {
-            name: this.valueMusica, 
-            artist: this.valueArtista,
-            url: this.valueLink
+            name: this.state.valueMusica, 
+            artist: this.state.valueArtista,
+            url: this.state.valueLink
         }
+
         try {
-            await axios.post(`${apiUrl}/${this.props.idPlayList}/tracks`, novaMusica, headers)
+            await axios.post(`${apiUrl}/${this.state.idLista}/tracks`, novaMusica, headers)
             this.carregarMusicas()   
+            alert("adicionada")
         } catch (error) {
             console.log('Erro Add Musica', error)
+            console.log('ID',this.state.idLista)
+            console.log('Musica:',novaMusica)
         }
       }
-
 
 
 //====================================================   
     carregarMusicas = async () =>{
           try {
-              const resposta = await axios.get(`${apiUrl}/${this.props.idPlayList}/tracks`, headers)
-              console.log(resposta.data)
-              this.setState({ playlistas: resposta.data.result.tracks})
+              const resposta = await axios.get(`${apiUrl}/${this.state.idLista}/tracks`, headers)
+              console.log(resposta.data.result.tracks)
+              this.setState({ listaMusicas: resposta.data.result.tracks})
           } catch (error) {
               console.log('Erro ao Carregar Musicas', error)
+              console.log('ID',this.state.idLista)
+              console.log('ID',this.props.idPlayList)
           }
       }
 
     render(){
         return(
-            <div>
-                <h2>Adicionar Música</h2>
-                <label>Nome da Musica</label>
-                <input placeholder={'Musica'} onChange={this.InputMusica}/>
-
-                <label>Nome do Artista</label>
-                <input placeholder={'Artista'} onChange={this.InputArtista}/>
-
-                <label>Link da ListaDeMusicas</label>
-                <input placeholder={'link'} onChange={this.InputLink}/>
+            <ContainerMusicas>
+                <h2>{this.state.nomeLista} - Adicionar Música</h2>
+                <input placeholder={'Nome da Musica'} onChange={this.InputMusica}/>
+                <input placeholder={'Nome do Artista'} onChange={this.InputArtista}/>
+                <input placeholder={'link http://'} onChange={this.InputLink}/>
 
                 <button onClick={this.AdicionarMusica}>Adicionar</button>
                 {this.state.listaMusicas.map((musica)=>{
                     return (
-                    <CardLista>
+                    <CardLista key={musica.id}>
                         <p>{musica.name} | {musica.artist}</p>
-                        <audio controls>
-                            <source src={musica.url} type={'audio/mp4'}></source>
-                        </audio>
+                        <Audio controls>
+                            <source src={musica.url} type={'audio/mp3'}></source>
+                        </Audio>
                     </CardLista>
                     )
                 })}
-            </div>
+            </ContainerMusicas>
         )
     }
 }
 
 export default ListaDeMusicas
 
+const ContainerMusicas = styled.div`
+    background-color: #f6ff9d;
+`
+
 const CardLista = styled.div`
-width: 200px;
-height: 50px;
+width: 60%;
+height: 40px;
 margin: 10px;
 border: 1px solid black;
-background-color: #Fa8;
+background-color: #f1f3f4;
+
+    p{
+        margin: 0 10px;
+        padding:0;
+    }
+`
+
+const Audio = styled.audio`
+width: 90%;
+height: 30%;
+
+    source{
+        background-color: none;
+
+    }
 `

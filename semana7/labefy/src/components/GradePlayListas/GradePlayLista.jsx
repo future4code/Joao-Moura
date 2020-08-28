@@ -10,6 +10,7 @@ class GradePlayLista extends React.Component {
         playlistas: [],
         inputCriarPlaylistaValue: '',
         idPlayList: '',
+        nomePlaylist: '',
         mostraMusicas: false
       }
 
@@ -18,7 +19,17 @@ class GradePlayLista extends React.Component {
       }
 
 
+      carregarPlaylistas = async () =>{
+          try {
+              const resposta = await axios.get(apiUrl, headers)
+              console.log(resposta.data.result.list)
+              this.setState({ playlistas: resposta.data.result.list})
+          } catch (error) {
+              console.log('Erro Carregar Play lista', error)
+          }
+      }
     
+
       InputCriarPlaylista = (event) => {
         this.setState({inputCriarPlaylistaValue: event.target.value})
       }
@@ -40,30 +51,29 @@ class GradePlayLista extends React.Component {
       }
 
 
-
-
-      carregarPlaylistas = async () =>{
+      apagarPlaylista = async (id) => {
           try {
-              const resposta = await axios.get(apiUrl, headers)
-              console.log(resposta.data.result.list)
-              this.setState({ playlistas: resposta.data.result.list})
+            await axios.delete(`${apiUrl}/${id}`, headers)
+            this.carregarPlaylistas()
+            alert('Deletada')
           } catch (error) {
-              console.log('Erro Carregar Play lista', error)
+            console.log('Erro ao Apagar playlista', error)
           }
       }
 
 
-      verMusicas= (id) => {
-        this.setState({idPlayList: id, mostraMusicas: true})
+
+
+
+      verMusicas= (id, nome) => {
+        this.setState({idPlayList: id, mostraMusicas: !this.state.mostraMusicas, nomePlaylist: nome})
       }
 
     render(){
 
         const musicas = () =>{
-            return  <ListaDeMusicas idPlayList={this.idPlayList}/>
+            return  <ListaDeMusicas idPlayList={this.state.idPlayList} nomePlaylist={this.state.nomePlaylist}/>
         }
-
-        console.log(musicas)
 
         return(
             <div>
@@ -75,12 +85,12 @@ class GradePlayLista extends React.Component {
                         return (
                         <CardLista key={lista.id}>
                             <p>{lista.name}</p>
-                            <button onClick={()=>this.verMusicas(lista.id)}>Ver</button>
-                            <button>Excluir</button>
+                            <button onClick={()=>this.verMusicas(lista.id, lista.name)}>Ver</button>
+                            <button onClick={()=>this.apagarPlaylista(lista.id)}>Excluir</button>
                         </CardLista>
                         )
                     })}
-                    {this.state.mostraMusicas || musicas}
+                    {this.state.mostraMusicas && musicas()}
                 </ConteinerConteudo>
             </div>
         )
@@ -101,5 +111,5 @@ width: 80%;
 height: 530px;
 margin: 10px;
 border: 1px solid black;
-background-color: #ff2;
+background-color: #55fbe5;
 `
