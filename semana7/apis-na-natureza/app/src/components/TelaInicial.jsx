@@ -26,12 +26,12 @@ class TelaInicial extends React.Component {
         const info = () =>{
             return (
                 <Info>
-                    <p>Cidade: {this.state.dados.localidade || '----'}</p>
-                    <p>Uf: {this.state.dados.uf || '----'}</p>
-                    <p>Logradouro: {this.state.dados.logradouro || '---'}</p>
-                    <p>Bairro: {this.state.dados.bairro || '----'}</p>
-                    <p>Complemento: {this.state.dados.complemento || '----'}</p>
-                    <p>DDD: {this.state.dados.ddd || '----'}</p>
+                    <li>Cidade: {this.state.dados.localidade || '----'}</li>
+                    <li>Uf: {this.state.dados.uf || '----'}</li>
+                    <li>Logradouro: {this.state.dados.logradouro || '---'}</li>
+                    <li>Bairro: {this.state.dados.bairro || '----'}</li>
+                    <li>Complemento: {this.state.dados.complemento || '----'}</li>
+                    <li>DDD: {this.state.dados.ddd || '----'}</li>
                 </Info>
             )
         }
@@ -92,15 +92,19 @@ align-items: center;
             height: 50px;
             border: none;
             outline: none;
+            color: #6f6f6f;
             font-size: 18px;
             font-weight: lighter;
+            cursor: pointer;
             :hover {
-                color: green;
+                font-size: 19px;
             }
         }
     }
 `
-const Info = styled.div`
-
+const Info = styled.ul`
+    list-style-type: none;
+    background-color: #aaa;
+    width: 80%;
 `
 export default TelaInicial
