@@ -201,20 +201,25 @@ background: url(${props => props.fundo});
 width: 80%;
 height: 100%;
 margin: 0;
+margin-top: 17px;
+
 display: ${props => props.visibilidade? 'block': 'none'};
+opacity:0.8;
 
 `
 
 const CardLista = styled.div`
 width: 190px;
 height: 200px;
-margin: 10px 0 0 10px;
+margin: 10px;
 background: url(${props => props.cardFundo});
 box-shadow: -1px 3px 8px 0px #ffc5d0;
 display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: space-between;
+
+
 
 h2 {
     font-size: 28px;
