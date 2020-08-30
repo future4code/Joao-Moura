@@ -91,7 +91,7 @@ class ListaDeMusicas extends React.Component {
 export default ListaDeMusicas
 
 const ContainerMusicas = styled.div`
-    height: 100%;
+    height: 100vh;
 `
 
 const CardLista = styled.div`
