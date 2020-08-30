@@ -91,12 +91,12 @@ class ListaDeMusicas extends React.Component {
 export default ListaDeMusicas
 
 const ContainerMusicas = styled.div`
-    background-color: #f6ff9d;
+    height: 100%;
 `
 
 const CardLista = styled.div`
 width: 60%;
-height: 40px;
+height: 100%;
 margin: 10px;
 border: 1px solid black;
 background-color: #f1f3f4;

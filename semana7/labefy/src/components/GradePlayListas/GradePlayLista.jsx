@@ -76,40 +76,123 @@ class GradePlayLista extends React.Component {
         }
 
         return(
-            <div>
-                <label>Criar Playlista</label>
-                <input placeholder={'Nome'} onChange={this.InputCriarPlaylista}/>
-                <button onClick={this.CriarPLaylista}>Criar</button>
+            <ContainerPlaylista>
+                <Header>
+                    <h1>Crie sua Playlist</h1>
+                    <div>
+                        <input placeholder={'Nome'} onChange={this.InputCriarPlaylista}/>
+                        <button onClick={this.CriarPLaylista}>Criar</button>
+                    </div>
+                </Header>
                 <ConteinerConteudo>
-                    {this.state.playlistas.map((lista)=>{
-                        return (
-                        <CardLista key={lista.id}>
-                            <p>{lista.name}</p>
-                            <button onClick={()=>this.verMusicas(lista.id, lista.name)}>Ver</button>
-                            <button onClick={()=>this.apagarPlaylista(lista.id)}>Excluir</button>
-                        </CardLista>
-                        )
-                    })}
-                    {this.state.mostraMusicas && musicas()}
+                    <Grid>
+                        {this.state.playlistas.map((lista)=>{
+                            return (
+                            <CardLista key={lista.id}>
+                                <p>{lista.name}</p>
+                                <button onClick={()=>this.verMusicas(lista.id, lista.name)}>Ver</button>
+                                <button onClick={()=>this.apagarPlaylista(lista.id)}>Excluir</button>
+                            </CardLista>
+                            )
+                        })}
+                    </Grid>
+                    <Musicas visibilidade={this.state.mostraMusicas}>
+                         {this.state.mostraMusicas && musicas()}
+                    </Musicas>
                 </ConteinerConteudo>
-            </div>
+            </ContainerPlaylista>
         )
     }
 }
 
 export default GradePlayLista
 
-const CardLista = styled.div`
-width: 100px;
-height: 120px;
-margin: 10px;
-border: 1px solid black;
+const ContainerPlaylista = styled.div`
+    margin: 0;
+    padding:0;
+    width: 100%;
+    height: 100%;
+
 `
+
+const Header = styled.header`
+    background-color:#f8f8f8;
+    display: flex;
+    height: 13%;
+    padding: 5px;
+    justify-content: flex-start;
+    align-items: flex-end;
+
+    h1{
+       color:#7b7b7b;
+       font-size: 41px;
+       margin: 0;
+    }
+
+    div{
+        margin-left: 20%;
+
+        input{
+            height: 30px;
+            width: 230px;
+            border:none;
+            box-shadow: 0px 0px 2px 0px black;
+            outline:none;
+            :hover {
+                box-shadow: 0px 0px 3px 0px black;
+            }
+        }
+
+        button {
+            height: 32px;
+            width: 65px;
+            margin-left: 4px;
+            border: none;
+            background-color: #c5c5c5;
+            box-shadow: 0px 0px 1px 0px black;
+            outline: none;
+            :hover {
+                box-shadow: 0px 0px 4px 0px black;
+            }
+            
+        }
+    }
+
+    
+
+`
+
 const ConteinerConteudo = styled.div`
 display: flex;
-width: 80%;
-height: 530px;
-margin: 10px;
+width: 90%;
+height: 80%;
+margin: 10px auto;
+/* border: 1px solid black; */
+/* background-color: #55fbe5; */
+align-items:center;
+justify-content:center;
+overflow-y: scroll;
+`
+
+const Grid = styled.div`
+width: 100%;
+height: 100%;
+display: flex;
+flex-wrap: wrap;
+
+`
+const Musicas = styled.div`
+ background-color: #f6ff9d;
+width: 100%;
+height: 100%;
+margin: 0;
+display: ${props => props.visibilidade? 'block': 'none'};
+
+`
+
+const CardLista = styled.div`
+width: 190px;
+height: 200px;
+margin: 10px 0 0 10px;
 border: 1px solid black;
-background-color: #55fbe5;
 `

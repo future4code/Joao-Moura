@@ -16,8 +16,9 @@ class App extends React.Component {
 export default App;
 
 const ContainerApp = styled.div`
-background-color: #eee;
+background-color: #fff;
 width: 100vw;
 height: 100vh;
 box-sizing:border-box;
+font-family:sans-serif;
 `
