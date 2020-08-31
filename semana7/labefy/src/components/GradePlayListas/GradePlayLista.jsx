@@ -23,9 +23,11 @@ class GradePlayLista extends React.Component {
 
 
       carregarPlaylistas = async () =>{
+        
           try {
               const resposta = await axios.get(apiUrl, headers)
               this.setState({ playlistas: resposta.data.result.list})
+              this.setState({inputCriarPlaylistaValue: ''})
           } catch (error) {
               alert('Erro Carregar Play lista')
           }
