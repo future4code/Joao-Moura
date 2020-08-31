@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
-import {apiUrl, headers, detalhesMusicas} from '../../config/configApi'
+import {apiUrl, headers} from '../../config/configApi'
 
 
 class ListaDeMusicas extends React.Component {
@@ -44,9 +44,18 @@ class ListaDeMusicas extends React.Component {
             this.carregarMusicas()   
             alert("adicionada")
         } catch (error) {
-            console.log('Erro Add Musica', error)
-            console.log('ID',this.state.idLista)
-            console.log('Musica:',novaMusica)
+            alert('Erro ao adicionar Musica')
+        }
+      }
+      
+
+      deletarMusica = async (idMusica) => {
+        try {
+            await axios.delete(`${apiUrl}/${this.state.idLista}/tracks/${idMusica}`, headers)
+            this.carregarMusicas()   
+            alert("Musica deletada")
+        } catch (error) {
+            alert("Não foi possivel deletar a musica")
         }
       }
 
@@ -57,12 +66,9 @@ class ListaDeMusicas extends React.Component {
     carregarMusicas = async () =>{
           try {
               const resposta = await axios.get(`${apiUrl}/${this.state.idLista}/tracks`, headers)
-              console.log(resposta.data.result.tracks)
               this.setState({ listaMusicas: resposta.data.result.tracks})
           } catch (error) {
-              console.log('Erro ao Carregar Musicas', error)
-              console.log('ID',this.state.idLista)
-              console.log('ID',this.props.idPlayList)
+              console.log('Erro ao Carregar Musicas')
           }
       }
 
@@ -81,7 +87,7 @@ class ListaDeMusicas extends React.Component {
                     {this.state.listaMusicas.map((musica)=>{
                         return (
                         <CardLista key={musica.id}>
-                            <p>{musica.name} | {musica.artist}</p><span>X</span>
+                            <p>{musica.name} | {musica.artist}</p><span onClick={()=>this.deletarMusica(musica.id)}>X</span>
                             <Audio controls>
                                 <source src={musica.url} type={'audio/mp3'}></source>
                             </Audio>
@@ -152,7 +158,6 @@ const Form = styled.div`
 `
 
 const Lista = styled.div`
-    /* background-color: #11d; */
     height: 70%;
     width: 95%;
 
@@ -167,7 +172,6 @@ const CardLista = styled.div`
     height: 10%;
     margin: 5px;
     color: #eee;
-    /* border: 1px solid #9b18d4; */
     background-color: #29248a;
     position: relative;
 

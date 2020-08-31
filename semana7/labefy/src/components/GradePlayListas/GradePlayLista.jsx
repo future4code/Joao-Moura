@@ -4,7 +4,7 @@ import axios from 'axios'
 import backgroundHeader from '../../img/header.jpg'
 import play from '../../img/play.jpg'
 
-import {playlistas, apiUrl, headers} from '../../config/configApi'
+import {apiUrl, headers} from '../../config/configApi'
 import ListaDeMusicas from '../ListaDeMusicas/ListaDeMusicas'
 
 
@@ -25,10 +25,9 @@ class GradePlayLista extends React.Component {
       carregarPlaylistas = async () =>{
           try {
               const resposta = await axios.get(apiUrl, headers)
-              console.log(resposta.data.result.list)
               this.setState({ playlistas: resposta.data.result.list})
           } catch (error) {
-              console.log('Erro Carregar Play lista', error)
+              alert('Erro Carregar Play lista')
           }
       }
     
@@ -50,7 +49,7 @@ class GradePlayLista extends React.Component {
             alert('Criada com Sucesso!')
             
         } catch (error) {
-            console.log('Erro Criar Play lista', error)
+            alert('Erro Criar Play lista')
         }
       }
 
@@ -63,7 +62,7 @@ class GradePlayLista extends React.Component {
               this.carregarPlaylistas()
               alert('Deletada')
             } catch (error) {
-              console.log('Erro ao Apagar playlista', error)
+              alert('Erro ao Apagar playlista')
             }
         }
           
@@ -180,13 +179,9 @@ const Header = styled.header`
 const ConteinerConteudo = styled.div`
 display: flex;
 width: 90vw;
-height: 100vh;
 margin: 10px auto;
-/* border: 1px solid black; */
-/* background-color: #55fbe5; */
 align-items:center;
 justify-content:space-between;
-/* overflow-y: scroll; */
 `
 
 const Grid = styled.div`
