@@ -18,13 +18,15 @@ export default function Profile(props) {
 
 
 const PhotoContainer = styled.div `
-   width: 98%;
+   width: 90%;
    position: relative;
+   height: 390px;
    /* background-image: ${props=> props.background}; */
 
    img {
      width: 100%;
-     max-height: 350px;
+     height: 100%;
+     margin: 0 20px;
    }
 `
 

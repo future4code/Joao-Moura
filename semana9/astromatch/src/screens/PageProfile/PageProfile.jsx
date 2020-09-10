@@ -12,10 +12,10 @@ import {getProfileToChoose, getMatches, choosePerson} from '../../services/callA
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: 350,
+    width: 370,
     marginTop: 20,
-    height: 520,
-    padding: 20,
+    height: 550,
+    // padding: ,
     border: 1 
   },
 
@@ -44,7 +44,7 @@ export default function PageProfile(props) {
 
   return (
     <Card className={classes.root}>
-     <Header switchPages={props.switchPages}/>
+     <Header switchPages={props.switchPages} myPage={props.myPage}/>
 
       <Profile
         photo={profile.photo}

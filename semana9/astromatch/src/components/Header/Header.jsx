@@ -7,10 +7,8 @@ import peopleIcon from '../../assets/people.ico'
 
 export default function Header(props) {
 
-  
-  
   return (
-      <HeaderContainer>
+      <HeaderContainer page={props.myPage}>
         <h1>AstroMatch</h1>
         <img src={peopleIcon} onClick={props.switchPages}/>
       </HeaderContainer>
@@ -20,11 +18,19 @@ export default function Header(props) {
 
 const HeaderContainer = styled.header`
   display: flex;
-  justify-content: space-between;
+  justify-content: ${props=> props.page === 1? 'flex-start': 'flex-end'};
   align-items: center;
+  position: relative;
+  border-bottom: 1px solid #aaa;
+  margin-bottom: 10px;
+  padding: 10px;
 
   h1 {
     margin: 5px;
+    font-size: 25px;
+    color: #555;
+    position: absolute;
+    right: 100px;
   }
 
   img {

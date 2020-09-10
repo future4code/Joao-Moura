@@ -24,10 +24,10 @@ export const getProfileToChoose = (setProfile) => {
 
 //Retorna um array de perfis que deram match com você.
 
-export const getMatches = () => {
+export const getMatches = (setMatch) => {
     axios.get(`${BASE_URL}/matches`)
     .then((response)=>{
-        console.log(response.data.matches) 
+        setMatch(response.data.matches) 
     })
     .catch((error)=>{
         console.log('erro ao buscar array de matches')
