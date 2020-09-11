@@ -15,7 +15,8 @@ const useStyles = makeStyles((theme) => ({
     width: 370,
     marginTop: 20,
     height: 550,
-    border: 1 
+    border: 1 ,
+    position: 'relative',
   },
 
 }));
@@ -23,43 +24,41 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function PageProfile(props) {
-  const classes = useStyles();
-  const [profile, setProfile] = useState({})
+    const classes = useStyles();
+    const [profile, setProfile] = useState({})
 
-  useEffect(()=>{
-    handleProfile()
-  },[])
+    useEffect(()=>{
+        handleProfile()
+    },[])
 
-  const handleProfile = () => {
-    
-     getProfileToChoose(setProfile)
-  }
+    const handleProfile = () => {
+        getProfileToChoose(setProfile)
+    }
 
-  const choose = () =>{
-    choosePerson(profile)
-    handleProfile()
-  }
+    const choose = () =>{
+        choosePerson(profile.id)
+        handleProfile()
+    }
 
-  
-
-  return (
-    <Card className={classes.root}>
-     <Header switchPages={props.switchPages} myPage={props.myPage}/>
-   
-        <Profile
-          photo={profile.photo}
-          name={profile.name}
-          age={profile.age}
-          bio={profile.bio}
-        />
-    
-      
-  
-      <Buttons 
-        onClickhandleProfile={handleProfile}
-        onClickChoose={choose}
-      />
-
-    </Card>
-  );
+    return (
+        <Card className={classes.root}>
+            <Header switchPages={props.switchPages} myPage={props.myPage}/>
+        
+        
+              
+                <Profile
+                  photo={profile.photo}
+                  name={profile.name}
+                  age={profile.age}
+                  bio={profile.bio}
+                  x={profile}
+                />
+            
+            
+            <Buttons 
+                onClickhandleProfile={handleProfile}
+                onClickChoose={choose}
+            />
+        </Card>
+    );
 }

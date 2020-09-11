@@ -35,7 +35,6 @@ export const getMatches = (setListMatch) => {
     axios.get(`${BASE_URL}/matches`)
     .then((response)=>{
         setListMatch(response.data.matches) 
-        console.log('>>>>',response.data.matches)
     })
     .catch((error)=>{
         console.log('erro ao buscar array de matches')
@@ -46,8 +45,11 @@ export const getMatches = (setListMatch) => {
 //Recebe um id e uma escolha (choice). 
 //A escolha é a opção do usuário no momento do swipe. Deve ser true ou false.
 
-export const choosePerson = (person) => {
-    const body = {...person, choice: true }
+export const choosePerson = (id) => {
+    const body = {
+        "id": `${id}`,
+        "choice": true 
+    }
 
     axios.post(`${BASE_URL}/choose-person`, body)
     .then((response)=>{
