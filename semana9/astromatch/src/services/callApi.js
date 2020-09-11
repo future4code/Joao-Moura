@@ -14,7 +14,14 @@ import {BASE_URL} from '../constants/configAPI'
 export const getProfileToChoose = (setProfile) => {
     axios.get(`${BASE_URL}/person`)
     .then((response)=>{
-        setProfile(response.data.profile)
+       
+        if(Object.entries(response.data.profile).length > 0){
+
+            setProfile(response.data.profile)
+        }else{
+
+            console.log('acabaram os perfis')
+        }
     })
     .catch((error)=>{
         console.log('erro ao buscar novo perfil')
@@ -24,10 +31,11 @@ export const getProfileToChoose = (setProfile) => {
 
 //Retorna um array de perfis que deram match com você.
 
-export const getMatches = (setMatch) => {
+export const getMatches = (setListMatch) => {
     axios.get(`${BASE_URL}/matches`)
     .then((response)=>{
-        setMatch(response.data.matches) 
+        setListMatch(response.data.matches) 
+        console.log('>>>>',response.data.matches)
     })
     .catch((error)=>{
         console.log('erro ao buscar array de matches')
@@ -38,11 +46,8 @@ export const getMatches = (setMatch) => {
 //Recebe um id e uma escolha (choice). 
 //A escolha é a opção do usuário no momento do swipe. Deve ser true ou false.
 
-export const choosePerson = (idParm) => {
-    const body = {
-        "id": idParm,
-	    "choice": true
-    }
+export const choosePerson = (person) => {
+    const body = {...person, choice: true }
 
     axios.post(`${BASE_URL}/choose-person`, body)
     .then((response)=>{
@@ -58,9 +63,9 @@ export const choosePerson = (idParm) => {
 export const clear = () => {
     axios.put(`${BASE_URL}/clear`)
     .then((response)=>{
-        console.log('usuario escolhido') 
+        console.log('lista limpa') 
     })
     .catch((error)=>{
-        console.log('erro ao buscar array de matches')
+        console.log('erro ao limpar lista')
     })
 }

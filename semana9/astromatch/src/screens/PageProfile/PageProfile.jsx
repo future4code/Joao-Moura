@@ -7,7 +7,7 @@ import Header from '../../components/Header/Header'
 import Profile from '../../components/Profile/Profile'
 
 
-import {getProfileToChoose, getMatches, choosePerson} from '../../services/callApi'
+import {getProfileToChoose, getMatches, choosePerson, clear} from '../../services/callApi'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -15,7 +15,6 @@ const useStyles = makeStyles((theme) => ({
     width: 370,
     marginTop: 20,
     height: 550,
-    // padding: ,
     border: 1 
   },
 
@@ -32,11 +31,12 @@ export default function PageProfile(props) {
   },[])
 
   const handleProfile = () => {
+    
      getProfileToChoose(setProfile)
   }
 
   const choose = () =>{
-    choosePerson(profile.id)
+    choosePerson(profile)
     handleProfile()
   }
 
@@ -45,13 +45,15 @@ export default function PageProfile(props) {
   return (
     <Card className={classes.root}>
      <Header switchPages={props.switchPages} myPage={props.myPage}/>
-
-      <Profile
-        photo={profile.photo}
-        name={profile.name}
-        age={profile.age}
-        bio={profile.bio}
-      />
+   
+        <Profile
+          photo={profile.photo}
+          name={profile.name}
+          age={profile.age}
+          bio={profile.bio}
+        />
+    
+      
   
       <Buttons 
         onClickhandleProfile={handleProfile}
