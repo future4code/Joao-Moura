@@ -4,7 +4,7 @@ import {PhotoContainer, InfoContainer} from './styled'
 export default function Profile(props) {
 	const photo = () => {
 		if(Object.entries(props.x).length === 0){
-			return <p>Carregando</p>
+			return <p>Carregando...</p>
 		}else{
 			return (
 				<>
