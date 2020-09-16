@@ -2,10 +2,10 @@ import axios from 'axios'
 import {BASE_URL} from '../constants/BASE_URL'
 
 
-export const getTrip = () => {
+export const getTrip = (setTipList) => {
     axios.get(`${BASE_URL}/trips`)
     .then((response)=>{
-        console.log("resposta: ", response)
+        setTipList(response.data.trips)
     })
     .catch((err)=>{
         console.log("erro buscar detalhes: ", err)

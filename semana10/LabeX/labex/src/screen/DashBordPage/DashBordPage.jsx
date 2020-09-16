@@ -1,4 +1,4 @@
-import React, {useEffect}from 'react'
+import React, {useEffect, useState}from 'react'
 import {useHistory} from 'react-router-dom'
 import styled from 'styled-components'
 
@@ -7,6 +7,7 @@ import DetailTripPage from '../DetailTripPage/DetailTripPage'
 
 const DashBordPage = () => {
     const history = useHistory()
+    
 
     useEffect(() => {
         const token = window.localStorage.getItem("token");
@@ -19,14 +20,12 @@ const DashBordPage = () => {
         
     }, [history]);
 
-    const fetchData =() => {
-
-    }
     
     const logout = () => {
         localStorage.clear();
         goToLogin(history)
     }
+
     
     return (
         <DashBordContainer>
@@ -41,7 +40,6 @@ const DashBordPage = () => {
             </Header>
         <Body>
             <DetailTripPage/>
-            
         </Body>
     </DashBordContainer>
     )
@@ -51,14 +49,15 @@ export default DashBordPage
 
 const DashBordContainer = styled.div`
 background-color: #EEE;
-height: 100vh;
-width: 100vw;
+width: 100%;
+height: 100%;
+
 box-sizing: border-box;
 
 `
 const Header = styled.header`
 background-color: #66f;
-height: 15%;
+height: 100px;
 width: 100%;
 padding: 10px;
 color: #fff;
@@ -106,6 +105,8 @@ height: 50%;
 
 
 const Body = styled.div`
+
+
 
 `
 
