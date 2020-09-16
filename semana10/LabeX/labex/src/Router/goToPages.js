@@ -11,7 +11,7 @@ export const goBack = (history) => {
 }
 
 export const goToDashBord = (history) => {
-    history.push('/dashbord')
+        history.push('/dashbord')
 }
 
 export const goToLogin = (history) => {
