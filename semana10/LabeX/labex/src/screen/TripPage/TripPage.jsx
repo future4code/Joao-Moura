@@ -6,7 +6,7 @@ import { goToUserForm, goBack } from '../../Router/goToPages'
 import { getTrip } from '../../services/requestApi'
 
 
-const DetailTripPage = () => {
+const TripPage = () => {
     const history = useHistory()
     const [tripList, setTripList] = useState([])
 
@@ -17,6 +17,9 @@ const DetailTripPage = () => {
     const seeDetails = () =>{
 
     }
+
+
+   
 
     return (
         <TripContainer>
@@ -35,13 +38,13 @@ const DetailTripPage = () => {
                 })}
 
             </TripGrid>
-            <button onClick={()=> goToUserForm(history)}>Pagina de formulario</button>
-            <button onClick={()=> goBack(history)} >Voltar</button>
+            {/* <button onClick={()=> goToUserForm(history)}>Pagina de formulario</button>
+            <button onClick={()=> goBack(history)} >Voltar</button> */}
         </TripContainer>
     )
 }
 
-export default DetailTripPage
+export default TripPage
 
 const TripContainer = styled.div`
 background-color: #fff;
