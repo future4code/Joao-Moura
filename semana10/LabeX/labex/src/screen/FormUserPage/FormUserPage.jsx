@@ -11,7 +11,6 @@ const FormUserPage = () => {
 
     },[])
 
-    //desestruturando função importada
     const { form, onChange, resetState } = useForm(
         {
             name:'',
@@ -29,10 +28,8 @@ const FormUserPage = () => {
         onChange(name, value)
     }
 
-    //deve enviar os dados para a API
     const formSubmit = (event) =>{
         event.preventDefault()
-        console.log(form)
         applyToTrip(form)
         resetState()
     }
@@ -154,7 +151,6 @@ div {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* align-items: center; */
     margin: 10px 0;
 }
 `

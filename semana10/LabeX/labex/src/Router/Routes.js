@@ -10,6 +10,7 @@ import LoginPage from '../screen/LoginPage/LoginPage'
 import FormDashBord from "../screen/FormDashBord/FormDashBord.jsx";
 import HeaderDashBord from "../components/HeaderDashBord/HeaderDashBord"
 import HeaderUser from "../components/HeaderUser/HeaderUser.jsx";
+import TripDetails from "../screen/TripDetails/TripDetails.jsx";
 
 const Routes = () => {
   return (
@@ -36,9 +37,9 @@ const Routes = () => {
             <DashBordPage/>
         </Route>
 
-        <Route exact path="/dashbord/detail">
+        <Route exact path="/dashbord/detalhes/:id">
           <HeaderDashBord/>
-          <TripPage/>
+          <TripDetails/>
         </Route>
 
         <Route exact path="/dashbord/form">

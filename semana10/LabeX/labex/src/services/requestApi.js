@@ -36,7 +36,8 @@ export const applyToTrip = (user) => {
 
     axios.post(`${BASE_URL}/trips/${user.tripID}/apply`,body)
     .then((response)=>{
-        console.log("usuario cadastrado: ", response)
+        console.log("usuario cadastrado: ", response.data)
+        alert('Sua solicitação foi enviada!')
     })
     .catch((err)=>{
         console.log("erro buscar detalhes: ", err)

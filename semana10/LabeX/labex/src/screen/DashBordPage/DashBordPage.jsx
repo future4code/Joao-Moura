@@ -1,10 +1,8 @@
 import React, {useEffect, useState}from 'react'
 import {useHistory} from 'react-router-dom'
 import styled from 'styled-components'
-import HeaderDashBord from '../../components/HeaderDashBord/HeaderDashBord'
 
-import {goToLogin,goToDashBord} from '../../Router/goToPages'
-import FormDashBord from '../FormDashBord/FormDashBord'
+import {goToLogin, goToDashBord, goToDetail} from '../../Router/goToPages'
 import TripPage from '../TripPage/TripPage'
 
 const DashBordPage = () => {
@@ -27,10 +25,15 @@ const DashBordPage = () => {
         goToLogin(history)
     }
 
+    const details = (event) =>{
+        goToDetail(history, event.target.id)
+    }
+
     
     return (
         <DashBordContainer>
-            <TripPage/>
+            <h2>Viagens</h2>
+            <TripPage handleClick={details}/>
         </DashBordContainer>
     )
 }
@@ -38,7 +41,7 @@ const DashBordPage = () => {
 export default DashBordPage
 
 const DashBordContainer = styled.div`
-background-color: #EEE;
+background-color: #fff;
 width: 100%;
 height: 100%;
 box-sizing: border-box;

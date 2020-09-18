@@ -15,8 +15,8 @@ export const goToDashBord = (history) => {
     history.push('/dashbord')
 }
 
-export const goToDetailPage = (history) => {
-    history.push('/dashbord/detail');
+export const goToDetail = (history,id) => {
+    history.push(`/dashbord/detalhes/${id}`);
 }
 export const goBack = (history) => {
     history.goBack()

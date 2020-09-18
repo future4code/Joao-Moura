@@ -18,10 +18,11 @@ const TripPage = (props) => {
         <TripContainer>
             <TripGrid>
 
-                {tripList.map( (trip, indice) =>{
+                {tripList.map( (trip) =>{
                     return (
                         <TripCard
-                            key={indice}
+                            key={trip.id}
+                            tripID={trip.id}
                             data={trip}
                             handleClick={props.handleClick}
                         />
