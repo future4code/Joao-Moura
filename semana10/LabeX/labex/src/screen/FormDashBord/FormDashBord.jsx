@@ -1,29 +1,31 @@
 import React from 'react'
 import styled from 'styled-components'
-import { countries } from '../../constants/countries'
+import { planets } from '../../constants/planets'
 import { useForm } from '../../hooks/useForm'
 
 const FormDashBord = () => {
     //desestruturando função importada
     const { form, onChange, resetState } = useForm(
         {
-            trip:''
+            trip:'',
+            country: '',
+            date: '',
+            description: '',
+            duration: 0
         })
-    
+    //FALTA VALIDA A DATA
+
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-
         onChange(name, value)
     }
 
     //deve enviar os dados para a API
     const formSubmit = (event) =>{
         event.preventDefault()
-        console.log("nome da viagem",form)
+        console.log(form)
         resetState()
     }
-
-    
 
     return (
         <FormContainer>
@@ -35,19 +37,25 @@ const FormDashBord = () => {
                         value={form.trip}
                         name='trip'
                         onChange={handleInputChange}
-                        // pattern=""
-                        title=""
+                        pattern="[A-Za-z]{5,}"
+                        title="Nome invalido"
                         required
                     />
                 </div>
 
                 <div>
                     <Label>Planeta</Label>
-                    <Select required>
-                        {countries.map((country, index)=>{
+                    <Select 
+                        value={form.country}
+                        name='country'
+                        onChange={handleInputChange}
+                        required
+                    >
+                        <option value=''>--selecione o planeta--</option>
+                        {planets.map((planet, index)=>{
                             return(
-                                <option value={country.nome} key={index}>
-                                    {country.nome}
+                                <option value={planet} key={index}>
+                                    {planet}
                                 </option>
                             )
                         })}
@@ -56,17 +64,37 @@ const FormDashBord = () => {
                 
                 <div>
                     <Label>Data da viagem</Label>
-                    <Input type='date' required/>
+                    <Input 
+                        value={form.date}
+                        name='date'
+                        onChange={handleInputChange}
+                        pattern=''
+                        type='date' 
+                        required
+                    />
                 </div>
 
                 <div>
                     <Label>Descrição</Label>
-                    <textarea type='text'/>
+                    <Textarea 
+                        name='description'
+                        value={form.description}
+                        onChange={handleInputChange}
+                        minLength="3" //trocar pra 30
+                        required
+                    />
                 </div>
 
                 <div>
-                    <Label>Duração</Label>
-                    <Input type='number' required/>
+                    <Label>Duração</Label>  
+                    <Input
+                        value={form.duration}
+                        name='duration'
+                        onChange={handleInputChange}
+                        min='50'
+                        type='number'
+                        required
+                    />
                 </div>
 
                 <button>Criar viagem</button>
@@ -89,8 +117,9 @@ align-items: center;
 const Form = styled.form `
 background-color: #cff;
 width: 40%;
-height:500px;
+height:600px;
 padding: 10px;
+box-sizing: border-box;
 
 div {
     display: flex;
@@ -106,11 +135,17 @@ font-size: 20px;
 padding: 5px;
 `
 const Select = styled.select `
-width: 300px;
+width: 200px;
 height: 30px;
 `
 const Input = styled.input `
 width: 300px;
 height: 30px;
+
+`
+const Textarea = styled.textarea `
+width: 300px;
+height: 80px;
+resize: none;
 
 `

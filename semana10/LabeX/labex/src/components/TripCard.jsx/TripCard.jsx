@@ -5,13 +5,13 @@ import styled from 'styled-components'
 const TripCard = (props) => {
     const {name, description, planet, durationInDays, date}= props.data
     return(
-        <Card onClick={props.click}>
+        <Card onClick={props.handleClick}>
             <img src="https://picsum.photos/350/270" />
             <Info>
                 <h2>{name}</h2>
                 <h3>{planet} dia {date}</h3>
                 <p>{description}</p>
-                <small>Duração da viagem: {durationInDays}</small>
+                <small>Duração da viagem: {durationInDays} dias</small>
             </Info>
         </Card>
     )

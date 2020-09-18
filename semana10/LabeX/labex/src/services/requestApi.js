@@ -23,3 +23,22 @@ export const getTripDetail = (id) => {
         console.log("erro buscar detalhes: ", err)
     })
 }
+
+export const applyToTrip = (user) => {
+   
+    const body =  {
+        "name": user.name,
+        "age": user.age,
+        "applicationText": user.applicationText,
+        "profession": user.profession,
+        "country": user.country
+    }
+
+    axios.post(`${BASE_URL}/trips/${user.tripID}/apply`,body)
+    .then((response)=>{
+        console.log("usuario cadastrado: ", response)
+    })
+    .catch((err)=>{
+        console.log("erro buscar detalhes: ", err)
+    })
+}

@@ -9,16 +9,21 @@ import DashBordPage from "../screen/DashBordPage/DashBordPage";
 import LoginPage from '../screen/LoginPage/LoginPage'
 import FormDashBord from "../screen/FormDashBord/FormDashBord.jsx";
 import HeaderDashBord from "../components/HeaderDashBord/HeaderDashBord"
+import HeaderUser from "../components/HeaderUser/HeaderUser.jsx";
 
 const Routes = () => {
   return (
+    <BrowserRouter>
    
       <Switch>
         <Route exact path="/">
+            <HeaderUser/>
             <HomePage/>
         </Route>
 
         <Route exact path="/form">
+          <HeaderUser/>
+          <h2>Cadastro</h2>
           <FormUserPage/>
         </Route>
 
@@ -42,6 +47,8 @@ const Routes = () => {
         </Route>
 
       </Switch>
+    </BrowserRouter>
+
   );
 };
 

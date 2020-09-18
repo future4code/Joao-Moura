@@ -6,24 +6,16 @@ import { goToUserForm, goBack } from '../../Router/goToPages'
 import { getTrip } from '../../services/requestApi'
 
 
-const TripPage = () => {
+const TripPage = (props) => {
     const history = useHistory()
     const [tripList, setTripList] = useState([])
 
     useEffect(()=>{
         getTrip(setTripList)
     },[])
-
-    const seeDetails = () =>{
-
-    }
-
-
    
-
     return (
         <TripContainer>
-            <p> Viagens</p>
             <TripGrid>
 
                 {tripList.map( (trip, indice) =>{
@@ -31,7 +23,7 @@ const TripPage = () => {
                         <TripCard
                             key={indice}
                             data={trip}
-                            click={seeDetails}
+                            handleClick={props.handleClick}
                         />
                     )
 
