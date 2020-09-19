@@ -13,11 +13,12 @@ export const getTrip = (setTipList) => {
 }
 
 
-export const getTripDetail = (id) => {
+export const getTripDetail = (setTrip, setCandidates, id ) => {
     const token = localStorage.getItem('token')
     axios.get(`${BASE_URL}/trip/${id}`,  {headers: {auth: token}})
     .then((response)=>{
-        console.log("resposta: ", response)
+        setTrip(response.data.trip)
+        setCandidates(response.data.trip.candidates)
     })
     .catch((err)=>{
         console.log("erro buscar detalhes: ", err)

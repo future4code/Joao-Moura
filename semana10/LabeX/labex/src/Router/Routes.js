@@ -46,6 +46,10 @@ const Routes = () => {
           <HeaderDashBord/>
           <FormDashBord/>
         </Route>
+        
+        <Route>
+          <h1>Erro 404: A Página Não existe</h1>
+        </Route>
 
       </Switch>
     </BrowserRouter>
