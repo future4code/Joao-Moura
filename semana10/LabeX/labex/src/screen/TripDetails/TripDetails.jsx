@@ -41,6 +41,7 @@ const TripDetails = (props) => {
                 <h3>{trip.planet} dia: {trip.date}</h3>
                 <p>{trip.description}</p>
                 <small>Duração da viagem: {trip.durationInDays} dias</small>
+                {/* <button onClick={tripDelete}></button> */}
             </Details>
 
             <CandidatesList>

@@ -44,3 +44,18 @@ export const applyToTrip = (user) => {
         console.log("erro buscar detalhes: ", err)
     })
 }
+
+
+
+export const createTrip = (body) => {
+    const token = localStorage.getItem('token')
+
+    axios.post(`${BASE_URL}/trips`,body, {headers: {auth: token}} )
+    .then((response)=>{
+        console.log("viagem cadastrado: ", response.data)
+        alert('Sua Viagem foi cadastrada!')
+    })
+    .catch((err)=>{
+        console.log("erro no cadastro: ", err)
+    })
+}

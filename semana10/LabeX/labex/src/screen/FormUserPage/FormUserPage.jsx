@@ -44,7 +44,7 @@ const FormUserPage = () => {
                         value={form.name}
                         name='name'
                         onChange={handleInputChange}
-                        pattern="[A-Za-z]{3,}"
+                        pattern="^[a-z\u00C0-\u00ff A-Z]{3,}"
                         title="Nome invalido"
                         required
                     />
@@ -69,7 +69,7 @@ const FormUserPage = () => {
                         name='profession'
                         value={form.profession}
                         onChange={handleInputChange}
-                        pattern="[A-Za-z]{10,}"
+                        pattern="^[a-z\u00C0-\u00ff A-Z]{10,}"
                         required
                     />
                 </div>
@@ -118,7 +118,7 @@ const FormUserPage = () => {
                         name='applicationText'
                         value={form.applicationText}
                         onChange={handleInputChange}
-                        minLength="3" //trocar pra 30
+                        minLength="30" 
                         required
                     />
                 </div>

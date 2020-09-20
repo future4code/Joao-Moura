@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { planets } from '../../constants/planets'
 import { useForm } from '../../hooks/useForm'
 import { goToLogin } from '../../Router/goToPages'
+import {createTrip} from '../../services/requestApi'
 
 const FormDashBord = () => {
     const history = useHistory()
@@ -19,27 +20,41 @@ const FormDashBord = () => {
     }, [history]);
 
 
-    //desestruturando função importada
+    
     const { form, onChange, resetState } = useForm(
         {
-            trip:'',
-            country: '',
+            name:'',
+            planet: '',
             date: '',
             description: '',
-            duration: 0
+            durationInDays: 0
         })
-    //FALTA VALIDA A DATA
+    
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         onChange(name, value)
     }
 
-    //deve enviar os dados para a API
+    const dataValidate = () => {
+        let dateForm = form.date
+        dateForm = Date.parse(dateForm)
+
+        let atual = new Date()
+        atual = Date.parse(atual)
+
+        if(dateForm > atual){
+            resetState()
+            return true
+        }else{
+            return false
+        }
+       
+    }
+
     const formSubmit = (event) =>{
         event.preventDefault()
-        console.log(form)
-        resetState()
+        dataValidate() ? createTrip(form) : alert("Data invalida") 
     }
 
     return (
@@ -49,10 +64,10 @@ const FormDashBord = () => {
                 <div>
                     <Label>Nome da viagem</Label>
                     <Input 
-                        value={form.trip}
-                        name='trip'
+                        value={form.name}
+                        name='name'
                         onChange={handleInputChange}
-                        pattern="[A-Za-z]{5,}"
+                        pattern="^[a-z\u00C0-\u00ff A-Z]{5,}"
                         title="Nome invalido"
                         required
                     />
@@ -61,8 +76,8 @@ const FormDashBord = () => {
                 <div>
                     <Label>Planeta</Label>
                     <Select 
-                        value={form.country}
-                        name='country'
+                        value={form.planet}
+                        name='planet'
                         onChange={handleInputChange}
                         required
                     >
@@ -95,7 +110,7 @@ const FormDashBord = () => {
                         name='description'
                         value={form.description}
                         onChange={handleInputChange}
-                        minLength="3" //trocar pra 30
+                        minLength="30" 
                         required
                     />
                 </div>
@@ -103,12 +118,12 @@ const FormDashBord = () => {
                 <div>
                     <Label>Duração</Label>  
                     <Input
-                        value={form.duration}
-                        name='duration'
+                        value={form.durationInDays}
+                        name='durationInDays'
                         onChange={handleInputChange}
                         min='50'
                         type='number'
-                        required
+                        
                     />
                 </div>
 
