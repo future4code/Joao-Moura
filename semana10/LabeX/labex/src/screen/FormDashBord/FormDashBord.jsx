@@ -1,9 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import { planets } from '../../constants/planets'
 import { useForm } from '../../hooks/useForm'
+import { goToLogin } from '../../Router/goToPages'
 
 const FormDashBord = () => {
+    const history = useHistory()
+
+    useEffect(() => {
+        const token = window.localStorage.getItem("token");
+    
+        if (token) {
+            history.push('/dashbord/form')
+        } else {
+            goToLogin(history)
+        }
+    }, [history]);
+
+
     //desestruturando função importada
     const { form, onChange, resetState } = useForm(
         {

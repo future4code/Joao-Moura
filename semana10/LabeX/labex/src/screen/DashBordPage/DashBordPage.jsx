@@ -10,23 +10,17 @@ const DashBordPage = () => {
 
     useEffect(() => {
         const token = window.localStorage.getItem("token");
-        
+    
         if (token) {
-            goToDashBord(history)
+            history.push('/dashbord')
         } else {
             goToLogin(history)
         }
-        
     }, [history]);
 
-    
-    const logout = () => {
-        localStorage.clear();
-        goToLogin(history)
-    }
 
     const details = (event) =>{
-        goToDetail(history, event.target.id)
+            goToDetail(history, event.target.id)
     }
 
     

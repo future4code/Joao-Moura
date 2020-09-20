@@ -1,26 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
-import { Link, useHistory } from 'react-router-dom';
-import { goToLogin, goToUserForm} from '../../Router/goToPages';
+import { useHistory } from 'react-router-dom';
+import { goToDashBord, goToLogin, goToDashBordForm} from '../../Router/goToPages';
 
 const HeaderDashBord = (props) => {
-    // const history = useHistory()
+     const history = useHistory()
 
-    // const teladeViagens = () => {
-    //     history.push("/dashbord/form")
-    // }
-    
     return(
         <Header>
                 <h1>DashBord</h1>
                 <NavMenu>
-                    {/* <button onClick={teladeViagens}>Viagens</button> */}
-
-                    <NavLink to='/dashbord'>Viagens</NavLink>
-                    <NavLink to='/dashbord/form'>Nova Viagem</NavLink>
-                    <NavLink to='/'>Solicitações</NavLink>
+                    <Link onClick={()=>goToDashBord(history)}>Viagens</Link>
+                    <Link onClick={()=>goToDashBordForm(history)}>Nova Viagem</Link>
                 </NavMenu>
-                <BntLogout onClick={props.clickLogout}>logout</BntLogout>
+                <BntLogout onClick={()=>goToLogin(history)}>logout</BntLogout>
         </Header>
     )
 }
@@ -66,11 +59,12 @@ height: 50%;
 
 `
 
-const NavLink = styled(Link)`
+const Link = styled.p`
 font-size:22px;
 padding: 3px;
 color: #fff;
 text-decoration: none;
+cursor: pointer;
 :hover {
     background: #fff;
     color: #000;

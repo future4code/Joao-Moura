@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import {getTripDetail} from '../../services/requestApi'
 import styled from 'styled-components'
+import { goToLogin } from '../../Router/goToPages'
 
 
 const TripDetails = (props) => {
@@ -10,12 +11,19 @@ const TripDetails = (props) => {
     const [ contentInfo, setContentInfo] = useState(false)
     const [ candidate, setCandidate] = useState({})
     const parm = useParams()
+    const history = useHistory()
+
 
     useEffect(() => {
-        getTripDetail(setTrip, setCandidates, parm.id)
-  
-        
-    }, []);
+        const token = window.localStorage.getItem("token");
+    
+        if (token) {
+            getTripDetail(setTrip, setCandidates, parm.id)
+        } else {
+            goToLogin(history)
+        }
+
+    }, [history]);
 
     const info = (index) => {
         setCandidate(candidates[index])
