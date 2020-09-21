@@ -1,9 +1,8 @@
 import React, {useState, useEffect}from 'react'
-import axios from 'axios'
-import {BASE_URL} from '../../constants/BASE_URL'
-import styled from 'styled-components'
 import {useHistory} from  'react-router-dom'
 import {goToDashBord, goToLogin} from '../../Router/goToPages'
+import {goLogin} from './../../services/requestApi'
+import {LoginContainer,Form,InputEmail,InputPassword,Email,Password,BtnLogin,} from './styled'
 
 const LoginPage = () => {
     const history = useHistory()
@@ -22,24 +21,6 @@ const LoginPage = () => {
     }, [history]);
 
 
-
-    const login = () => {
-        const body = {
-                "email": email,
-                "password": password
-        }
-
-        axios.post(`${BASE_URL}/login`, body)
-        .then((response)=>{
-            localStorage.setItem("token", response.data.token)
-            goToDashBord(history)
-        })
-        .catch((err)=>{
-            alert('Dados Invalidos')
-        })
-    }
-
-
     const onChangeEmail = (event) => {
         setEmail(event.target.value)
     }
@@ -47,8 +28,6 @@ const LoginPage = () => {
         setPassword(event.target.value)
     }
 
-
-    
 
     return (
         <LoginContainer>
@@ -70,7 +49,7 @@ const LoginPage = () => {
                     />
                 </Password>
                 
-                <BtnLogin onClick={login}>Entra</BtnLogin>
+                <BtnLogin onClick={()=>goLogin(email,password, goToDashBord, history)}>Entrar</BtnLogin>
                 
             </Form>
         </LoginContainer>
@@ -78,58 +57,4 @@ const LoginPage = () => {
 }
 
 export default LoginPage
-
-const LoginContainer = styled.div`
-background-color: #EEE;
-height: 100vh;
-width: 100vw;
-box-sizing: border-box;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-`
-const Form = styled.div`
-background-color: #FFF;
-width: 35%;
-min-width:300px;
-height: 45%;
-padding: 10px;
-`
-
-const Email = styled.div`
-display: flex;
-flex-direction: column;
-font-size: 22px;
-width: 100%;
-height: 30%;
-`
-const Password = styled.div`
-display: flex;
-flex-direction: column;
-width: 100%;
-height: 30%;`
-
-const InputEmail = styled.input`
-width: 80%;
-height: 30%;
-background-color: #EEE;
-border: none;
-`
-const InputPassword= styled.input`
-width: 80%;
-height: 30%;
-background-color: #EEE;
-border: none;
-`
-
-const BtnLogin = styled.button`
-width: 25%;
-height: 15%;
-background-color:  #4083ff;
-color: #fff;
-font-size: 20px;
-border: none;
-cursor: pointer;
-`
 

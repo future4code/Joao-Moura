@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
-import styled from 'styled-components'
 import { planets } from '../../constants/planets'
 import { useForm } from '../../hooks/useForm'
 import { goToLogin } from '../../Router/goToPages'
 import {createTrip} from '../../services/requestApi'
+import {FormContainer,Form,Label,Select,Input,Textarea} from './styled'
 
 const FormDashBord = () => {
     const history = useHistory()
@@ -136,46 +136,3 @@ const FormDashBord = () => {
 export default FormDashBord
 
 
-const FormContainer = styled.div`
-background-color: #fff;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-`
-
-const Form = styled.form `
-background-color: #cff;
-width: 40%;
-height:600px;
-padding: 10px;
-box-sizing: border-box;
-
-div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    /* align-items: center; */
-    margin: 20px 0;
-}
-`
-
-const Label = styled.label `
-font-size: 20px;
-padding: 5px;
-`
-const Select = styled.select `
-width: 200px;
-height: 30px;
-`
-const Input = styled.input `
-width: 300px;
-height: 30px;
-
-`
-const Textarea = styled.textarea `
-width: 300px;
-height: 80px;
-resize: none;
-
-`

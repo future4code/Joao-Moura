@@ -1,7 +1,7 @@
 import React from 'react'
-import styled from 'styled-components'
 import { useHistory } from 'react-router-dom';
 import { goToHome, goToUserForm} from '../../Router/goToPages';
+import {Header, NavMenu, Link} from './styled.js'
 
 const HeaderUser = (props) => {
     const history = useHistory()
@@ -18,37 +18,3 @@ const HeaderUser = (props) => {
 }
 
 export default HeaderUser
-
-const Header = styled.header`
-background-color: #66f;
-height: 100px;
-width: 100%;
-padding: 10px;
-color: #fff;
-display: flex;
-justify-content: space-between;
-align-items: flex-end;
-position: relative;
-`
-
-
-const NavMenu = styled.div`
-display: flex;
-justify-content: space-around;
-align-items: flex-end;
-width: 30%;
-height: 50%;
-
-`
-
-const Link = styled.p`
-font-size:22px;
-padding: 3px;
-color: #fff;
-text-decoration: none;
-cursor: pointer;
-:hover {
-    background: #fff;
-    color: #000;
-}
-`

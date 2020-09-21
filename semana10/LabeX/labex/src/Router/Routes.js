@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import HomePage from '../screen/HomePage/HomePage.jsx'
-import TripPage from '../screen/TripPage/TripPage'
 import FormUserPage from '../screen/FormUserPage/FormUserPage'
 
 import DashBordPage from "../screen/DashBordPage/DashBordPage";

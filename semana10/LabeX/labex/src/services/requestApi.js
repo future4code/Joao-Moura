@@ -7,8 +7,18 @@ export const getTrip = (setTipList) => {
     .then((response)=>{
         setTipList(response.data.trips)
     })
-    .catch((err)=>{
-        console.log("erro buscar detalhes: ", err)
+}
+
+export const goLogin = (email, password, goToDashBord, history) => {
+    const body = {
+        "email": email,
+        "password": password
+    }
+
+    axios.post(`${BASE_URL}/login`, body)
+    .then((response)=>{
+        localStorage.setItem("token", response.data.token)
+        goToDashBord(history)
     })
 }
 
@@ -20,13 +30,9 @@ export const getTripDetail = (setTrip, setCandidates, id ) => {
         setTrip(response.data.trip)
         setCandidates(response.data.trip.candidates)
     })
-    .catch((err)=>{
-        console.log("erro buscar detalhes: ", err)
-    })
 }
 
 export const applyToTrip = (user) => {
-   
     const body =  {
         "name": user.name,
         "age": user.age,
@@ -37,11 +43,7 @@ export const applyToTrip = (user) => {
 
     axios.post(`${BASE_URL}/trips/${user.tripID}/apply`,body)
     .then((response)=>{
-        console.log("usuario cadastrado: ", response.data)
         alert('Sua solicitação foi enviada!')
-    })
-    .catch((err)=>{
-        console.log("erro buscar detalhes: ", err)
     })
 }
 
@@ -52,10 +54,19 @@ export const createTrip = (body) => {
 
     axios.post(`${BASE_URL}/trips`,body, {headers: {auth: token}} )
     .then((response)=>{
-        console.log("viagem cadastrado: ", response.data)
         alert('Sua Viagem foi cadastrada!')
     })
-    .catch((err)=>{
-        console.log("erro no cadastro: ", err)
+}
+
+
+export const  decideCandidate = (approve, tripId, candidateId) => {
+    const token = localStorage.getItem('token')
+    const body = { "approve": approve}
+
+    axios.put(`${BASE_URL}/trips/${tripId}/candidates/${candidateId}/decide`, body , {headers: {auth: token}} )
+    .then((response)=>{
+        approve ?
+        alert("Candidato aprovado! aguarde"):
+        alert("Candidato recusado! aguarde")
     })
 }

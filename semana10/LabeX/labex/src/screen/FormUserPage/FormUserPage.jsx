@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
 import { useForm } from '../../hooks/useForm'
 import { countries } from '../../constants/countries'
 import { applyToTrip, getTrip } from '../../services/requestApi'
+import {FormContainer,Form,Label,Input,Textarea,Select} from './styled'
 
 const FormUserPage = () => {
     const [tripList, setTripList] = useState([])
@@ -131,46 +131,3 @@ const FormUserPage = () => {
 
 export default FormUserPage
 
-
-const FormContainer = styled.div`
-background-color: #fff;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-`
-
-const Form = styled.form `
-background-color: #cff;
-width: 40%;
-height:600px;
-padding: 10px;
-box-sizing: border-box;
-
-div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 10px 0;
-}
-`
-
-const Label = styled.label `
-font-size: 20px;
-padding: 5px;
-`
-const Select = styled.select `
-width: 200px;
-height: 30px;
-`
-const Input = styled.input `
-width: 300px;
-height: 30px;
-
-`
-const Textarea = styled.textarea `
-width: 300px;
-height: 80px;
-resize: none;
-
-`
