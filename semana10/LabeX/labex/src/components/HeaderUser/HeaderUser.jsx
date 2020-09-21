@@ -1,6 +1,6 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom';
-import { goToHome, goToUserForm} from '../../Router/goToPages';
+import { goToHome, goToUserForm, goToLogin} from '../../Router/goToPages';
 import {Header, NavMenu, Link} from './styled.js'
 
 const HeaderUser = (props) => {
@@ -12,6 +12,7 @@ const HeaderUser = (props) => {
                 <NavMenu>
                     <Link onClick={()=>goToHome(history)}>Viagens</Link>
                     <Link onClick={()=>goToUserForm(history)}>Cadastre-se</Link>
+                    <Link onClick={()=>goToLogin(history)}>Login</Link>
                 </NavMenu>
         </Header>
     )
