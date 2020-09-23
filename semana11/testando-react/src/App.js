@@ -5,12 +5,14 @@ import { Post } from "./components/Post";
 const App = () => {
   const [postsList, setPostsList] = useState([]);
   const [inputValue, setInputValue] = useState("");
+  const [ msgAlert, setAlert] = useState(false);
 
   const onChangeInput = event => {
     setInputValue(event.target.value);
   };
 
-  const addPost = () => {
+  const addPost = (event) => {
+    event.preventDefault()
     // Adiciona um post à lista
     const newPost = {
       id: Date.now(),
@@ -18,9 +20,14 @@ const App = () => {
       liked: false
     };
 
-    const newPostsList = [newPost, ...postsList];
+    if(newPost.text.trim() !== ''){
+      const newPostsList = [newPost, ...postsList];
+      setPostsList(newPostsList);
+      setAlert(false)
+    } else {
+      setAlert(true)
+    }
 
-    setPostsList(newPostsList);
     setInputValue('')
   };
 
@@ -52,17 +59,19 @@ const App = () => {
 
   return (
     <div className="App">
-      <div>
+      <form onSubmit={addPost}>
         <input
           type="text"
           onChange={onChangeInput}
           value={inputValue}
           placeholder={"Novo post"}
+          required
         />
-        <button onClick={addPost}>Adicionar</button>
-      </div>
+        <button>Adicionar</button>
+        {msgAlert && <p>campo vazio!</p>}
+      </form>
       <br />
-      {/* {postsList.length === 0 && <p>Nenhum post</p>} */}
+      {postsList.length === 0 ? <p>Nenhum post</p>: <p>Quantidade de posts: {postsList.length}</p>}
       {postsList.map(post => {
         return (
           <Post

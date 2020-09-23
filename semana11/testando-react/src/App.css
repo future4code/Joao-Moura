@@ -18,3 +18,15 @@
 p {
   margin: 0;
 }
+
+form {
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+form p {
+  margin-left: 5px;
+  color: #f00;
+  font-size: 13px;
+}
