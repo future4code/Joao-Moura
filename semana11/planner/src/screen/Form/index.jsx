@@ -9,9 +9,9 @@ const Form = (props) => {
         <>
             <Input 
                 inputChange={props.inputChange}
-                value={props.value}
+                inputValue={props.inputValue}
             />
-            <Select selectDay={props.selectDay}/>
+            <Select selectChange={props.selectChange} selectValue={props.selectValue}/>
             <Button name={"Criar tarefa"} click={props.clickAdd}/>
             <Button name={"Apagar tudo"} click={props.clickClean}/>
         </>

@@ -3,6 +3,7 @@ import React from 'react';
 const Select = (props) => {
     return(
         <select onChange={props.selectChange} value={props.selectValue} required>
+            <option value={''}>--selecione-dia--</option>
             <option value={'domingo'}>Domingo</option>
             <option value={'segunda'}>Segunda-feira</option>
             <option value={'terca'}>Terça-feira</option>

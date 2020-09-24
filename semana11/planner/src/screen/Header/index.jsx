@@ -11,8 +11,9 @@ const Header = (props) => {
                 clickAdd={props.clickAdd}
                 clickClean={props.clickClean}
                 selectChange={props.selectChange}
+                selectValue={props.selectValue}
             />
-        </HeaderContainer>
+    </HeaderContainer>
      );
 }
  

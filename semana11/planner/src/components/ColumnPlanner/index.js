@@ -3,14 +3,19 @@ import Button from '../Button';
 import styled from 'styled-components'
 
 const ColumnPlanner = (props) => {
+ 
     return ( 
         <Column>
             <h3>{props.name}</h3>
-            <Task>
-                <p>tarefa</p>
-                <Button name={"Concluir"} />
-                <Button name={"Apagar"} />
-            </Task>
+            {props.tasks.length > 0 && props.tasks.map((task)=>{
+                return (
+                    <Task>
+                        <p>{task.text}</p>
+                        <Button name={"Concluir"} />
+                        <Button name={"Apagar"} />
+                    </Task>
+                )
+            })}
         </Column>
      );
 }

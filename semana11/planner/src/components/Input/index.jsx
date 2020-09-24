@@ -6,7 +6,7 @@ const Input = (props) => {
         <label>Nova tarefa</label>
         <input 
             onChange={props.inputChange}
-            value={props.value} 
+            value={props.inputValue} 
             placeholder={"tarefa"}
         />
     </>
