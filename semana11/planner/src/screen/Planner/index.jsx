@@ -20,10 +20,16 @@ import ToDoArea from '../ToDoArea';
         setDay(event.target.value)
     }
 
-    const newTask =  () => {
-        const body = {text: inputValue, day: day}
-        createTasks(body)
-        setInputValue('')
+    const newTask = async () => {
+        if((inputValue.trim() !== '') && day){
+            const body = {text: inputValue, day: day}
+            createTasks(body)
+            setInputValue('')
+        }else{
+            setInputValue('')
+            alert('preencha os campos')
+            //colocar no HTML
+        }
     }
 
      return (  

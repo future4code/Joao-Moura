@@ -24,7 +24,7 @@ const ColumnPlanner = (props) => {
     }
 
     return ( 
-        <Column>
+        <Column data-testid={props.name}>
             <h3>{props.name}</h3>
             {renderTask()}
         </Column>
