@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { createTasks, getTasks } from '../../services/ApiRequest';
 import Header from '../Header';
 import ToDoArea from '../ToDoArea';
+
  const Planner = () => {
     const [inputValue, setInputValue] = useState('')
     const [tasks, setTasks] = useState([])
@@ -9,10 +10,10 @@ import ToDoArea from '../ToDoArea';
     
     useEffect(() => {
         handleTasks() 
-    }, []);
+    }, [tasks]);
     
     const handleTasks = () => {
-        getTasks(setTasks) //busca na api - seta no state
+        getTasks(setTasks) //busca na api - salva no state
     }
 
     const inputChange = (event) => {
@@ -36,8 +37,6 @@ import ToDoArea from '../ToDoArea';
         setDay('')
     }
 
- 
-
      return (  
          <>
             <Header
@@ -48,7 +47,7 @@ import ToDoArea from '../ToDoArea';
                 selectChange={handleDay}
                 selectValue={day}
             />
-            <ToDoArea />
+            <ToDoArea listTasks={tasks}/>
         </>
         );
  }

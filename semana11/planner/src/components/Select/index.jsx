@@ -4,13 +4,13 @@ const Select = (props) => {
     return(
         <select onChange={props.selectChange} value={props.selectValue} required>
             <option value={''}>--selecione-dia--</option>
-            <option value={'domingo'}>Domingo</option>
-            <option value={'segunda'}>Segunda-feira</option>
-            <option value={'terca'}>Terça-feira</option>
-            <option value={'quarta'}>Quarta-feira</option>
-            <option value={'quinta'}>Quinta-feira</option>
-            <option value={'sexta'}>Sexta-feira</option>
-            <option value={'sabado'}>Sábado</option>
+            <option value={'Domingo'}>Domingo</option>
+            <option value={'Segunda-Feira'}>Segunda-Feira</option>
+            <option value={'Terça-Feira'}>Terça-Feira</option>
+            <option value={'Quarta-Feira'}>Quarta-Feira</option>
+            <option value={'Quinta-Feira'}>Quinta-Feira</option>
+            <option value={'Sexta-Feira'}>Sexta-Feira</option>
+            <option value={'Sábado'}>Sábado</option>
         </select>
     )
 }

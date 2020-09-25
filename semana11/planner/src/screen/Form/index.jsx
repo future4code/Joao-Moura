@@ -12,8 +12,7 @@ const Form = (props) => {
                 inputValue={props.inputValue}
             />
             <Select selectChange={props.selectChange} selectValue={props.selectValue}/>
-            <Button name={"Criar tarefa"} click={props.clickAdd}/>
-            <Button name={"Apagar tudo"} click={props.clickClean}/>
+            <button onClick={props.clickAdd}>Criar tarefa</button>
         </>
     )
 
