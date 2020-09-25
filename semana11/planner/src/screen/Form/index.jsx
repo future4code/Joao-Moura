@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import Button from '../../components/Button';
-import Input from '../../components/Input';
+import React from 'react';
 import Select from '../../components/Select';
 
 const Form = (props) => {
 
     return(
         <>
-            <Input 
-                inputChange={props.inputChange}
-                inputValue={props.inputValue}
+            <label>Nova tarefa</label>
+            <input 
+                onChange={props.inputChange}
+                value={props.inputValue} 
+                placeholder={"tarefa"}
             />
             <Select selectChange={props.selectChange} selectValue={props.selectValue}/>
             <button onClick={props.clickAdd}>Criar tarefa</button>

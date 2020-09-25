@@ -1,0 +1,10 @@
+
+# criar os teste
+
+[] escrever no Input
+[] selecionar dia da semana
+[] input e select não podem ser vazios
+[] botao criar tarefa
+[] apagar input após criação de tarefa
+[] verificar requisição da  Get e POST
+[] 

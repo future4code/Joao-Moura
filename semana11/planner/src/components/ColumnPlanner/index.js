@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from '../Button';
 import styled from 'styled-components'
 import {deleteTasks}from '../../services/ApiRequest'
 
@@ -23,7 +22,6 @@ const ColumnPlanner = (props) => {
             }))
         }
     }
-
 
     return ( 
         <Column>

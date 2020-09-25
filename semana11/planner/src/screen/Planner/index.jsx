@@ -8,13 +8,9 @@ import ToDoArea from '../ToDoArea';
     const [tasks, setTasks] = useState([])
     const [day, setDay] = useState()
     
-    useEffect(() => {
-        handleTasks() 
+    useEffect(() => {   
+        getTasks(setTasks) 
     }, [tasks]);
-    
-    const handleTasks = () => {
-        getTasks(setTasks) //busca na api - salva no state
-    }
 
     const inputChange = (event) => {
         setInputValue(event.target.value)
@@ -26,15 +22,8 @@ import ToDoArea from '../ToDoArea';
 
     const newTask =  () => {
         const body = {text: inputValue, day: day}
-        createTasks(body)//adiciona na api
-        handleTasks()
+        createTasks(body)
         setInputValue('')
-    }
-
-    const cleanTasks = () => {
-        //ver isso depois
-        setTasks([])
-        setDay('')
     }
 
      return (  
@@ -42,10 +31,9 @@ import ToDoArea from '../ToDoArea';
             <Header
                 inputChange={inputChange}
                 inputValue={inputValue}
-                clickAdd={newTask}
-                clickClean={cleanTasks}
                 selectChange={handleDay}
                 selectValue={day}
+                clickAdd={newTask}
             />
             <ToDoArea listTasks={tasks}/>
         </>

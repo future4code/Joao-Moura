@@ -8,10 +8,9 @@ const Header = (props) => {
             <Form
                 inputChange={props.inputChange}
                 inputValue={props.inputValue}
-                clickAdd={props.clickAdd}
-                clickClean={props.clickClean}
                 selectChange={props.selectChange}
                 selectValue={props.selectValue}
+                clickAdd={props.clickAdd}
             />
     </HeaderContainer>
      );

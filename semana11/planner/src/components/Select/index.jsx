@@ -2,7 +2,7 @@ import React from 'react';
 
 const Select = (props) => {
     return(
-        <select onChange={props.selectChange} value={props.selectValue} required>
+        <select data-testid={"selectDay"} onChange={props.selectChange} value={props.selectValue} required>
             <option value={''}>--selecione-dia--</option>
             <option value={'Domingo'}>Domingo</option>
             <option value={'Segunda-Feira'}>Segunda-Feira</option>
