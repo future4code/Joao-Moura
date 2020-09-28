@@ -27,13 +27,12 @@ import ToDoArea from '../ToDoArea';
             setInputValue('')
         }else{
             setInputValue('')
-            alert('preencha os campos')
-            //colocar no HTML
+            
         }
     }
 
      return (  
-         <>
+         <div>
             <Header
                 inputChange={inputChange}
                 inputValue={inputValue}
@@ -42,7 +41,7 @@ import ToDoArea from '../ToDoArea';
                 clickAdd={newTask}
             />
             <ToDoArea listTasks={tasks}/>
-        </>
+        </div>
         );
  }
   

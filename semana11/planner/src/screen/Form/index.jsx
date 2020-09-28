@@ -4,7 +4,7 @@ import Select from '../../components/Select';
 const Form = (props) => {
 
     return(
-        <>
+        <div>
             <label>Nova tarefa</label>
             <input 
                 onChange={props.inputChange}
@@ -13,7 +13,7 @@ const Form = (props) => {
             />
             <Select selectChange={props.selectChange} selectValue={props.selectValue}/>
             <button onClick={props.clickAdd}>Criar tarefa</button>
-        </>
+        </div>
     )
 
 }

@@ -2,7 +2,9 @@ import React from 'react';
 import Planner from './screen/Planner';
 
 const App = () => {
-  return (<Planner/>)
+  return (
+    <Planner/>
+  )
 }
 
 export default App

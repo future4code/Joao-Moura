@@ -1,7 +1,6 @@
 import React from 'react';
 import Form from '../Form';
-import styled from 'styled-components'
-
+import {HeaderContainer} from  './styled'
 const Header = (props) => {
     return ( 
         <HeaderContainer>
@@ -12,19 +11,10 @@ const Header = (props) => {
                 selectValue={props.selectValue}
                 clickAdd={props.clickAdd}
             />
-    </HeaderContainer>
+        </HeaderContainer>
      );
 }
  
 export default Header;
 
-const HeaderContainer = styled.div `
-width: 100%;
-height: 100px;
-background-color: #4E4187;
-display: flex;
-justify-content: center;
-align-items: center;
-color: #F8FFE5;
-`
 

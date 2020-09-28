@@ -1,6 +1,6 @@
 import React from 'react';
 import ColumnPlanner from '../../components/ColumnPlanner';
-import styled from 'styled-components'
+import {Container} from './styled'
 
 const ToDoArea = (props) => {
 
@@ -19,10 +19,3 @@ const ToDoArea = (props) => {
  
 export default ToDoArea;
 
-const Container = styled.section `
-background-color: #2A9D8F;
-display: flex;
-height: 80vh;
-justify-content: space-evenly;
-color: #F8FFE5;
-`
