@@ -2,9 +2,9 @@
 [X] cria os arquivos de screens
 [X] criar o arquivo rotas
 [X] integra as rotas
-[] cria pagina de login (PAGINA)
-[] criar pagina de cadastro (PAGINA)
-[] criar pagina de post (PAGINA)
-[] criar card de post
+[X] cria pagina de login (PAGINA)
+[X] criar pagina de cadastro (PAGINA)
+[X] criar pagina de post (PAGINA)
+[X] criar card de post
+[X] criar pagina de comentarios (PAGINA)
 [] fazer integração com a api
-[] criar pagina de comentarios (PAGINA)
