@@ -1,28 +1,35 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { goToCommentsPage } from '../../routes/Coordinator';
+import { CardHeader, ContentCardPost,PostText,CardFooter,Status,Comments, Down, Up,PostTitle } from './styled'
 
-const CardPost = () => {
+const CardPost = (props) => {
     const history = useHistory()
+    const { id,username,title,text, votesCount, userVoteDirection,createdAt, commentsCount} = props.data
     return ( 
-        <div>
-            <div>
-                <img src={"https://api.adorable.io/avatars/40/abott@adorable.png"} alt="Fulano"/>
-                <p>Nome</p>
-            </div>
-            <div>
-                <img src={"https://picsum.photos/200/200"} alt=""/>
-            </div>
-            <div>
-                <div>
-                    <span>🠯</span><span>0</span><span>🠭</span>
-                </div>
-                <div>
-                    <span>0</span> 
-                    <p onClick={()=>goToCommentsPage(history)}>comentarios</p>
-                </div>
-            </div>
-        </div>
+        <ContentCardPost>
+            <CardHeader>
+                <img src={"https://api.adorable.io/avatars/40/abott@adorable.png"} alt={username}/>
+                <p>{username}</p>
+            </CardHeader>
+            <PostTitle>
+                <h2>{title}</h2>
+            </PostTitle>
+            <PostText>
+                <p>{text}</p>
+            </PostText>
+            <CardFooter>
+                <Status>
+                    <Up>🠭</Up>
+                        <p>{votesCount}</p>
+                    <Down>🠯</Down>
+                </Status>
+                <Comments>
+                    <span>{commentsCount}</span> 
+                    <p onClick={()=>goToCommentsPage(history)}>Comentários</p>
+                </Comments>
+            </CardFooter>
+        </ContentCardPost>
      );
 }
  

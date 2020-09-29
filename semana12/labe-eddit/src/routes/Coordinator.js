@@ -7,7 +7,8 @@ export const goToSingUpPage = (history) => {
 }
 
 export const goToFeedPage = (history) => {
-    history.push("/")
+    const token = localStorage.getItem("token")
+    token? history.push("/"): alert("erro")
 }
 
 export const goToCommentsPage = (history, id) => {
@@ -15,6 +16,7 @@ export const goToCommentsPage = (history, id) => {
 }
 
 export const goToLogout = (history) => {
+    localStorage.clear()
     history.replace(`/login`)
 }
 

@@ -7,4 +7,18 @@
 [X] criar pagina de post (PAGINA)
 [X] criar card de post
 [X] criar pagina de comentarios (PAGINA)
-[] fazer integração com a api
+[x]estilização login 40%
+[x]estilização singUp 40%
+[x]estilização cardPost 40%
+[x]estilização input Createpost 40%
+
+fazer integração com a api
+[X] criar usuario
+[X] fazer login
+[X] fazer logout
+[X] listar os posts
+[] criar um post
+[] votar em um post
+[] votar em um post
+[] comentar em um post
+[] mostrar lista de comentarios
