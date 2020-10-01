@@ -17,8 +17,8 @@ fazer integração com a api
 [X] fazer login
 [X] fazer logout
 [X] listar os posts
-[] criar um post
-[] votar em um post
-[] votar em um post
-[] comentar em um post
-[] mostrar lista de comentarios
+[X] criar um post
+[X] votar em um post
+[X] comentar em um post
+[X] mostrar lista de comentarios
+[] curti comentarios

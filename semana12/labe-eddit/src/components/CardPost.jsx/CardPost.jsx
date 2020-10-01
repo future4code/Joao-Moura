@@ -20,13 +20,13 @@ const CardPost = (props) => {
             </PostText>
             <CardFooter>
                 <Status>
-                    <Up>🠭</Up>
+                    <Up onClick={props.clickUp}>🠭</Up>
                         <p>{votesCount}</p>
-                    <Down>🠯</Down>
+                    <Down onClick={props.clickDown}>🠯</Down>
                 </Status>
                 <Comments>
                     <span>{commentsCount}</span> 
-                    <p onClick={()=>goToCommentsPage(history)}>Comentários</p>
+                    <p onClick={()=>goToCommentsPage(history, id)}>Comentários</p>
                 </Comments>
             </CardFooter>
         </ContentCardPost>

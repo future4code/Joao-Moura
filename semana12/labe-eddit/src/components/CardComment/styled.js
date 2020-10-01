@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-export const ContentCardPost = styled.div`
+export const ContentCardComment = styled.div`
   border: 1px solid #000;
   width: 300px;
-  height: 330px;
+  height: 150px;
   margin: 10px;
   box-sizing: border-box;
 `;
@@ -11,12 +11,12 @@ export const ContentCardPost = styled.div`
 export const CardHeader = styled.div`
   display: flex;
   width: 100%;
-  height: 15%;
+  height: 20%;
   background-color: #ddd;
   align-items: center;
   img{
-    width: 45px;
-    height: 45px;
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
     padding-left: 5px;
   }
@@ -25,25 +25,11 @@ export const CardHeader = styled.div`
   }
 `;
 
-export const PostTitle = styled.div`
-  width: 100%;
-  height: 15%;
-  background-color: #333;
-  display: flex;
-  justify-content:flex-start;
-  align-items:center;
-  word-wrap:break-word;
-  h2 {
-    margin: 0;
-    color: #fff;
-    font-size: 16px;
-  }
-`;
 
-export const PostText = styled.div`
+export const CommentText = styled.div`
   width: 100%;
   height: 60%;
-  background-color: #d1d;
+  background-color: #17d;
   color: #fff;
   font-size: 18px;
   text-align:center;
@@ -56,7 +42,7 @@ export const PostText = styled.div`
 export const CardFooter = styled.div`
   display: flex;
   width: 100%;
-  height: 10%;
+  height: 20%;
   background-color: #ddd;
   justify-content: space-between;
 `;
@@ -74,7 +60,7 @@ export const Status = styled.div`
 `;
 
 export const Up = styled.span`
-    font-size: 25px;
+    font-size: 22px;
     height: 100%;
     cursor: pointer;
     :hover{
@@ -83,7 +69,7 @@ export const Up = styled.span`
 `;
 
 export const Down = styled.span`
-    font-size: 25px;
+    font-size: 22px;
     height: 100%;
     cursor: pointer;
     :hover{
@@ -91,16 +77,5 @@ export const Down = styled.span`
     }
 `;
 
-export const Comments = styled.div`
-  display: flex;
-  width: 45%;
-  background-color: #dd8;
-  align-items: center;
-  justify-content: space-around;
-  cursor: pointer;
-  span{
-      font-size: 25px;
-  }
 
-`;
 

@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import {getPost} from '../../request/ApiRequest'
+import {createPost, getPost, putVote} from '../../request/ApiRequest'
 import CardPost from '../../components/CardPost.jsx/CardPost';
 import CreateNewPost from '../../components/CreateNewPost/CreateNewPost';
 import { goToCommentsPage, goToLoginPage, goToLogout } from '../../routes/Coordinator';
 
 const FeedPage = () => {
     const [posts, setPosts] = useState([])
-    const [form, setForm] = useState({title:'', text:''})
+    const [form, setForm] = useState({text:'', title:''})
     const history = useHistory()
     
     useEffect(()=>{
         const token = localStorage.getItem("token")
-        token?  getPost(setPosts) : goToLoginPage(history)
-    },[setPosts,history])
+        token? renderFeed() : goToLoginPage(history)
+    },[history])
+
+    const renderFeed = () =>{
+        getPost(setPosts) 
+    }
     
 
     const handleForm = (event) => {
@@ -24,16 +28,29 @@ const FeedPage = () => {
     const post = (event) =>{
         event.preventDefault()
 
-        const {title, text} = form
+        const {text, title} = form
 
-        if(title.trim() !== '' && text.trim() !== ''){
+        if(text.trim() !== '' && title.trim() !== ''){
+            console.log("create-post")
             createPost(form)
-            setForm({title:'', text:''})
+            renderFeed()
+            setForm({text:'', title:''})
         }else{
             alert("campos vazios")
         }
 
     }
+
+    const postVote = (option, id) =>{
+        if(option === "up"){
+            putVote({"direction": 1}, id)
+        }else{
+            putVote({"direction": -1}, id)
+        }
+
+        renderFeed()
+    }
+
 
     return ( 
         <div>
@@ -46,8 +63,16 @@ const FeedPage = () => {
                 onChangeTitle={handleForm}
             />
             <section>
-                {posts.map((post, index)=>{
-                    return index > 105 && <CardPost key={post.id} data={post}/>
+                {posts.sort((a,b)=> a.createdAt- b.createdAt).map((post, index)=>{
+                    return (
+                        index < 60 && 
+                        <CardPost 
+                            key={post.id} 
+                            data={post}
+                            clickUp={()=>postVote("up", post.id)}
+                            clickDown={()=>postVote("down", post.id)}
+                        />
+                    )
                 })}
             </section>
         </div>

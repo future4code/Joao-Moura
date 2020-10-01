@@ -1,21 +1,27 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { ContentCardComment,CardHeader, CommentText ,CardFooter,Status,Up,Down} from './styled';
 
-const CardComment = () => {
+const CardComment = (props) => {
+    const {id,title,text,username,votesCount,userVoteDirection,createdAt,commentsCount} = props.data
     return ( 
        
-            <div>
-                <div>
+            <ContentCardComment>
+                <CardHeader>
                     <img src={"https://api.adorable.io/avatars/40/abott@adorable.png"} alt="Fulano"/>
-                    <p>Nome</p>
-                </div>
-                <div>
-                    <p>Texto do comentario</p>
-                </div>
-                <div>
-                    <span>🠯</span><span>0</span><span>🠭</span>
-                </div>
-            </div>
+                    <p>{username}</p>
+                </CardHeader>
+                <CommentText>
+                    <p>{text}</p>
+                </CommentText>
+                <CardFooter>
+                    <Status>
+                        <Up onClick={props.clickUp}>🠭</Up>
+                        <span>{votesCount}</span>
+                        <Down onClick={props.clickDown}>🠯</Down>
+                    </Status>
+                </CardFooter>
+            </ContentCardComment>
        
      );
 }
