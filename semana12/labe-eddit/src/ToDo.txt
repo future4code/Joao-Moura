@@ -21,4 +21,9 @@ fazer integração com a api
 [X] votar em um post
 [X] comentar em um post
 [X] mostrar lista de comentarios
-[] curti comentarios
+[X] curti comentarios
+
+[] refatora codigo
+[]]estilização login 40%
+[]estilização singUp 40%
+[]estilização cardPost 40%

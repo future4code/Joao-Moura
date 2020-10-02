@@ -76,6 +76,7 @@ export const Status = styled.div`
 export const Up = styled.span`
     font-size: 25px;
     height: 100%;
+    color: ${(props)=> props.select === 1 ? "#0F0": "#000"};
     cursor: pointer;
     :hover{
         color: #0F0
@@ -85,6 +86,7 @@ export const Up = styled.span`
 export const Down = styled.span`
     font-size: 25px;
     height: 100%;
+    color: ${(props)=> props.select === -1 ? "#F00": "#000"};
     cursor: pointer;
     :hover{
         color: #F00

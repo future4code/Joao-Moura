@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import {createPost, getPost, putVote} from '../../request/ApiRequest'
-import CardPost from '../../components/CardPost.jsx/CardPost';
+import {createPost, getPost} from '../../request/ApiRequest'
+import CardPost from '../../components/CardPost/CardPost';
 import CreateNewPost from '../../components/CreateNewPost/CreateNewPost';
-import { goToCommentsPage, goToLoginPage, goToLogout } from '../../routes/Coordinator';
+import { goToLoginPage, goToLogout } from '../../routes/Coordinator';
+import { postVote } from '../../utils/vote';
 
 const FeedPage = () => {
     const [posts, setPosts] = useState([])
@@ -12,14 +13,10 @@ const FeedPage = () => {
     
     useEffect(()=>{
         const token = localStorage.getItem("token")
-        token? renderFeed() : goToLoginPage(history)
+        token? getPost(setPosts)  : goToLoginPage(history)
     },[history])
 
-    const renderFeed = () =>{
-        getPost(setPosts) 
-    }
     
-
     const handleForm = (event) => {
         const {name, value} = event.target
         setForm({...form, [name]: value})
@@ -28,27 +25,12 @@ const FeedPage = () => {
     const post = (event) =>{
         event.preventDefault()
 
-        const {text, title} = form
-
-        if(text.trim() !== '' && title.trim() !== ''){
-            console.log("create-post")
-            createPost(form)
-            renderFeed()
+        if(form.text.trim() !== '' && form.title.trim() !== ''){
+            createPost(form, setPosts)
             setForm({text:'', title:''})
         }else{
             alert("campos vazios")
         }
-
-    }
-
-    const postVote = (option, id) =>{
-        if(option === "up"){
-            putVote({"direction": 1}, id)
-        }else{
-            putVote({"direction": -1}, id)
-        }
-
-        renderFeed()
     }
 
 
@@ -63,14 +45,14 @@ const FeedPage = () => {
                 onChangeTitle={handleForm}
             />
             <section>
-                {posts.sort((a,b)=> a.createdAt- b.createdAt).map((post, index)=>{
+                {posts.sort((a,b)=> b.createdAt- a.createdAt).map((post, index)=>{
                     return (
-                        index < 60 && 
+                        index < 50 && 
                         <CardPost 
                             key={post.id} 
                             data={post}
-                            clickUp={()=>postVote("up", post.id)}
-                            clickDown={()=>postVote("down", post.id)}
+                            clickUp={()=>postVote("up", post.id, setPosts)}
+                            clickDown={()=>postVote("down", post.id, setPosts)}
                         />
                     )
                 })}

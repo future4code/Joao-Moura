@@ -1,9 +1,8 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
 import { ContentCardComment,CardHeader, CommentText ,CardFooter,Status,Up,Down} from './styled';
 
 const CardComment = (props) => {
-    const {id,title,text,username,votesCount,userVoteDirection,createdAt,commentsCount} = props.data
+    const {id,text,username,votesCount,userVoteDirection,createdAt} = props.data
     return ( 
        
             <ContentCardComment>
@@ -16,9 +15,9 @@ const CardComment = (props) => {
                 </CommentText>
                 <CardFooter>
                     <Status>
-                        <Up onClick={props.clickUp}>🠭</Up>
+                        <Up onClick={props.clickUp} select={userVoteDirection}>🠭</Up>
                         <span>{votesCount}</span>
-                        <Down onClick={props.clickDown}>🠯</Down>
+                        <Down onClick={props.clickDown} select={userVoteDirection}>🠯</Down>
                     </Status>
                 </CardFooter>
             </ContentCardComment>

@@ -20,9 +20,9 @@ const CardPost = (props) => {
             </PostText>
             <CardFooter>
                 <Status>
-                    <Up onClick={props.clickUp}>🠭</Up>
+                    <Up onClick={props.clickUp} select={userVoteDirection}>🠭</Up>
                         <p>{votesCount}</p>
-                    <Down onClick={props.clickDown}>🠯</Down>
+                    <Down onClick={props.clickDown} select={userVoteDirection}>🠯</Down>
                 </Status>
                 <Comments>
                     <span>{commentsCount}</span> 

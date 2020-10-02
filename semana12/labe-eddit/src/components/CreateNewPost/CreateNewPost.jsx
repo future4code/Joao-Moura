@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { createPost } from '../../request/ApiRequest';
+import React from 'react';
 import { BtnPost, ContentNewPost, Form, InputTitle, InputText } from './styled'
 
 const CreateNewPost = (props) => {

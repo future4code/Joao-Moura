@@ -1,13 +1,13 @@
 import React, { useEffect ,useState} from 'react';
 import { useHistory } from 'react-router-dom';
+import FormLogin from '../../components/FormLogin/FormLogin';
 import {postLogin} from '../../request/ApiRequest'
 import { goToFeedPage, goToLoginPage, goToSingUpPage } from '../../routes/Coordinator';
-import{BtnSingUp, BtnSubmit, ContentInput, ContentLogin, Form} from './styled'
+import{BtnSingUp, ContentLogin} from './styled'
 
 
 const LoginPage = () => {
     const [form, setForm] = useState({email:'', password:''})
-   
     const history = useHistory()
 
     useEffect(() => {
@@ -24,42 +24,22 @@ const LoginPage = () => {
     const login = (event) =>{
         event.preventDefault()
 
-        const {email, password} = form
-
-        if(email.trim() !== '' && password.trim() !== ''){
+        if(form.email.trim() !== '' && form.password.trim() !== ''){
             postLogin(form, history)
         }else{
             alert("campos vazios")
         }
-
     }
 
     return (
         <ContentLogin>
             <h2>Login</h2>
-            <Form onSubmit={login}>
-                <ContentInput>
-                    <label>E-mail</label>
-                    <input 
-                        name={"email"}
-                        value={form.email}
-                        onChange={handleForm}
-                        type="email"
-                        required
-                    />
-                </ContentInput>
-                <ContentInput>
-                    <label>Senha</label>
-                    <input 
-                        name={"password"}
-                        value={form.password}
-                        onChange={handleForm}
-                        type="password"
-                        required 
-                    />
-                </ContentInput>
-                <BtnSubmit type="submit">login</BtnSubmit>
-            </Form>
+            <FormLogin
+                submit={login}
+                emailValue={form.email}
+                passwordValue={form.password}
+                change={handleForm}
+            />
             <BtnSingUp onClick={()=>goToSingUpPage(history)}>Não tem conta? cadastre-se</BtnSingUp>
         </ContentLogin>
     );
