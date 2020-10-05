@@ -1,33 +1,24 @@
 import styled from 'styled-components';
 
-export const ContentNewComment = styled.div`
-  /* border: 1px solid #000; */
-  width: 300px;
-  height: 80px;
-  margin: 10px;
-  box-sizing: border-box;
-`
-
-export const Form = styled.form`
+export const ContentDetail = styled.div`
   display: flex;
   align-items:center;
   flex-direction: column;
-  justify-content: space-evenly;
   width: 100%;
   height: 100%;
 `;
 
-
-export const InputText = styled.input`
-  height: 30px;
-  width: 100%;
-  border-radius: 4px;
-  font-size:18px;
-`;
-
-export const BtnPost = styled.button`
-width: 77%;
-  height: 35px;
-    cursor: pointer;
-  border-radius: 4px;
+export const BtnLogout = styled.button`
+padding: 5px;
+border: 1px solid #FF74D4;
+background-color: #FFDDE1;
+color:#fff;
+border-radius: 5px;
+position: absolute;
+right: 30px;
+top: 10px;
+cursor: pointer;
+:hover {
+    color:#FF74D4;
+}
 `;

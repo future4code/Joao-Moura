@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const ContentNewComment = styled.div`
   width: 300px;
   height: 80px;
-  margin: 10px;
   box-sizing: border-box;
 `
 

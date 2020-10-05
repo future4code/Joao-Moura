@@ -1,22 +1,29 @@
 import styled from 'styled-components';
 
 export const ContentCardComment = styled.div`
-  border: 1px solid #000;
+  /* border: 1px solid #000;
   width: 300px;
   height: 150px;
   margin: 10px;
+  box-sizing: border-box; */
+
+  border: 1px solid #f5f5f5;
+  box-shadow: 0px 1px 7px 0px #a2a2a2;
+  width: 90vw;
+  max-width: 550px;
+  margin-top: 20px;
   box-sizing: border-box;
 `;
 
 export const CardHeader = styled.div`
   display: flex;
   width: 100%;
-  height: 20%;
+  height: 40px;
   background-color: #ddd;
   align-items: center;
   img{
-    width: 25px;
-    height: 25px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
     padding-left: 5px;
   }
@@ -28,7 +35,7 @@ export const CardHeader = styled.div`
 
 export const CommentText = styled.div`
   width: 100%;
-  height: 60%;
+  padding: 10px 0;
   background-color: #17d;
   color: #fff;
   font-size: 18px;
@@ -36,13 +43,13 @@ export const CommentText = styled.div`
   display: flex;
   justify-content:center;
   align-items:center;
-  word-wrap:break-word;
+  word-wrap:wrap;
 `;
 
 export const CardFooter = styled.div`
   display: flex;
   width: 100%;
-  height: 20%;
+  height: 35px;
   background-color: #ddd;
   justify-content: space-between;
 `;
@@ -50,7 +57,6 @@ export const CardFooter = styled.div`
 export const Status = styled.div`
   display: flex;
   width: 30%;
-  background-color: #dda;
   align-items: center;
   justify-content: space-evenly;
 

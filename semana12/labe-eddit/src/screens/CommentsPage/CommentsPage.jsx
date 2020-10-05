@@ -6,6 +6,7 @@ import FormComment from '../../components/FomComment/FormComment';
 import { createComment, getPostDetail } from '../../request/ApiRequest';
 import {goToBack,goToLoginPage} from '../../routes/Coordinator'
 import { commentVote } from '../../utils/vote';
+import {ContentDetail, BtnLogout} from './styled'
 
 
 const CommentsPage = () => {
@@ -40,8 +41,8 @@ const CommentsPage = () => {
 
 
     return ( 
-        <div>
-            <button onClick={()=>goToBack(history)}>voltar</button>
+        <ContentDetail>
+            <BtnLogout onClick={()=>goToBack(history)}>voltar</BtnLogout>
             <CardPost data={post}/>
             <FormComment
                 submit={comment}
@@ -59,7 +60,7 @@ const CommentsPage = () => {
                 )
             })}
             
-        </div>
+        </ContentDetail>
     );
 }
  

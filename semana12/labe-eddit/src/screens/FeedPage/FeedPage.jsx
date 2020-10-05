@@ -5,6 +5,7 @@ import CardPost from '../../components/CardPost/CardPost';
 import CreateNewPost from '../../components/CreateNewPost/CreateNewPost';
 import { goToLoginPage, goToLogout } from '../../routes/Coordinator';
 import { postVote } from '../../utils/vote';
+import {FeedContent, BtnLogout} from './styled'
 
 const FeedPage = () => {
     const [posts, setPosts] = useState([])
@@ -35,8 +36,8 @@ const FeedPage = () => {
 
 
     return ( 
-        <div>
-            <button onClick={()=>goToLogout(history)}>Logout</button>
+        <FeedContent>
+            <BtnLogout onClick={()=>goToLogout(history)}>Logout</BtnLogout>
             <CreateNewPost 
                 submit={post}
                 textValue={form.text}
@@ -57,7 +58,7 @@ const FeedPage = () => {
                     )
                 })}
             </section>
-        </div>
+        </FeedContent>
     );
 }
  
