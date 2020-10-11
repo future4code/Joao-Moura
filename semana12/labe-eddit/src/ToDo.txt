@@ -1,0 +1,29 @@
+
+[X] cria os arquivos de screens
+[X] criar o arquivo rotas
+[X] integra as rotas
+[X] cria pagina de login (PAGINA)
+[X] criar pagina de cadastro (PAGINA)
+[X] criar pagina de post (PAGINA)
+[X] criar card de post
+[X] criar pagina de comentarios (PAGINA)
+[x]estilização login 40%
+[x]estilização singUp 40%
+[x]estilização cardPost 40%
+[x]estilização input Createpost 40%
+
+fazer integração com a api
+[X] criar usuario
+[X] fazer login
+[X] fazer logout
+[X] listar os posts
+[X] criar um post
+[X] votar em um post
+[X] comentar em um post
+[X] mostrar lista de comentarios
+[X] curti comentarios
+
+[] refatora codigo
+[]]estilização login 40%
+[]estilização singUp 40%
+[]estilização cardPost 40%
