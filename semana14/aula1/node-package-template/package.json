@@ -1,0 +1,24 @@
+{
+  "name": "package-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "exe1": "node exe1.js",
+    "exe2": "node exe2.js",
+    "exe3": "node exe3.js",
+    "exe4": "node exe4.js"
+  },
+  "keywords": [
+    "node",
+    "package",
+    "manager"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^3.0.0"
+  }
+}
