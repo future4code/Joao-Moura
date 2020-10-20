@@ -8,7 +8,8 @@
     "exe01": "clear && echo \"Starting application...\n\" && tsc && node ./build/exe01.js",
     "exe02": "clear && echo \"Starting application...\n\" && tsc && node ./build/exe02.js",
     "exe03": "clear && echo \"Starting application...\n\" && tsc && node ./build/exe03.js",
-    "exercicio-4": "clear && echo \"Starting application...\n\" && tsc && node ./build/exercicio-4.js"
+    "exercicio-4": "clear && echo \"Starting application...\n\" && tsc && node ./build/exercicio-4.js",
+    "exe05": "clear && echo \"Starting application...\n\" && tsc && node ./build/exe05.js"
   },
   "keywords": [],
   "author": "",
