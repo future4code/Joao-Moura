@@ -1,0 +1,16 @@
+{
+  "name": "aula2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "exe01": "clear && echo \"Starting application...\n\" && tsc && node ./build/exe01.js",
+    "exe02": "clear && echo \"Starting application...\n\" && tsc && node ./build/exe02.js",
+    "exe03": "clear && echo \"Starting application...\n\" && tsc && node ./build/exe03.js",
+    "exercicio-4": "clear && echo \"Starting application...\n\" && tsc && node ./build/exercicio-4.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
