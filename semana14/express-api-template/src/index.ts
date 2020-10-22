@@ -17,16 +17,23 @@ app.get("/countries/all", (req: Request, res: Response)=>{
 
 app.get("/countries/search", (req: Request, res: Response)=>{
     const {name, capital, continent} = req.query
+    let search: country[] = countries
+    
+    if(name){
+        search = search.filter( item => item.name.includes(String(name)))
+    }
+    if(capital){
+        search = search.filter( item => item.capital.includes(String(capital)))
+    }
+    if(continent){
+        search = search.filter( item => item.continent.includes(String(continent)))
+    }
 
-    const resp: country[] | undefined = countries.filter(country =>{
-
-            return country.name.includes(`${name}`) ||
-                   country.capital.includes(`${capital}`) ||
-                   country.continent.includes(`${continent}`) 
-        
-    })
-  
-    resp.length > 0 ? res.status(200).send(resp): res.status(404).send("Not found")
+    if( search.length < 1 || (!name && !capital && continent)){
+        res.status(404).send("Not found")
+    }else{
+        res.status(200).send(search)
+    }
   
 })
 
@@ -37,6 +44,7 @@ app.get("/countries/:id", (req: Request, res: Response)=>{
 
 app.put("/countries/edit/:id", (req: Request, res: Response)=>{
     const body:country  = req.body 
+
     const resp:country | undefined = countries.find(country=>{
         return country.id === Number(req.params.id)
     })
