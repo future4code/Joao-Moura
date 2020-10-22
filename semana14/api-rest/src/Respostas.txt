@@ -1,0 +1,40 @@
+
+
+== EXERCÍCIO 01
+
+a) usei o método GET
+
+b) /users
+
+== EXERCÍCIO 02
+
+a) os parâmetros foram passados usando path params, 
+porque queremos buscar um valor já pre definido.
+
+b) podemos definir tipos para os objetos do array de usuários, e um ENUM 
+para os types.
+
+== EXERCÍCIO 03
+
+a) é usado um query parms para fazermos a busca
+
+b) feito!
+
+== EXERCÍCIO 04
+
+a) Ele também cria um novo usuario
+
+b) não pois, ja temos um método correto para essa operação 
+
+
+== EXERCÍCIO 05
+
+feito
+
+== EXERCÍCIO 06
+
+feito
+
+== EXERCÍCIO 07
+
+feito
