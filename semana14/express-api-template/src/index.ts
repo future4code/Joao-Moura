@@ -43,17 +43,20 @@ app.get("/countries/:id", (req: Request, res: Response)=>{
 })
 
 app.put("/countries/edit/:id", (req: Request, res: Response)=>{
-    const body:country  = req.body 
+    const { name, capital, continent } = req.body
 
-    const resp:country | undefined = countries.find(country=>{
-        return country.id === Number(req.params.id)
+    let search: country[]= countries.map((item)=>{
+        
+        if(item.id === Number(req.params.id)){
+            item.name = name
+            item.capital = capital
+            item.continent = continent
+        }
+
+        return item
     })
 
-    res.send(body)
-    
-
-
-
+    res.end()
 })
 
 app.listen(3003, ()=>{
