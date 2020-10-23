@@ -1,8 +1,8 @@
 === CRIAR CONTA
 [X] informa : nome, cpf data de nascimento
-[ ] ser maior de 18 anos
+[X] ser maior de 18 anos
 [X] a conta deve guarda o saldo do usuario
-[ ] também deve ser armazenado um extrado com valor, data, e descrição
+[X] também deve ser armazenado um extrado com valor, data, e descrição
 [X] o cpf deve ser unico
 [X] as contas devem começar zeradas.
 

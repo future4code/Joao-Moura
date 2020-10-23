@@ -1,5 +1,6 @@
 import express, { Request, Response} from 'express'
-import { user, accounts,checkAge, formattedDate, beRegistered } from './accounts'
+import { user, accounts } from './accounts'
+import { checkAge, formattedDate, beRegistered } from './utils'
 import { AddressInfo } from 'net'  
 import cors from 'cors'
 import chalk from 'chalk'
@@ -14,7 +15,7 @@ const success = chalk.green.bold
 const warn = chalk.yellow
 const err = chalk.red.bold
 
-app.get('/usersAll', (req:Request, resp: Response): void => {
+app.get('/users', (req:Request, resp: Response): void => {
     try {
         if(accounts.length < 1){
             throw new Error("No account found!")
@@ -26,7 +27,7 @@ app.get('/usersAll', (req:Request, resp: Response): void => {
     }
 })
 
-app.post('/createUser', (req:Request, resp: Response): void => {
+app.post('/users', (req:Request, resp: Response): void => {
     try {
         const { name, cpf, dt_birth } = req.body
    
@@ -45,10 +46,9 @@ app.post('/createUser', (req:Request, resp: Response): void => {
             name, 
             cpf, 
             dt_birth: formattedDate(dt_birth), 
-            balance:0 
+            balance:0 ,
+            bankStatement: []
         }
-
-       
 
         accounts.push(newAccounts)
 
