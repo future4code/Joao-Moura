@@ -1,0 +1,36 @@
+=== CRIAR CONTA
+[ ] informa : nome, cpf data de nascimento
+[ ] ser maior de 18 anos
+[ ] a conta deve guarda o saldo do usuario
+[ ] também deve ser armazenado um extrado com valor, data, e descrição
+[ ] o cpf deve ser unico
+[ ] as contas devem começar zeradas.
+
+=== VERIFICAR SALDO
+[ ] deve ser passando: nome e CPF
+
+=== DEPOSITO
+[ ] deve ser passando: nome, CPF e valor.
+
+=== REALIZAR PAGAMENTO
+[ ] deve ser passando: valor, descrição e data.
+[ ] caso não seja passado a data deve ser pago no mesmo dia
+[ ] não sera permitido uma data anterior a atual
+[ ] não sera permitido pagar uma conta com valor mais alto que seu saldo
+
+=== REALIZAR TRANSFERÊNCIA
+[ ] deve ser informado: nome,cpf, nomeDest, cpfDest, valor
+[ ] não sera permitido tranferir um valor mais alto que seu saldo
+
+
+app.get('/', (req:Request, resp: Response): void => {
+    try {
+        if(true){
+            throw new Error()
+        }
+
+        resp.status(200).send()
+    } catch (error) {
+        resp.status(400).send({ message: error })
+    }
+})
