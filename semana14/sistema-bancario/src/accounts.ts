@@ -17,7 +17,7 @@ export const accounts: user[] = [
         name : "Maria da Silva",
         cpf : "1234567896",
         dt_birth: new Date("1889-08-10"), //yyyy-mm-dd
-        balance: 0,
+        balance: 22,
         bankStatement:[
             {
                 name : "Fies",

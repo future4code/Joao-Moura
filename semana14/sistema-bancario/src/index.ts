@@ -58,6 +58,21 @@ app.post('/users', (req:Request, resp: Response): void => {
     }
 })
 
+app.get('/users/:cpf', (req:Request, resp: Response): void => {
+    try {
+        const userIndex: number = accounts.findIndex((item)=> item.cpf === req.params.cpf)
+
+        if(userIndex === -1){
+            throw new Error("User not found")
+        }
+
+        const balance: number = accounts[userIndex].balance
+
+        resp.status(200).send({balance: `${balance}`})
+    } catch (error) {
+        resp.status(400).send({ message: `${error}` })
+    }
+})
 const server = app.listen(process.env.PORT || 3003, () => {
     if (server) {
        const address = server.address() as AddressInfo;
