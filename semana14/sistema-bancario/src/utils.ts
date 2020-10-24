@@ -1,4 +1,4 @@
-import {accounts} from './accounts'
+import {accounts, bankStatement} from './accounts'
 
 export const checkAge = (date: string): boolean =>{
     const dt_birth = formattedDate(date)
@@ -38,4 +38,14 @@ export const checkUserName = (name: string): boolean => {
 
     return true
 
+}
+export const saveToExtract = (index: number, value: number): void => {
+
+    const newBankStatement: bankStatement= {
+        value : value,
+        description: "Deposito",
+        date: new Date()
+    }
+   
+    accounts[index].bankStatement.push(newBankStatement)
 }

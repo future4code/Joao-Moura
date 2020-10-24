@@ -7,9 +7,9 @@ export type user = {
 }
 
 export type bankStatement = {
-    name : string
-    balance: number
+    value : number
     description: string
+    date: Date
 }
 
 export const accounts: user[] = [
@@ -20,14 +20,14 @@ export const accounts: user[] = [
         balance: 22,
         bankStatement:[
             {
-                name : "Fies",
-                balance: 200,
-                description: "boleto da faculdade"
+                value: 200,
+                description: "boleto da faculdade",
+                date : new Date("2020-07-10")
             },
             {
-                name : "Agespisa",
-                balance: 60,
-                description: "Talão de água"
+                value: 60,
+                description: "Talão de água",
+                date : new Date("2020-08-19")
             }
         ]
     }

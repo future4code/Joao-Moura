@@ -1,6 +1,6 @@
 import express, { Request, Response} from 'express'
 import { user, accounts } from './accounts'
-import { checkAge, formattedDate, checkCpf, checkUserName } from './utils'
+import { checkAge, formattedDate, checkCpf, checkUserName, saveToExtract } from './utils'
 import { AddressInfo } from 'net'  
 import cors from 'cors'
 import chalk from 'chalk'
@@ -89,6 +89,7 @@ app.put('/users', (req:Request, resp: Response): void => {
         const userIndex: number = accounts.findIndex((user)=> user.cpf === cpf )
 
         accounts[userIndex].balance += value
+        saveToExtract(userIndex, value)
 
         resp.status(200).send({ Success: "The deposit was made" })
     } catch (error) {
@@ -96,6 +97,18 @@ app.put('/users', (req:Request, resp: Response): void => {
     }
 })
 
+app.post('/users', (req:Request, resp: Response): void => {
+    try {
+        const { value, description, date } = req.body
+        if(true){
+            throw new Error()
+        }
+
+        resp.status(200).send()
+    } catch (error) {
+        resp.status(400).send({ message: error })
+    }
+})
 
 const server = app.listen(process.env.PORT || 3003, () => {
     if (server) {
