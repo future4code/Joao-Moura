@@ -7,10 +7,10 @@
 [X] as contas devem começar zeradas.
 
 === VERIFICAR SALDO
-[ ] deve ser passando: nome e CPF
+[X] deve ser passando: nome e CPF
 
 === DEPOSITO
-[ ] deve ser passando: nome, CPF e valor.
+[X] deve ser passando: nome, CPF e valor.
 
 === REALIZAR PAGAMENTO
 [ ] deve ser passando: valor, descrição e data.

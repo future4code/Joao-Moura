@@ -1,6 +1,6 @@
 import express, { Request, Response} from 'express'
 import { user, accounts } from './accounts'
-import { checkAge, formattedDate, beRegistered } from './utils'
+import { checkAge, formattedDate, checkCpf, checkUserName } from './utils'
 import { AddressInfo } from 'net'  
 import cors from 'cors'
 import chalk from 'chalk'
@@ -38,7 +38,7 @@ app.post('/users', (req:Request, resp: Response): void => {
         }else if(!checkAge(dt_birth)){
             throw new Error("the user is under 18 years old")
 
-        }else if(beRegistered(cpf)){
+        }else if(checkCpf(cpf)){
             throw new Error("cpf already belongs to a user")
         }
 
@@ -73,6 +73,30 @@ app.get('/users/:cpf', (req:Request, resp: Response): void => {
         resp.status(400).send({ message: `${error}` })
     }
 })
+
+app.put('/users', (req:Request, resp: Response): void => {
+    try {
+        const {name, cpf, value} = req.body
+
+        if(!name || !cpf || !value){
+            throw new Error("Enter all account information")
+
+        } else if(!checkCpf(cpf) || !checkUserName(name)){
+            throw new Error("Can not found user")
+
+        }
+
+        const userIndex: number = accounts.findIndex((user)=> user.cpf === cpf )
+
+        accounts[userIndex].balance += value
+
+        resp.status(200).send({ Success: "The deposit was made" })
+    } catch (error) {
+        resp.status(400).send({ message: `${error}` })
+    }
+})
+
+
 const server = app.listen(process.env.PORT || 3003, () => {
     if (server) {
        const address = server.address() as AddressInfo;

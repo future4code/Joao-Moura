@@ -22,8 +22,17 @@ export const formattedDate = (date: string): Date =>{
     return newDate
 }
 
-export const beRegistered = (cpf: string): boolean => {
+export const checkCpf = (cpf: string): boolean => {
     const resp: number = accounts.findIndex((user)=> user.cpf === cpf)
+
+    if(resp === -1) return false
+
+    return true
+
+}
+
+export const checkUserName = (name: string): boolean => {
+    const resp: number = accounts.findIndex((user)=> user.name.toLowerCase() === name.toLowerCase())
 
     if(resp === -1) return false
 
