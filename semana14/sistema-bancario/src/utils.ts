@@ -39,7 +39,7 @@ export const checkUserName = (name: string): boolean => {
     return true
 
 }
-export const saveToExtract = (index: number, value: number): void => {
+export const saveDeposit = (index: number, value: number): void => {
 
     const newBankStatement: bankStatement= {
         value : value,
@@ -49,3 +49,27 @@ export const saveToExtract = (index: number, value: number): void => {
    
     accounts[index].bankStatement.push(newBankStatement)
 }
+
+export const saveInExtract = ( value: number, description: string, cpf: string, date?: string): boolean => {
+
+    const newBankStatement: bankStatement= {
+        value,
+        description,
+        date: date ? formattedDate(date): new Date()
+    }
+
+    let success: boolean = true
+
+    accounts.forEach((item)=>{
+        if(item.cpf === cpf){
+            if(item.balance < value){
+                success = false
+            }else{
+                item.bankStatement.push(newBankStatement)
+            }
+        }
+    })
+
+    return success
+}
+

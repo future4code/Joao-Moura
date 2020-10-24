@@ -1,6 +1,6 @@
 import express, { Request, Response} from 'express'
 import { user, accounts } from './accounts'
-import { checkAge, formattedDate, checkCpf, checkUserName, saveToExtract } from './utils'
+import { checkAge, formattedDate, checkCpf, checkUserName, saveDeposit, saveInExtract } from './utils'
 import { AddressInfo } from 'net'  
 import cors from 'cors'
 import chalk from 'chalk'
@@ -89,7 +89,7 @@ app.put('/users', (req:Request, resp: Response): void => {
         const userIndex: number = accounts.findIndex((user)=> user.cpf === cpf )
 
         accounts[userIndex].balance += value
-        saveToExtract(userIndex, value)
+        saveDeposit(userIndex, value)
 
         resp.status(200).send({ Success: "The deposit was made" })
     } catch (error) {
@@ -97,16 +97,21 @@ app.put('/users', (req:Request, resp: Response): void => {
     }
 })
 
-app.post('/users', (req:Request, resp: Response): void => {
+app.post('/users/payment', (req:Request, resp: Response): void => {
     try {
-        const { value, description, date } = req.body
-        if(true){
-            throw new Error()
+        const { value, description, cpf, date } = req.body
+
+        if(!checkCpf(cpf) || !value || !description){
+            throw new Error("Incorrect data")
         }
 
-        resp.status(200).send()
+        if(!saveInExtract(value, description, cpf, date)){
+            throw new Error("your balance is insufficient")
+        }
+
+        resp.status(200).send({message: "payment completed"})
     } catch (error) {
-        resp.status(400).send({ message: error })
+        resp.status(400).send({ message: `${error}` })
     }
 })
 
