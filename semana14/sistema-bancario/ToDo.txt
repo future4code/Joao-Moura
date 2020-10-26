@@ -13,10 +13,10 @@
 [X] deve ser passando: nome, CPF e valor.
 
 === REALIZAR PAGAMENTO
-[ ] deve ser passando: valor, descrição e data.
-[ ] caso não seja passado a data deve ser pago no mesmo dia
-[ ] não sera permitido uma data anterior a atual
-[ ] não sera permitido pagar uma conta com valor mais alto que seu saldo
+[X] deve ser passando: valor, descrição e data.
+[X] caso não seja passado a data deve ser pago no mesmo dia
+[X] não sera permitido uma data anterior a atual
+[X] não sera permitido pagar uma conta com valor mais alto que seu saldo
 
 === REALIZAR TRANSFERÊNCIA
 [ ] deve ser informado: nome,cpf, nomeDest, cpfDest, valor

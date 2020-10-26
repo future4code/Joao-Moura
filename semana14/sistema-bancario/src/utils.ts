@@ -55,7 +55,8 @@ export const saveInExtract = ( value: number, description: string, cpf: string, 
     const newBankStatement: bankStatement= {
         value,
         description,
-        date: date ? formattedDate(date): new Date()
+        date: date ? formattedDate(date): new Date(),
+        estarPago: false
     }
 
     let success: boolean = true
@@ -65,6 +66,7 @@ export const saveInExtract = ( value: number, description: string, cpf: string, 
             if(item.balance < value){
                 success = false
             }else{
+                // newBankStatement.estarPago = newBankStatement.date.getTime() < Date.now() 
                 item.bankStatement.push(newBankStatement)
             }
         }
