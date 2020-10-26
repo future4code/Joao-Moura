@@ -50,7 +50,7 @@ export const saveDeposit = (index: number, value: number): void => {
     accounts[index].bankStatement.push(newBankStatement)
 }
 
-export const saveInExtract = ( value: number, description: string, cpf: string, date?: string): boolean => {
+export const schedulePayment = ( value: number, description: string, cpf: string, date?: string): boolean => {
 
     const newBankStatement: bankStatement= {
         value,
@@ -73,5 +73,16 @@ export const saveInExtract = ( value: number, description: string, cpf: string, 
     })
 
     return success
+}
+
+export const updatePayments = (index: number): void =>{
+    accounts[index].bankStatement.forEach((scheduling)=>{
+        if(!scheduling.estarPago){
+            if(accounts[index].balance > scheduling.value && scheduling.date.getTime() < Date.now()){
+                scheduling.estarPago = true
+                accounts[index].balance -= scheduling.value
+            }
+        }
+    })
 }
 

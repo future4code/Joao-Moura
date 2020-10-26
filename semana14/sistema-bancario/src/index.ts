@@ -1,6 +1,6 @@
 import express, { Express, Request, Response} from 'express'
 import { user, accounts } from './accounts'
-import { checkAge, formattedDate, checkCpf, checkUserName, saveDeposit, saveInExtract } from './utils'
+import { checkAge, formattedDate, checkCpf, checkUserName, saveDeposit, schedulePayment, updatePayments } from './utils'
 import { AddressInfo } from 'net'  
 import cors from 'cors'
 import chalk from 'chalk'
@@ -111,7 +111,7 @@ app.post('/users/payment', (req:Request, resp: Response): void => {
             throw new Error("Incorrect data")
         }
 
-        if(!saveInExtract(value, description, cpf, date)){
+        if(!schedulePayment(value, description, cpf, date)){
             throw new Error("your balance is insufficient")
         }
 
@@ -127,11 +127,10 @@ app.post('/users/payment', (req:Request, resp: Response): void => {
     }
 })
 
-// UPDATE BALANCE
+// UPDATE PAYMENTS
 app.put('/users/payment', (req:Request, resp: Response): void => {
     try {
         const {cpf} = req.body
-        console.log(cpf);
 
         if(!checkCpf(cpf)){
             throw new Error("Can not found user")
@@ -139,14 +138,7 @@ app.put('/users/payment', (req:Request, resp: Response): void => {
 
         const userIndex: number = accounts.findIndex((user)=> user.cpf === cpf )
 
-        accounts[userIndex].bankStatement.forEach((scheduling)=>{
-            if(!scheduling.estarPago){
-                if(accounts[userIndex].balance > scheduling.value && scheduling.date.getTime() < Date.now()){
-                    scheduling.estarPago = true
-                    accounts[userIndex].balance -= scheduling.value
-                }
-            }
-        })
+        updatePayments(userIndex)
         
         resp.status(200).send({ Success: "Updated payments" })
     } catch (error) {
