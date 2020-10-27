@@ -1,4 +1,4 @@
-### Exercício 1
+### Exercício 2
 a) comando: 
 ```sql
 UPDATE Actor SET 
