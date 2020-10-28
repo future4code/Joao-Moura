@@ -6,6 +6,8 @@ import {getAllActor} from './endPoints/getAllUsers'
 import {getActorByName} from './endPoints/getUser'
 import {getQuantityByGender} from './endPoints/getQuantityByGender'
 import {putUpdateSalary} from './endPoints/putUpdateSalary'
+import {deleteActor} from './endPoints/deleteActor'
+import {getAvgSalary} from './endPoints/getAvgSalary'
 
 /**************************************************************/
 
@@ -43,6 +45,8 @@ const server = app.listen(process.env.PORT || 3003, () => {
 
 app.get('/actors', getAllActor)
 app.get('/actors/search', getActorByName)
+app.get('/actors/average-salary/:gender', getAvgSalary)
 app.get('/actors/:gender', getQuantityByGender)
 app.put('/actors', putUpdateSalary)
+app.delete('/actors/:id', deleteActor)
 
