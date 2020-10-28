@@ -5,6 +5,7 @@ import { AddressInfo } from "net";
 import {getAllActor} from './endPoints/getAllUsers'
 import {getActorByName} from './endPoints/getUser'
 import {getQuantityByGender} from './endPoints/getQuantityByGender'
+import {putUpdateSalary} from './endPoints/putUpdateSalary'
 
 /**************************************************************/
 
@@ -43,4 +44,5 @@ const server = app.listen(process.env.PORT || 3003, () => {
 app.get('/actors', getAllActor)
 app.get('/actors/search', getActorByName)
 app.get('/actors/:gender', getQuantityByGender)
+app.put('/actors', putUpdateSalary)
 

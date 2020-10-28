@@ -25,3 +25,12 @@ export const selectQuantityByGender = async (gender: string): Promise<any> => {
 
     return result[0]
 }
+
+export const updateSalary = async (id: string, salary: number ): Promise<any> => {
+    const result = await connection
+    .insert({salary: salary})
+    .where({id: id})
+
+    console.log(result);
+    return result
+}

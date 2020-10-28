@@ -4,7 +4,7 @@ a) Explique como é a resposta que temos quando usamos o raw
 > é retornado um array com um com os dados e outro com os metadados.
 
 ex:
-```
+```js
 [
     [
         {dados},
@@ -48,3 +48,13 @@ export const getUser = async (req:Request, res:Response): Promise<void> =>{
 
 c) Faça uma função que receba um `gender` retorne a quantidade de itens na tabela `Actor` com esse `gender`.
    Para atrizes, `female` e para atores `male`.
+```ts
+export const selectQuantityByGender = async (gender: string): Promise<any> => {
+    const result = await connection.raw(`
+            SELECT COUNT(*) AS "Count of ${gender}" FROM Actor
+            WHERE LOWER(gender) = LOWER("${gender}");
+    `)
+
+    return result[0]
+}
+```
