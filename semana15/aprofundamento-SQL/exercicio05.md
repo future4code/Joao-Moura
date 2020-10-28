@@ -1,4 +1,4 @@
-### Exercício 4
+### Exercício 5
 a) comando: 
 ```sql
 SELECT COUNT(*), gender
