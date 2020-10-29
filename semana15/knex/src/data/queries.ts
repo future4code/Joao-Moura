@@ -9,7 +9,12 @@ export const selectActorByName = async (name: string): Promise<any> => {
     return result[0]
 }
 
-export const selectAllAtor = async (): Promise<any> => {
+export const selectActorById = async (id: string): Promise<any> => {
+    const result = await connection("Actor").select("*").where({id})
+    return result[0]
+}
+
+export const selectAllActor = async (): Promise<any> => {
     const result = await connection.raw(`
             SELECT * FROM Actor;
     `)
@@ -35,6 +40,7 @@ export const deleteActorById = async (id: string ): Promise<number> => {
     const result = await connection('Actor').where({id}).delete()
     return result
 }
+
 export const selectAvgSalaryByGender = async (gender: string ): Promise<any> => {
     const result = await connection('Actor')
     .avg("salary as average")

@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import {selectAllAtor} from  '../data/queries'
+import {selectAllActor} from  '../data/queries'
 
 export const getAllActor = async (req:Request, res:Response): Promise<void> =>{
     try {
-      const listActor = await selectAllAtor()
+      const listActor = await selectAllActor()
 
       if(!listActor){
           throw new Error("It was not possible to find the list of actors")

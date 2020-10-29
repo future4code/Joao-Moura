@@ -19,7 +19,7 @@ ex:
 ]
 ```
 
-b) Faça uma função que busque um ator pelo nome;
+b) Faça uma função que busque um actor pelo nome;
 
 ```ts
 export const getUser = async (req:Request, res:Response): Promise<void> =>{
@@ -47,7 +47,7 @@ export const getUser = async (req:Request, res:Response): Promise<void> =>{
 ```
 
 c) Faça uma função que receba um `gender` retorne a quantidade de itens na tabela `Actor` com esse `gender`.
-   Para atrizes, `female` e para atores `male`.
+   Para atrizes, `female` e para actores `male`.
 ```ts
 export const selectQuantityByGender = async (gender: string): Promise<any> => {
     const result = await connection.raw(`

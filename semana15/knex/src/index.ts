@@ -3,11 +3,12 @@ import express, { Request, Response } from "express";
 import dotenv from "dotenv";
 import { AddressInfo } from "net";
 import {getAllActor} from './endPoints/getAllUsers'
-import {getActorByName} from './endPoints/getUser'
+import {getActorByName} from '../src/endPoints/getActorByName'
 import {getQuantityByGender} from './endPoints/getQuantityByGender'
 import {putUpdateSalary} from './endPoints/putUpdateSalary'
 import {deleteActor} from './endPoints/deleteActor'
 import {getAvgSalary} from './endPoints/getAvgSalary'
+import {getActorById} from './endPoints/getActorById'
 
 /**************************************************************/
 
@@ -42,11 +43,14 @@ const server = app.listen(process.env.PORT || 3003, () => {
 });
 
 /**************************************************************/
-
+// Exercícios 1 e 2
 app.get('/actors', getAllActor)
 app.get('/actors/search', getActorByName)
 app.get('/actors/average-salary/:gender', getAvgSalary)
-app.get('/actors/:gender', getQuantityByGender)
+app.get('/actors/count', getQuantityByGender)
 app.put('/actors', putUpdateSalary)
 app.delete('/actors/:id', deleteActor)
 
+//Exercício 3
+app.get('/actor', getQuantityByGender)
+app.get('/actor/:id', getActorById)

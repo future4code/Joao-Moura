@@ -3,8 +3,8 @@ import {selectQuantityByGender} from "../data/queries"
 
 export const getQuantityByGender = async (req:Request, res:Response): Promise<void> =>{
     try {
-        const {gender} = req.params
-
+        const {gender} = req.query
+        console.log(gender);
         if(!gender){
             throw new Error("the gender was not informed")
         }

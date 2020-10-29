@@ -9,13 +9,13 @@ export const getActorByName = async (req:Request, res:Response): Promise<void> =
             throw new Error("the name was not informed")
         }
 
-        const ator = await selectActorByName(String(name))
+        const actor = await selectActorByName(String(name))
 
-        if(!ator){
+        if(!actor){
             throw new Error("It was not possible to find the list of actors")
         }
 
-        res.status(200).send(ator)
+        res.status(200).send(actor)
     } catch (error) {
         res.status(400).send(error.message)
     }
