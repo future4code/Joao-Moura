@@ -9,6 +9,7 @@ import {putUpdateSalary} from './endPoints/putUpdateSalary'
 import {deleteActor} from './endPoints/deleteActor'
 import {getAvgSalary} from './endPoints/getAvgSalary'
 import {getActorById} from './endPoints/getActorById'
+import {createActor} from './endPoints/createActor'
 
 /**************************************************************/
 
@@ -54,3 +55,7 @@ app.delete('/actors/:id', deleteActor)
 //Exercício 3
 app.get('/actor', getQuantityByGender)
 app.get('/actor/:id', getActorById)
+
+//Exercício 4
+app.put('/actor', createActor)
+app.post('/actor', putUpdateSalary)
