@@ -1,6 +1,8 @@
 import {connection} from '../index'
 import{formattedDate} from "../utils/utils"
 
+//========== TABLE Actor ===========
+
 export const selectActorByName = async (name: string): Promise<any> => {
     const result = await connection.raw(`
             SELECT * FROM Actor
@@ -63,7 +65,25 @@ export const insertNewActor = async (
             birth_date: formattedDate(dateOfBirth)
         })
         .into("Actor")
-        
-        console.log(result);
+
+    return result
+}
+
+//========== TABLE Movies ===========
+export const insertNewMovie = async (
+    id: string, name:string, sinopse:string, release_date: string, rating:number, playing_limit_date:string
+): Promise<any> => {
+
+    const result = await connection
+        .insert({
+            id,
+            name,
+            sinopse,
+            release_date: formattedDate(release_date),
+            rating,
+            playing_limit_date: formattedDate(playing_limit_date)
+        })
+        .into("Movies")
+
     return result
 }

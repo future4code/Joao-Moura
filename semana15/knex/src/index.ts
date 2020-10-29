@@ -11,6 +11,10 @@ import {getAvgSalary} from './endPoints/getAvgSalary'
 import {getActorById} from './endPoints/getActorById'
 import {createActor} from './endPoints/createActor'
 
+import {createMovie} from './endPoints/createMovie'
+
+
+
 /**************************************************************/
 
 dotenv.config();
@@ -59,3 +63,4 @@ app.get('/actor/:id', getActorById)
 //Exercício 4
 app.put('/actor', createActor)
 app.post('/actor', putUpdateSalary)
+app.post('/movie', createMovie)
