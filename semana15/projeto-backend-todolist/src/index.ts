@@ -7,6 +7,7 @@ import chalk from 'chalk'
 
 import {createUser} from './endPoits/createUser'
 import {getUserById} from './endPoits/getUserById'
+import {updateUser} from './endPoits/updateUser'
 
 //=============== Configuração de ambiente =======================================
 const app: Express = express()
@@ -45,4 +46,5 @@ const server = app.listen(process.env.PORT || 3003, () => {
 
 
 app.put('/user', createUser)
+app.post('/user/edit/:id', updateUser)
 app.get('/user/:id', getUserById)

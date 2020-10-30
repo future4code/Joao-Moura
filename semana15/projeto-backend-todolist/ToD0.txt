@@ -1,11 +1,11 @@
 
-[ ] criar usuario
+[X] criar usuario
     {
         "name": "Astro Dev",
         "nickname": "astrodev",
         "email": "astro@dev.com"
     }
-[ ] Pegar usuário pelo id
+[X] Pegar usuário pelo id
 [ ] Editar usuário - name ou nickname
 [ ] criar tarefa
     {

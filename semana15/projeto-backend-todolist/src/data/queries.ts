@@ -23,3 +23,12 @@ async(id: string): Promise<any> => {
 
     return result[0]
 }
+
+export const updateUserById = 
+async(id: string, name: string, nickname: string): Promise<any> => {
+    const result = await connection("TodoListUser")
+    .where({id})
+    .update({name, nickname})
+
+    return result
+}
