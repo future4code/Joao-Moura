@@ -1,5 +1,6 @@
 import {connection} from '../index'
 import {success, warn, err} from '../index'
+import { STATUS } from '../utils/utils'
 
 export const insertUser = 
 async(name: string, nickname: string, email: string): Promise<any> => {
@@ -9,6 +10,20 @@ async(name: string, nickname: string, email: string): Promise<any> => {
         name,
         nickname,
         email
+    })
+
+    return result
+}
+
+export const insertTask = 
+async(id: string, title: string, limitDate: string, creatorUserId: string, status: STATUS): Promise<any> => {
+    const result = await connection("TodoListTask")
+    .insert({
+        id: Date.now(),
+        title, 
+        limitDate, //devo converter o formato da data
+        creatorUserId: id,
+        status: status
     })
 
     return result
