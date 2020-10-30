@@ -13,3 +13,13 @@ async(name: string, nickname: string, email: string): Promise<any> => {
 
     return result
 }
+
+export const selectUseById = 
+async(id: string): Promise<any> => {
+    const result = await connection
+    .from("TodoListUser")
+    .select("id","name")
+    .where({id})
+
+    return result[0]
+}

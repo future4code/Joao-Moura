@@ -6,6 +6,7 @@ import cors from 'cors'
 import chalk from 'chalk'
 
 import {createUser} from './endPoits/createUser'
+import {getUserById} from './endPoits/getUserById'
 
 //=============== Configuração de ambiente =======================================
 const app: Express = express()
@@ -44,3 +45,4 @@ const server = app.listen(process.env.PORT || 3003, () => {
 
 
 app.put('/user', createUser)
+app.get('/user/:id', getUserById)
