@@ -1,0 +1,18 @@
+
+[ ] criar usuario
+    {
+        "name": "Astro Dev",
+        "nickname": "astrodev",
+        "email": "astro@dev.com"
+    }
+[ ] Pegar usuário pelo id
+[ ] Editar usuário - name ou nickname
+[ ] criar tarefa
+    {
+        "title": "Criar banco dos alunos",
+        "description": "Devemos criar o banco dos alunos para o módulo do backend",
+        "limitDate": "04/05/2020",
+        "creatorUserId": "001",
+        "status": "to_do"
+    }
+[ ]Pegar tarefa pelo id
