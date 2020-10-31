@@ -9,6 +9,7 @@ import {createUser} from './endPoits/createUser'
 import {getUserById} from './endPoits/getUserById'
 import {updateUser} from './endPoits/updateUser'
 import {createTask} from './endPoits/createTask'
+import {getTaskById} from './endPoits/getTaskById'
 
 //=============== Configuração de ambiente =======================================
 const app: Express = express()
@@ -46,7 +47,8 @@ const server = app.listen(process.env.PORT || 3003, () => {
 //====================================================================================================
 
 
-app.put('/user', createUser)
-app.post('/user/edit/:id', updateUser)
 app.get('/user/:id', getUserById)
+app.get('/task/:id', getTaskById)
+app.put('/user', createUser)
 app.put('/task', createTask)
+app.post('/user/edit/:id', updateUser)

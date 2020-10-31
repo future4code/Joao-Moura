@@ -6,8 +6,8 @@
         "email": "astro@dev.com"
     }
 [X] Pegar usuário pelo id
-[ ] Editar usuário - name ou nickname
-[ ] criar tarefa
+[X] Editar usuário - name ou nickname
+[X] criar tarefa
     {
         "title": "Criar banco dos alunos",
         "description": "Devemos criar o banco dos alunos para o módulo do backend",

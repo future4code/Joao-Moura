@@ -40,6 +40,18 @@ export const selectUseById =
     return result[0]
 }
 
+export const selectTaskById = 
+    async(id: string): Promise<any> => {
+        const result = await connection.raw(`
+            SELECT tt.*, tu.nickname from TodoListTask as tt
+            JOIN TodoListUser AS tu ON tu.id = tt.creator_user_id
+            where tt.creator_user_id = "001"; 
+        `)
+        
+    return result[0]
+}
+
+
 export const updateUserById = 
     async(id: string, name: string, nickname: string): Promise<any> => {
         const result = await connection("TodoListUser")
