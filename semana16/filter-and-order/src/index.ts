@@ -5,6 +5,9 @@ import dotenv from "dotenv";
 import { AddressInfo } from "net";
 import {getUser} from "./endpoints/getUser";
 import {getUserType} from "./endpoints/getUserType";
+import {getAllUser} from "./endpoints/getAllUser";
+import {getUserPage} from "./endpoints/getUserPage";
+import {getUsers} from "./endpoints/getUsers";
 
 // ==================== configurações do servidor =================== 
 dotenv.config();
@@ -34,5 +37,7 @@ const server = app.listen(process.env.PORT || 3003, () => {
 });
 // ================================================================
 
+app.get("/users", getAllUser);
+app.get("/users/filter/:type", getUserType);
 app.get("/users/search", getUser);
-app.get("/users/:type", getUserType);
+app.get("/users/:page", getUserPage);
