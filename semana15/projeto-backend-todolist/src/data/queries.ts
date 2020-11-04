@@ -1,5 +1,4 @@
 import {connection} from '../index'
-import {success, warn, err} from '../index'
 import { STATUS, formattedDate } from '../utils/utils'
 
 export const insertUser = 
@@ -50,7 +49,6 @@ export const selectTaskById =
         
     return result[0]
 }
-
 
 export const updateUserById = 
     async(id: string, name: string, nickname: string): Promise<any> => {

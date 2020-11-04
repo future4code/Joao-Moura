@@ -1,4 +1,4 @@
-import express, { Express, Request, Response} from 'express'
+import express, { Express } from 'express'
 import { AddressInfo } from 'net' 
 import knex from "knex";
 import dotenv from "dotenv"; 
@@ -11,7 +11,7 @@ import {updateUser} from './endPoits/updateUser'
 import {createTask} from './endPoits/createTask'
 import {getTaskById} from './endPoits/getTaskById'
 
-//=============== Configuração de ambiente =======================================
+//===================== Configuração do servidor =================================
 const app: Express = express()
 app.use(express.json())
 app.use(cors())
@@ -29,11 +29,10 @@ export const connection = knex({
   },
 });
 
-// message colors
+// cores no console
 export const success = chalk.green.bold
 export const warn = chalk.yellow
 export const err = chalk.red.bold
-
 
 const server = app.listen(process.env.PORT || 3003, () => {
     if (server) {
@@ -44,8 +43,7 @@ const server = app.listen(process.env.PORT || 3003, () => {
     }
 });
 
-//====================================================================================================
-
+//==================== EndPoints =================================================
 
 app.get('/user/:id', getUserById)
 app.get('/task/:id', getTaskById)
