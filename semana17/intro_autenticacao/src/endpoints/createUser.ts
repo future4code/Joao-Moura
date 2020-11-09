@@ -1,14 +1,18 @@
 import {Request, Response} from "express"
 import { insertUser } from "../data/insertUser"
 import { generateId } from "../services/generateId"
+import { validadeAccount } from "../services/validateAccount"
 
 export const createUser = async(req:Request, resp:Response): Promise<void> => {
     try {
         const { email, password} = req.body
 
-        if( !email || !password){
-            throw new Error ("Corpo da requisição invalido")
+        const err: string | boolean = validadeAccount(email, password)
+
+        if(err){
+            throw new Error(`${err}`); 
         }
+
         const id: string = generateId() 
         await insertUser(id, email, password)
 

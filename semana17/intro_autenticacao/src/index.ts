@@ -40,4 +40,4 @@ const server = app.listen(process.env.PORT || 3003, () => {
 
 //======================= ENDPOINTS ==================================== 
 
-app.post("/User", createUser)
+app.post("/singup", createUser)
