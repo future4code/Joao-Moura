@@ -31,7 +31,7 @@ a)Explique o código acima com as suas palavras.
  b)Comece criando a tabela de usuários. Coloque a query que você utilizou no arquivo de respostas.
 ```sql
 CREATE TABLE User (
-	id VARCHAR(255) PRIMARY KEY,
+	  id VARCHAR(255) PRIMARY KEY,
     email VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL
 );
@@ -44,12 +44,12 @@ c)Pela mesma justificativa do exercício anterior, crie uma função para ser re
 import {connection} from ".."
 
 export const insertUser = async (
-    id: string, name: string, email: string, password: string
+    id: string, email: string, password: string
 ): Promise<void> => {
 
     try {
         await connection
-            .insert({id, name, email, password})
+            .insert({id, email, password})
             .into("User")
         
     } catch (error) {
