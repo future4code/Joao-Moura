@@ -6,6 +6,7 @@ import cors from "cors"
 import chalk from "chalk"
 
 import { createUser } from "./endpoints/createUser"
+import { getUserByEmail } from "./endpoints/getUserByEmail"
 
 //=================== CONFIGURAÇÕES DO SERVIDOR =======================
 dotenv.config()
@@ -41,3 +42,4 @@ const server = app.listen(process.env.PORT || 3003, () => {
 //======================= ENDPOINTS ==================================== 
 
 app.post("/singup", createUser)
+app.get("/user", getUserByEmail)
