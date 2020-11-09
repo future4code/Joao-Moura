@@ -4,7 +4,7 @@ import { generateId } from "../services/generateId"
 import { generateToken } from "../services/generateToken"
 import { validadeAccount } from "../services/validateAccount"
 
-export const createUser = async(req:Request, resp:Response): Promise<void> => {
+export const singup = async(req:Request, resp:Response): Promise<void> => {
     try {
         const { email, password} = req.body
 
@@ -21,7 +21,6 @@ export const createUser = async(req:Request, resp:Response): Promise<void> => {
         resp.status(200).send({message: "Usuário criado", token})
 
     } catch (error) {
-
         resp.status(400).send({message: error.message || error.sqlMessage})
     }
 }
