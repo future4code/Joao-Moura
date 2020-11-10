@@ -42,4 +42,4 @@ const server = app.listen(process.env.PORT || 3003, () => {
 //======================= ENDPOINTS ==================================== 
 
 app.post("/singup", singup)
-app.get("/user", login)
+app.get("/login", login)
