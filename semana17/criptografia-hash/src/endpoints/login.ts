@@ -19,7 +19,7 @@ export const login = async(req: Request, resp: Response): Promise<void> => {
              throw new Error("Invalid email or password!")
         }
 
-        const token: string = generateToken(user.id)
+        const token: string = generateToken({id: user.id, role: user.role})
 
         resp.status(200).send({token})
         

@@ -7,16 +7,16 @@ import { validateAccount } from "../services/validateAccount"
 
 export const singUp = async(req:Request, resp:Response): Promise<void> => {
     try {
-        const { email, password} = req.body
+        const { email, password, role} = req.body
 
-        const err: string | boolean = validateAccount(email, password)
+        const err: string | boolean = validateAccount(email, password, role)
         if(err) throw new Error(`${err}`)
 
         const id: string = generateId()
         const hashPassword: string = await generateHash(password)
         
-        await insertUser(id, email, hashPassword)
-        const token: string = generateToken({id}) 
+        await insertUser(id, email, hashPassword, role)
+        const token: string = generateToken({id, role}) 
         
         resp.status(201).send({message: "User created", token})
 
