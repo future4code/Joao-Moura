@@ -18,7 +18,7 @@ export const singup = async(req:Request, resp:Response): Promise<void> => {
 
         await insertUser(id, email, password)
 
-        resp.status(200).send({message: "Usuário criado", token})
+        resp.status(201).send({message: "User created", token})
 
     } catch (error) {
         resp.status(400).send({message: error.message || error.sqlMessage})

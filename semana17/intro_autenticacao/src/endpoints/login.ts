@@ -15,7 +15,7 @@ export const login = async(req: Request, resp: Response): Promise<void> => {
         const user = await selectUserByEmail(email, password)
 
         if(!user){
-             throw new Error("Email ou senha invalido!")
+             throw new Error("Invalid email or password!")
         }
 
         const token: string = generateToken(user.id)
@@ -23,6 +23,6 @@ export const login = async(req: Request, resp: Response): Promise<void> => {
         resp.status(200).send({token})
         
     } catch (error) {
-        resp.status(404).send({message: error.message || error.sqlMessage})
+        resp.status(401).send({message: error.message || error.sqlMessage})
     }
 }

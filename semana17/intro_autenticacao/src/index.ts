@@ -7,6 +7,7 @@ import chalk from "chalk"
 
 import { singup } from "./endpoints/singup"
 import { login } from "./endpoints/login"
+import { getUser } from "./endpoints/getUser"
 
 //=================== CONFIGURAÇÕES DO SERVIDOR =======================
 dotenv.config()
@@ -42,4 +43,5 @@ const server = app.listen(process.env.PORT || 3003, () => {
 //======================= ENDPOINTS ==================================== 
 
 app.post("/singup", singup)
-app.get("/login", login)
+app.post("/login", login)
+app.get("/user/profile", getUser)
