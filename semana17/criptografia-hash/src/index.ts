@@ -3,6 +3,9 @@ import knex from "knex";
 import dotenv from "dotenv";
 import cors from "cors";
 import { AddressInfo } from "net";
+import { singUp } from "./endpoints/singUp";
+import { login } from "./endpoints/login";
+import { getUser } from "./endpoints/getUser";
 
 //=============== CONFIGURAÇÃO DO SERVIDOR ===================
 dotenv.config();
@@ -32,3 +35,7 @@ const server = app.listen(process.env.PORT || 3003, () => {
 });
 
 //=================== ENDPOINTS ==============================
+
+app.post("/singup", singUp)
+app.post("/login", login)
+app.get("/user/profile", getUser)
