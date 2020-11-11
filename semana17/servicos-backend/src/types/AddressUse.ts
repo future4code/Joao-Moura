@@ -1,6 +1,6 @@
 export type AddressUser = {
-    publicPlace: string,
-    neighborhood: string,
-    city: string,
-    state:string
+    logradouro: string,
+    bairro: string,
+    localidade: string,
+    uf:string
 }

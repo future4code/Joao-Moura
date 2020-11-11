@@ -1,6 +1,5 @@
-import { ROLE } from "../types/AuthenticationData"
 
-export const validateAccount = (email: string, password: string, role?: ROLE):string | boolean => {
+export const validateInputLogin = (email: string, password: string):string | boolean => {
 
     if(!email || !password){
         return "Enter 'email' and 'password'"
@@ -12,12 +11,6 @@ export const validateAccount = (email: string, password: string, role?: ROLE):st
 
     if(password.trim() === "" || password.length < 7){
         return "Password must be longer than 6 characters!"
-    }
-
-    if(role){
-        if(!(role in ROLE)){
-            return "role must be 'NORMAL' or 'ADMIN' "
-        }
     }
 
     return false

@@ -2,13 +2,13 @@ import {Request, Response} from "express"
 import {selectUser} from "../data/selectUser"
 import { checkHash } from "../services/checkHash"
 import { generateToken } from "../services/generateToken"
-import { validateAccount } from "../services/validateAccount"
+import { validateInputLogin } from "../services/validateInputLogin"
 
 export const login = async(req: Request, resp: Response): Promise<void> => {
     try {
         const { email, password } = req.body
 
-        const err: string | boolean = validateAccount(email, password)
+        const err: string | boolean = validateInputLogin(email, password)
         if(err) throw new Error(`${err}`)
 
         const user = await selectUser(email)
