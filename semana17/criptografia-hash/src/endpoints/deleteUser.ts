@@ -1,11 +1,12 @@
 
 import {Request, Response} from "express"
-import { selectUserById } from "../data/selectUserById"
+import { deleteUserDb } from "../data/deleteUserDb"
 import { checkToken } from "../services/checkToken"
 import { AuthenticationData } from "../types/AuthenticationData";
 
-export const getUser = async(req: Request, resp: Response): Promise<void> => {
+export const deleteUser = async(req: Request, resp: Response): Promise<void> => {
     try {
+        const id = req.params.id as string
         const token = req.headers.authorization as string;
 
         const authenticationData: AuthenticationData = checkToken(token)
@@ -14,13 +15,9 @@ export const getUser = async(req: Request, resp: Response): Promise<void> => {
             throw new Error("Not authorized")
         }
         
-        const user = await selectUserById(authenticationData.id)
+        await deleteUserDb(id)
 
-        resp.status(200).send({
-            id: user.id,
-            email: user.email,
-            role: user.role
-        })
+        resp.status(200).send({message: "Deleted user"})
         
     } catch (error) {
 

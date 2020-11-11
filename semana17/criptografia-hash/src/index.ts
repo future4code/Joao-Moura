@@ -6,6 +6,7 @@ import { AddressInfo } from "net";
 import { singUp } from "./endpoints/singUp";
 import { login } from "./endpoints/login";
 import { getUser } from "./endpoints/getUser";
+import { deleteUser } from "./endpoints/deleteUser";
 
 //=============== CONFIGURAÇÃO DO SERVIDOR ===================
 dotenv.config();
@@ -39,3 +40,4 @@ const server = app.listen(process.env.PORT || 3003, () => {
 app.post("/singup", singUp)
 app.post("/login", login)
 app.get("/user/profile", getUser)
+app.delete("/user/:id", deleteUser)

@@ -4,6 +4,6 @@ export type AuthenticationData = {
 } 
 
 export enum ROLE {
-    "NORMAL",
-    "ADMIN"
+    NORMAL = "NORMAL",
+    ADMIN = "ADMIN"
 }

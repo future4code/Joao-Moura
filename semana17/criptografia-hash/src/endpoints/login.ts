@@ -13,9 +13,11 @@ export const login = async(req: Request, resp: Response): Promise<void> => {
 
         const user = await selectUser(email)
 
+        if(!user) throw new Error("Unregistered user!")
+
         const isValidate = await checkHash(password, user.password)
     
-        if(!user || !isValidate){
+        if(!isValidate){
              throw new Error("Invalid email or password!")
         }
 
