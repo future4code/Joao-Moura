@@ -1,4 +1,4 @@
-export const validateSingup = (
+export const validateDataSingup = (
     name: string, email: string, password: string
 ):void => {
 

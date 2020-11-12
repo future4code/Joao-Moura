@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import { AddressInfo } from "net";
 import { singup } from "./endpoints/singup";
-
+import { login } from "./endpoints/login";
 
 dotenv.config();
 
@@ -24,6 +24,7 @@ app.use(express.json());
 app.use(cors())
 
 app.post("/singup", singup)
+app.post("/login", login)
 
 const server = app.listen(process.env.PORT || 3003, () => {
    if (server) {
