@@ -3,6 +3,7 @@ import knex from "knex";
 import dotenv from "dotenv";
 import cors from "cors";
 import { AddressInfo } from "net";
+import { singup } from "./endpoints/singup";
 
 
 dotenv.config();
@@ -22,7 +23,7 @@ const app: Express = express();
 app.use(express.json());
 app.use(cors())
 
-app.post("/singup")
+app.post("/singup", singup)
 
 const server = app.listen(process.env.PORT || 3003, () => {
    if (server) {
