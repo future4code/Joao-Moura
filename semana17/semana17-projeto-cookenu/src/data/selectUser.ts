@@ -1,12 +1,13 @@
 import { connection } from ".."
 
-export const selectUserByEmail = async(email: string): Promise<any> =>{
+export const selectUser = async(query: string): Promise<any> =>{
     try {
         const[user] = 
             await connection
             .select("*")
             .from("Cookenu_User")
-            .where({email})      
+            .where("email", "=",query)
+            .orWhere("id","=",query)      
 
         return user
 

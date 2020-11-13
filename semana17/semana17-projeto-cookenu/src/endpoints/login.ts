@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { selectUserByEmail } from "../data/selectUserByEmail";
+import { selectUser } from "../data/selectUser";
 import { checkHash } from "../services/checkHash";
 import { generateToken } from "../services/generateToken";
 import { validateDataLogin } from "../services/validadeDataLogin";
@@ -10,7 +10,7 @@ export const login = async(req:Request, res:Response):Promise<void> => {
         const {email, password} = req.body
         validateDataLogin(email, password)
 
-        const user:User| undefined = await selectUserByEmail(email)
+        const user:User| undefined = await selectUser(email)
 
         if(!user) throw new Error("Invalid email or password!");
 
