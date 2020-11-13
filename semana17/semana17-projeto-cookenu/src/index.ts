@@ -6,6 +6,7 @@ import { AddressInfo } from "net";
 import { singup } from "./endpoints/singup";
 import { login } from "./endpoints/login";
 import { myProfile } from "./endpoints/myProfile";
+import { anotherProfile } from "./endpoints/anotherProfile";
 
 dotenv.config();
 
@@ -27,6 +28,7 @@ app.use(cors())
 app.post("/singup", singup)
 app.post("/login", login)
 app.get("/user/profile", myProfile)
+app.get("/user/:id", anotherProfile)
 
 const server = app.listen(process.env.PORT || 3003, () => {
    if (server) {
