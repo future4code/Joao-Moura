@@ -1,10 +1,8 @@
 import { connection } from ".."
 import { User } from "../types/user"
 
-
 export const insertUser = async(user: User): Promise<void> => {
     try {
-
         await connection
             .insert({
                 id: user.id,
@@ -15,7 +13,6 @@ export const insertUser = async(user: User): Promise<void> => {
             .into("Cookenu_User")
         
     } catch (error) {
-        throw new Error("insertUse -> não foi possível criar usuário | ");
+        throw new Error("Could not create user");
     }
-
 }

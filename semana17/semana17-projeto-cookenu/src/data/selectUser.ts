@@ -12,6 +12,6 @@ export const selectUser = async(query: string): Promise<any> =>{
         return user
 
     } catch (error) {
-        throw new Error("selectUserByEmail -> não foi possível buscar usuário | ");
+        throw new Error("could not fetch user");
     }
 }

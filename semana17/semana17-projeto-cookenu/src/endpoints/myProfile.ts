@@ -7,15 +7,13 @@ export const myProfile = async (req:Request, res:Response):Promise<void> => {
     try {
         const token = req.headers.authorization as string
         
-        if (!token){
-            throw new Error("insira seu token");
-        }
+        if (!token) throw new Error("Insert your token")
         
         const authenticationDate: Authorization = checkToken(token) 
 
         const profile = await selectUser(authenticationDate.id)
 
-        if(!profile)throw new Error("Usuario nao encontrado");
+        if(!profile)throw new Error("Profile not found");
 
         res.status(200).send({
             id: profile.id,
@@ -24,9 +22,8 @@ export const myProfile = async (req:Request, res:Response):Promise<void> => {
         })
         
     } catch (error) {
-
         if(error.message === "jwt malformed"){
-            res.status(400).send({message:"Token invalido"})
+            res.status(400).send({message:"Invalid token"})
         }
 
         if(error.message === "jwt expired"){

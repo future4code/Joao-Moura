@@ -11,6 +11,6 @@ export const selectRecipe = async(id: string): Promise<any> =>{
         return recipe
 
     } catch (error) {
-        throw new Error("selectUserByEmail -> não foi possível buscar usuário | ");
+        throw new Error("Could not fetch recipe");
     }
 }

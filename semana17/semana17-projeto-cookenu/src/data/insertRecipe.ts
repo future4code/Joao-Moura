@@ -3,7 +3,6 @@ import { Recipe } from "../types/recipe";
 
 export const insertRecipe = async(recipe: Recipe): Promise<void> => {
     try {
-
         await connection
             .insert({
                 id: recipe.id,
@@ -15,7 +14,6 @@ export const insertRecipe = async(recipe: Recipe): Promise<void> => {
             .into("Cookenu_Recipe")
         
     } catch (error) {
-        throw new Error("insertUse -> não foi possível criar usuário | ");
+        throw new Error("Could not create recipe");
     }
-
 }
