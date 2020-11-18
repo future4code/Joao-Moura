@@ -1,31 +1,25 @@
 import { insertPost } from "../../data/post/insertPost";
+import { AuthenticationData, Post, PostInput } from "../../model/Post";
 import { generateId } from "../../services/generateID";
 import { getTokenData } from "../../services/getTokenData";
-import { AuthenticationData, Post, POST_TYPES } from "../../types/types"
 
-export const createPostBusiness = async (
-    photo:string, description:string, type:POST_TYPES, token: string
-): Promise<void> => {
+export const createPostBusiness = async (post: PostInput): Promise<void> => {
     try {
-        if(!photo || !description || !type){
+        if(!post.photo || !post.description || !post.type){
             throw new Error("Invalid request body");
         }
 
-        if(!(type.toUpperCase() in POST_TYPES)){
-            throw new Error("Choose 'normal' or 'event' type")
-        }
+        if(!post.token) throw new Error("Invalid token");
 
-        if(!token) throw new Error("Invalid token");
-
-        const author: AuthenticationData = getTokenData(token)
+        const author: AuthenticationData = getTokenData(post.token)
 
         if(!author.id) throw new Error("Invalid token");
  
         const inputPost: Post = {
             id: generateId(),
-            photo,
-            description,
-            type,
+            photo: post.photo,
+            description: post.description,
+            type: post.type,
             createdAt: new Date(),
             authorId: author.id
         }

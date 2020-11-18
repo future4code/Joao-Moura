@@ -1,14 +1,19 @@
 import {Request, Response} from "express"
 import { createPostBusiness } from "../../business/post/createPostBusiness"
+import { PostInput, stringToPostTypes } from "../../model/Post"
 
 export const createPost = async (req: Request, res: Response):Promise<void> => {
     try {
         let message = "Success!"
 
-        const {photo, description, type} = req.body
-        const token = req.headers.authorization as string
+        const post: PostInput = {
+            photo: req.body.photo as string,
+            description: req.body.description as string,
+            token: req.headers.authorization as string,
+            type: stringToPostTypes(String(req.body.type))
+        }
 
-        await createPostBusiness(photo, description, type, token)
+        await createPostBusiness(post)
     
         res.status(201).send({ message })
     

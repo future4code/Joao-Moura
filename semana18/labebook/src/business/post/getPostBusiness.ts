@@ -1,6 +1,6 @@
 import { selectPost } from "../../data/post/selectPost";
+import { AuthenticationData, Post } from "../../model/Post";
 import { getTokenData } from "../../services/getTokenData";
-import { AuthenticationData, Post } from "../../types/types"
 
 export const getPostBusiness = async (id:string, token: string): Promise<Post> => {
     try {

@@ -1,15 +1,16 @@
 import { selectUser } from "../../data/user/selectUser";
 import { generateToken } from "../../services/generateToken";
-import { Login, User } from "../../types/types";
+import { User } from "../../model/User";
 import {validateHash} from "../../services/validateHash"
+import { LoginInput } from "../../model/User";
 
-export const loginBusiness = async (input:Login): Promise<string> =>{
+export const loginBusiness = async (login:LoginInput): Promise<string> =>{
     try {
-        if (!input.email || !input.password) {
+        if (!login.email || !login.password) {
             throw new Error('"email" and "password" must be provided')
         }
    
-        const queryResult = await selectUser(input.email)
+        const queryResult = await selectUser(login.email)
    
         if (!queryResult) throw new Error("Invalid credentials")
    
@@ -20,7 +21,7 @@ export const loginBusiness = async (input:Login): Promise<string> =>{
             password: queryResult.password
         }
    
-        const passwordIsCorrect: boolean = await validateHash(input.password, user.password)
+        const passwordIsCorrect: boolean = await validateHash(login.password, user.password)
    
         if (!passwordIsCorrect) throw new Error("Invalid credentials")
    

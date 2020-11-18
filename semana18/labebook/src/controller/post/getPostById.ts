@@ -1,6 +1,7 @@
 import {Request, Response} from "express"
 import { getPostBusiness } from "../../business/post/getPostBusiness"
-import { Post } from "../../types/types"
+import { Post } from "../../model/Post"
+
 
 export const getPostById = async (req: Request, res: Response):Promise<void> => {
     try {
