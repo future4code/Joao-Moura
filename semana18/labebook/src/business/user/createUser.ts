@@ -10,14 +10,13 @@ export const createUser = async (input:User): Promise<string> => {
             const message = '"name", "email" and "password" must be provided'
             throw new Error(message)
         }
-        debugger
    
         input.password = await generateHash(input.password);
 
-        debugger
         await insertUser(input)
    
         const token: string = generateToken({id: input.id})
+        if(!token) throw new Error("Invalid token");
 
         return token
 

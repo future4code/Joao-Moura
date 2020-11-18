@@ -15,10 +15,7 @@ export const signup = async(req: Request, res: Response): Promise<void> =>{
             password: req.body.password as string
         }
         
-
         const token = await createUser(inputSignup)
-
-        if(!token) throw new Error(" token vazio");
         
         res.status(201).send({ message, token })
   

@@ -5,11 +5,11 @@ import { AuthenticationData, Post } from "../../types/types"
 export const getPostBusiness = async (id:string, token: string): Promise<Post> => {
     try {
         
-        if(!id) throw new Error("Informe o Id do post")
-        if(!token) throw new Error("token invalido");
+        if(!id) throw new Error("Enter the Post Id")
+        if(!token) throw new Error("Invalid token");
         
         const author: AuthenticationData = getTokenData(token)
-        if(!author.id) throw new Error("Não autorizado");
+        if(!author.id) throw new Error("Invalid token");
 
         const queryResult = await selectPost(id)
         if (!queryResult) throw new Error("Post not found")
@@ -27,7 +27,7 @@ export const getPostBusiness = async (id:string, token: string): Promise<Post> =
 
     } catch (error) {
         if(error.message.includes("jwt expired")){
-            throw new Error("Token expirado");
+            throw new Error("Token expired");
         }
         throw new Error(error);
     }

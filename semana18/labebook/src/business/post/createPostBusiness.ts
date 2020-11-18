@@ -8,18 +8,18 @@ export const createPostBusiness = async (
 ): Promise<void> => {
     try {
         if(!photo || !description || !type){
-            throw new Error("Request body invalid");
+            throw new Error("Invalid request body");
         }
 
         if(!(type.toUpperCase() in POST_TYPES)){
-            throw new Error("escolha o tipo 'normal' ou 'event'")
+            throw new Error("Choose 'normal' or 'event' type")
         }
 
-        if(!token) throw new Error("token invalido");
+        if(!token) throw new Error("Invalid token");
 
         const author: AuthenticationData = getTokenData(token)
 
-        if(!author.id) throw new Error("Não autorizado");
+        if(!author.id) throw new Error("Invalid token");
  
         const inputPost: Post = {
             id: generateId(),
@@ -34,7 +34,7 @@ export const createPostBusiness = async (
 
     } catch (error) {
         if(error.message.includes("jwt expired")){
-            throw new Error("Token expirado");
+            throw new Error("Token expired");
         }
         throw new Error(error);
     }

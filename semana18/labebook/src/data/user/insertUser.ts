@@ -3,7 +3,7 @@ import { connection } from "../connection"
 
 export const insertUser = async (data: User) :Promise<void> =>{
     try {
-        debugger
+ 
         await connection
             .insert({
                 id: data.id,
@@ -13,7 +13,6 @@ export const insertUser = async (data: User) :Promise<void> =>{
             })
             .into("labook_users")
 
-        debugger
     } catch (error) {
         throw new Error(`${error}`)
     }
