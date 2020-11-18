@@ -2,12 +2,12 @@
 
 import express, { Express, Request, Response } from "express"
 import cors from "cors"
-import dotenv from "dotenv"
-import { signup } from "./controller/user/signup"
+
+import { userRouter } from "./routes/userRoutes"
 
 /**************************** CONFIG ******************************/
 
-dotenv.config()
+
 
 const app: Express = express()
 app.use(express.json())
@@ -15,8 +15,9 @@ app.use(cors())
 
 /**************************** ENDPOINTS ******************************/
 
-app.post('/users/signup', signup)
+app.use("/user", userRouter);
 
+/*
 app.post('/users/login', async (req: Request, res: Response) => {
    try {
       let message = "Success!"
@@ -136,6 +137,6 @@ app.get('/posts/:id', async (req: Request, res: Response) => {
 
 /**************************** SERVER INIT ******************************/
 
-app.listen(3003, () => {
-   console.log("Server running on port 3003")
+app.listen(3000, () => {
+   console.log("Server running on port 3000")
 })

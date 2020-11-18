@@ -1,17 +1,20 @@
+import { User } from "../../types/types"
 import { connection } from "../connection"
 
-export const insertUser = async () :Promise<void> =>{
+export const insertUser = async (data: User) :Promise<void> =>{
     try {
+        debugger
+        await connection
+            .insert({
+                id: data.id,
+                name: data.name,
+                email: data.email,
+                password: data.password
+            })
+            .into("labook_users")
 
-        await connection('labook_users')
-        .insert({
-           id,
-           name,
-           email,
-           password: cypherPassword
-        })
-        
+        debugger
     } catch (error) {
-        
+        throw new Error(`${error}`)
     }
 }

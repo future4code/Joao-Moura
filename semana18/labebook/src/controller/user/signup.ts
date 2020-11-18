@@ -1,24 +1,25 @@
 import {Request, Response} from "express"
 import { generateId } from "../../services/generateID"
-import { generateHash } from "../../services/generateHash"
 import { createUser } from "../../business/user/createUser"
 import { User } from "../../types/types"
 
-
 export const signup = async(req: Request, res: Response): Promise<void> =>{
     try {
-        
+
         let message = "Success!"
 
-        const inputSignup: User= {
+        const inputSignup: User = {
             id: generateId(),
             name: req.body.name as string,
             email: req.body.email as string,
             password: req.body.password as string
         }
-  
+        debugger
+
         const token = await createUser(inputSignup)
-  
+
+        if(!token) throw new Error(" token vazio");
+        
         res.status(201).send({ message, token })
   
      } catch (error) {
