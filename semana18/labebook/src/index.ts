@@ -4,6 +4,7 @@ import express, { Express, Request, Response } from "express"
 import cors from "cors"
 
 import { userRouter } from "./routes/userRoutes"
+import { postRouter } from "./routes/postRoutes"
 
 /**************************** CONFIG ******************************/
 
@@ -16,39 +17,10 @@ app.use(cors())
 /**************************** ENDPOINTS ******************************/
 
 app.use("/user", userRouter);
+app.use("/post", postRouter);
 
 /*
 
-app.post('/posts/create', async (req: Request, res: Response) => {
-   try {
-      let message = "Success!"
-
-      const { photo, description, type } = req.body
-
-      const token: string = req.headers.authorization as string
-
-      const tokenData: AuthenticationData = getTokenData(token)
-
-      const id: string = generateId()
-
-      await connection("labook_posts")
-         .insert({
-            id,
-            photo,
-            description,
-            type,
-            author_id: tokenData.id
-         })
-
-      res.status(201).send({ message })
-
-   } catch (error) {
-      let message = error.sqlMessage || error.message
-      res.statusCode = 400
-
-      res.send({ message })
-   }
-})
 
 app.get('/posts/:id', async (req: Request, res: Response) => {
    try {

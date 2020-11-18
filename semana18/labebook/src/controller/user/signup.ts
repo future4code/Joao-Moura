@@ -14,7 +14,7 @@ export const signup = async(req: Request, res: Response): Promise<void> =>{
             email: req.body.email as string,
             password: req.body.password as string
         }
-        debugger
+        
 
         const token = await createUser(inputSignup)
 

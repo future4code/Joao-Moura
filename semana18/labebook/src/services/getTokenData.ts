@@ -1,7 +1,7 @@
 import * as jwt from "jsonwebtoken"
 import { AuthenticationData } from "../types/types"
 
-function getTokenData(
+export function getTokenData(
     token: string
  ): AuthenticationData {
     const result: any = jwt.verify(
