@@ -8,6 +8,11 @@ export type User = {
     email: string,
     password: string
 }
+
+export type Login = {
+    email: string,
+    password: string
+}
  
 export enum POST_TYPES {
     NORMAL = "normal",
