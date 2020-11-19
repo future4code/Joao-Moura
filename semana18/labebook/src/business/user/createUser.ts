@@ -14,13 +14,18 @@ export const createUser = async (signup:SignupInput): Promise<string> => {
             throw new Error(message)
         }
    
-        signup.password = await hashManage.hash(signup.password);
+        const cypherPassword: string = await hashManage.hash(signup.password);
 
-        const user: User = {...signup, id: generateId()}
+        const user: User = new User(
+            generateId(),
+            signup.name,
+            signup.email,
+            cypherPassword
+        )
 
         await userDataBase.createUser(user)
    
-        const token: string = generateToken({id: user.id})
+        const token: string = generateToken({id: user.getId()})
         if(!token) throw new Error("Invalid token");
 
         return token

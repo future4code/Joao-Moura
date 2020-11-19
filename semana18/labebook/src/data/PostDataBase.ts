@@ -1,22 +1,23 @@
 import { Post } from "../model/Post";
-import { connection } from "./connection";
+import BaseDataBase from "./BaseDataBase";
 
-class PostDataBase {
+class PostDataBase extends BaseDataBase {
     private tableName: string = "labook_posts"
 
-    async createPost(data:Post):Promise<void> {
-        await connection
+    public async createPost(post:Post):Promise<void> {
+        await BaseDataBase.connection
             .insert({
-                id: data.id,
-                photo: data.photo,
-                description: data.description,
-                type: data.type,
-                author_id: data.authorId
-            }).into(this.tableName)
+                id: post.getId(),
+                photo: post.getPhoto(),
+                description: post.getDescription(),
+                type: post.getType(),
+                author_id: post.getAuthorId()
+            })
+            .into(this.tableName)
     }
 
-    async getPost(id:string):Promise<any> {
-        const [queryResult] = await connection
+    public async getPost(id:string):Promise<any> {
+        const [queryResult] = await BaseDataBase.connection
         .select("*")
         .from(this.tableName)
         .where({ id })
@@ -25,4 +26,4 @@ class PostDataBase {
     }
 }
 
-export const postDataBase:PostDataBase = new PostDataBase()
+export const postDataBase: PostDataBase = new PostDataBase()

@@ -1,21 +1,21 @@
 import { User } from "../model/User";
-import { connection } from "./connection";
+import BaseDataBase from "./BaseDataBase";
 
-class UserDataBase {
+class UserDataBase extends BaseDataBase{
     private tableName: string = "labook_users"
     
-    async createUser (data: User) {
-        await connection
+    public async createUser (user: User) {
+        await BaseDataBase.connection
             .insert({
-                id: data.id,
-                name: data.name,
-                email: data.email,
-                password: data.password
+                id: user.getId(),
+                name: user.getName(),
+                email: user.getEmail(),
+                password: user.getPassword()
             }).into(this.tableName)
     }
 
-    async getUser (email: string):Promise<any> {
-        const [user] = await connection
+    public async getUser (email: string):Promise<any> {
+        const [user] = await BaseDataBase.connection
                         .select("*")
                         .from(this.tableName)
                         .where({ email })

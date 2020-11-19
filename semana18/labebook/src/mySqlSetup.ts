@@ -1,4 +1,4 @@
-import {connection} from "./data/connection"
+import {connection} from "./data/BaseDataBase"
 
 async function createTables(){
    try {

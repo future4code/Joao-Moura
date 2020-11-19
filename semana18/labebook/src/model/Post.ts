@@ -1,10 +1,31 @@
-export type Post = {
-    id: string,
-    photo: string,
-    description: string,
-    type: POST_TYPES,
-    createdAt: Date,
-    authorId: string
+export class Post {
+
+    constructor(
+        private id: string,
+        private photo: string,
+        private description: string,
+        private type: POST_TYPES,
+        private createdAt: Date,
+        private authorId: string
+    ){
+        switch (type.toLowerCase()) {
+            case POST_TYPES.EVENT:
+                this.type = POST_TYPES.EVENT
+                break;
+            case POST_TYPES.NORMAL:
+                this.type = POST_TYPES.NORMAL
+            default:
+                throw new Error("Invalid TYPE: choose 'normal' or 'event'");
+        }
+    }
+
+   public getId = () => this.id
+   public getPhoto = () => this.photo
+   public getDescription = () => this.description
+   public getType = () => this.type
+   public getCreatedAt = () => this.createdAt
+   public getAuthorId = () => this.authorId
+    
 }
 
 export enum POST_TYPES {
@@ -12,7 +33,7 @@ export enum POST_TYPES {
     EVENT = "event"
 }
 
-export type PostInput = {
+export interface PostInput {
     photo: string,
     description: string,
     token: string,
@@ -21,22 +42,4 @@ export type PostInput = {
 
 export type AuthenticationData = {
     id: string
-}
-
-export const stringToPostTypes = (type: string): POST_TYPES =>{
-    if(type.toLowerCase() === POST_TYPES.EVENT){
-        return POST_TYPES.EVENT
-    }else if(type.toLowerCase() === POST_TYPES.NORMAL){
-        return POST_TYPES.NORMAL
-    }else{
-        throw new Error("Invalid TYPE: choose 'normal' or 'event'");
-    }
-}
-
-export const postTypesToString = (type:string):string =>{
-    if(type === "event") {
-        return "admin"
-    }
-
-    return "normal"
 }

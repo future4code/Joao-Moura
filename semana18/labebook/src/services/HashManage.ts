@@ -3,12 +3,12 @@ import * as bcrypt from "bcryptjs"
 class HashManage {
     private cost: number = Number(process.env.HASH_COST)
 
-    async hash (plainText: string):Promise<string> {
+    public async hash (plainText: string):Promise<string> {
         const salt = await bcrypt.genSalt(this.cost);
         return bcrypt.hash(plainText, salt)
     }
 
-    async compare (plainText: string, cypherText: string):Promise<boolean> {
+    public async compare (plainText: string, cypherText: string):Promise<boolean> {
         return bcrypt.compare(plainText, cypherText)
     }
 }

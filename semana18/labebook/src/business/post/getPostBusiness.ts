@@ -14,14 +14,14 @@ export const getPostBusiness = async (id:string, token: string): Promise<Post> =
         const result = await postDataBase.getPost(id)
         if (!result) throw new Error("Post not found")
 
-        const post: Post = {
-            id: result.id,
-            photo: result.photo,
-            description: result.description,
-            type: result.type,
-            createdAt: result.created_at,
-            authorId: result.author_id,
-        }
+        const post: Post = new Post(
+            result.id,
+            result.photo,
+            result.description,
+            result.type,
+            result.created_at,
+            result.author_id,
+        )
 
         return post
 

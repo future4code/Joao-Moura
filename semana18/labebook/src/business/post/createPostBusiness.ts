@@ -15,16 +15,16 @@ export const createPostBusiness = async (post: PostInput): Promise<void> => {
 
         if(!author.id) throw new Error("Invalid token");
  
-        const inputPost: Post = {
-            id: generateId(),
-            photo: post.photo,
-            description: post.description,
-            type: post.type,
-            createdAt: new Date(),
-            authorId: author.id
-        }
+        const newPost: Post = new Post(
+            generateId(),
+            post.photo,
+            post.description,
+            post.type,
+            new Date(),
+            author.id
+        )
         
-        await postDataBase.createPost(inputPost)
+        await postDataBase.createPost(newPost)
 
     } catch (error) {
         if(error.message.includes("jwt expired")){

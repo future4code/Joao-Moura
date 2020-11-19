@@ -16,18 +16,18 @@ export const loginBusiness = async (login:LoginInput): Promise<string> =>{
    
         if (!queryResult) throw new Error("Invalid credentials")
    
-        const user: User = {
-            id: queryResult.id,
-            name: queryResult.name,
-            email: queryResult.email,
-            password: queryResult.password
-        }
+        const user: User = new User (
+          queryResult.id,
+          queryResult.name,
+          queryResult.email,
+          queryResult.password
+        )
    
-        const passwordIsCorrect: boolean = await hashManage.compare(login.password, user.password)
+        const passwordIsCorrect: boolean = await hashManage.compare(login.password, user.getPassword())
    
         if (!passwordIsCorrect) throw new Error("Invalid credentials")
    
-        return generateToken({id: user.id})
+        return generateToken({id: user.getId()})
 
     } catch (error) {
         throw new Error(error);
