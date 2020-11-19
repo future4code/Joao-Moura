@@ -1,4 +1,4 @@
-import { insertPost } from "../../data/post/insertPost";
+import { postDataBase } from "../../data/PostDataBase";
 import { AuthenticationData, Post, PostInput } from "../../model/Post";
 import { generateId } from "../../services/generateID";
 import { getTokenData } from "../../services/getTokenData";
@@ -24,7 +24,7 @@ export const createPostBusiness = async (post: PostInput): Promise<void> => {
             authorId: author.id
         }
         
-        await insertPost(inputPost)
+        await postDataBase.createPost(inputPost)
 
     } catch (error) {
         if(error.message.includes("jwt expired")){
