@@ -1,6 +1,5 @@
 import { Request, Response } from "express"
-import { createUser } from "../business/user/createUser"
-import { loginBusiness } from "../business/user/loginBusiness"
+import UseBusiness from "../business/UseBusiness"
 import { LoginInput, SignupInput } from "../model/User"
 
 class UserController {
@@ -15,7 +14,7 @@ class UserController {
                 password: req.body.password as string
             }
             
-            const token:string = await createUser(signup)
+            const token:string = await UseBusiness.signup(signup)
             
             res.status(201).send({ message, token })
       
@@ -36,7 +35,7 @@ class UserController {
               password: req.body.password
            }
      
-           const token: string = await loginBusiness(login)
+           const token: string = await UseBusiness.login(login)
      
            res.status(200).send({ message, token })
      

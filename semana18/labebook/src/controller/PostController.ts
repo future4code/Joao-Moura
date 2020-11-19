@@ -1,6 +1,5 @@
 import { Request, Response } from "express"
-import { createPostBusiness } from "../business/post/createPostBusiness"
-import { getPostBusiness } from "../business/post/getPostBusiness"
+import PostBusiness from "../business/PostBusiness"
 import { Post, PostInput } from "../model/Post"
 
 class PostController {
@@ -15,7 +14,7 @@ class PostController {
                 type: req.body.type 
             }
     
-            await createPostBusiness(post)
+            await PostBusiness.createPost(post)
         
             res.status(201).send({ message })
         
@@ -34,7 +33,7 @@ class PostController {
             const { id } = req.params
             const token = req.headers.authorization as string
     
-            const post: Post = await getPostBusiness(id, token)
+            const post: Post = await PostBusiness.getPost(id, token)
     
             res.status(200).send({ message, post })
         
