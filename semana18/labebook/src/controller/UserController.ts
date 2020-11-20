@@ -1,6 +1,5 @@
 import { Request, Response } from "express"
 import UseBusiness from "../business/UseBusiness"
-import { inputFriendship } from "../model/Friend"
 import { LoginInput, SignupInput } from "../model/User"
 
 class UserController {
@@ -47,27 +46,6 @@ class UserController {
               res.send({ message })
            }
     }
-
-   async createFriendship (req: Request, res: Response):Promise<void> {
-      try {
-         let message = "Success!"
-         
-         const inputfriendship: inputFriendship = {
-            userToken: req.headers.authorization as string,
-            idFriend: req.params.id
-         }
-
-         await UseBusiness.createFriendship(inputfriendship)
-   
-         res.status(200).send({ message })
-   
-         } catch (error) {
-            let message = error.sqlMessage || error.message
-            res.statusCode = 400
-   
-            res.send({ message })
-         }
-   }
 }
 
 export default new UserController()

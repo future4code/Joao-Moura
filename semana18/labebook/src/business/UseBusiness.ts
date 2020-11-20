@@ -1,8 +1,6 @@
-import { friendshipDataBase } from "../data/FriendshipDataBase";
 import { userDataBase } from "../data/UserDataBase";
-import { Friendship, inputFriendship } from "../model/Friend";
 import { LoginInput, SignupInput, User } from "../model/User";
-import authenticator, { AuthenticationData } from "../services/authenticator";
+import authenticator from "../services/authenticator";
 import { hashManage } from "../services/HashManage";
 import idGenerator from "../services/idGenerator";
 
@@ -32,6 +30,9 @@ class UseBusiness {
             return token
     
         } catch (error) {
+            if(error.sqlMessage.includes("Duplicate entry")){
+                throw new Error("Registered user")
+            }
             throw new Error(error)
         }
     }
@@ -60,33 +61,6 @@ class UseBusiness {
             return authenticator.generateToken({id: user.getId()})
     
         } catch (error) {
-            throw new Error(error);
-        }
-    }
-
-    async createFriendship (inputFriendship:inputFriendship): Promise<void> {
-        try {
-            if (!inputFriendship.idFriend) {
-                throw new Error("Invalid friendship id")
-            }
-
-            const use:AuthenticationData = authenticator.getTokenData(inputFriendship.userToken)
-            if(!use.id) throw new Error("Invalid token");
-            if(use.id === inputFriendship.idFriend){
-                throw new Error("'idUse' and 'idFriend' are the same")
-            }
-
-            const friendship: Friendship = new Friendship(use.id, inputFriendship.idFriend)
-
-            await friendshipDataBase.createFriendship(friendship)
-    
-        } catch (error) {
-            if(error.message.includes("jwt expired")){
-                throw new Error("Token expired");
-            }
-            if(error.sqlMessage.includes("Duplicate entry")){
-                throw new Error("You are already friends");
-            }
             throw new Error(error);
         }
     }

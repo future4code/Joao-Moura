@@ -5,6 +5,7 @@ import cors from "cors"
 
 import { userRouter } from "./routes/userRoutes"
 import { postRouter } from "./routes/postRoutes"
+import { friendshipRouter } from "./routes/friendshipRoutes"
 
 /**************************** CONFIG ******************************/
 
@@ -16,6 +17,7 @@ app.use(cors())
 
 app.use("/user", userRouter);
 app.use("/post", postRouter);
+app.use("/friendship", friendshipRouter);
 
 /**************************** SERVER INIT ******************************/
 
