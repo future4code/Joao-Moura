@@ -56,9 +56,6 @@ class FriendshipBusiness {
             if(error.message.includes("jwt expired")){
                 throw new Error("Token expired");
             }
-            if(error.sqlMessage.includes("Duplicate entry")){
-                throw new Error("You are already friends");
-            }
             throw new Error(error);
         }
     }

@@ -33,7 +33,7 @@ class FriendshipController {
           idFriend: req.params.id
        }
 
-       await FriendshipBusiness.createFriendship(inputfriendship)
+       await FriendshipBusiness.undoFriendship(inputfriendship)
  
        res.status(200).send({ message })
  
