@@ -1,7 +1,7 @@
 import { postDataBase } from "../data/PostDataBase";
-import { AuthenticationData, Post, PostInput } from "../model/Post";
-import { generateId } from "../services/generateID";
-import { getTokenData } from "../services/getTokenData";
+import { Post, PostInput } from "../model/Post";
+import authenticator, { AuthenticationData } from "../services/authenticator";
+import idGenerator from "../services/idGenerator";
 
 class PostBusiness {
     async createPost (post: PostInput): Promise<void> {
@@ -12,12 +12,12 @@ class PostBusiness {
     
             if(!post.token) throw new Error("Invalid token");
     
-            const author: AuthenticationData = getTokenData(post.token)
+            const author: AuthenticationData = authenticator.getTokenData(post.token)
     
             if(!author.id) throw new Error("Invalid token");
      
             const newPost: Post = new Post(
-                generateId(),
+                idGenerator.generateId(),
                 post.photo,
                 post.description,
                 post.type,
@@ -41,7 +41,7 @@ class PostBusiness {
             if(!id) throw new Error("Enter the Post Id")
             if(!token) throw new Error("Invalid token");
             
-            const author: AuthenticationData = getTokenData(token)
+            const author: AuthenticationData = authenticator.getTokenData(token)
             if(!author.id) throw new Error("Invalid token");
     
             const result = await postDataBase.getPost(id)

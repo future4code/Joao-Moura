@@ -40,6 +40,3 @@ export interface PostInput {
     type: POST_TYPES
 }
 
-export type AuthenticationData = {
-    id: string
-}

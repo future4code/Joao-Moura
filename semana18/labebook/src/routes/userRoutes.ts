@@ -1,8 +1,8 @@
 import express from "express"
-import { login } from "../controller/user/login";
-import { signup } from "../controller/user/signup";
+import UserController from "../controller/UserController";
 
 export const userRouter = express.Router();
 
-userRouter.post("/signup", signup)
-userRouter.post("/login", login)
+userRouter.post("/signup", UserController.signup)
+userRouter.post("/login", UserController.login)
+userRouter.post("/friendship/:id", UserController.createFriendship)
