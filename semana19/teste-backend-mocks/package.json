@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "clear && node ./node_modules/jest/bin/jest.js"
+    "test": "clear && jest"
   },
   "author": "",
   "license": "ISC",

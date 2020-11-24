@@ -12,11 +12,11 @@ const performAttackFalse = jest.fn(():boolean =>{
 describe("mocks", ()=>{
 
     test("must return true",()=>{
-        expect(performAttackTrue).toBe(true)
+        expect(performAttackTrue()).toBe(true)
     })
 
     test("must return false",()=>{
-        expect(performAttackFalse).toBe(false)
+        expect(performAttackFalse()).toBe(false)
     })
 
 })

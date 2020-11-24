@@ -31,16 +31,16 @@ export const perfomAttack2 = (
 ):void => {
     try {
         if(
-            validadeCharacter(attacker) ||
-            validadeCharacter(defender) 
+            !validadeCharacter(attacker) ||
+            !validadeCharacter(defender) 
         ) throw new Error("Invalid Character")
-
+        
         if(attacker.atk > defender.def) {
-            defender.lp = defender.def - attacker.atk
+            defender.lp -= attacker.atk - defender.def
         }
         
     } catch (error) {
-        console.log(error.message)
+       throw new Error(error.message);
     }
 
 }
