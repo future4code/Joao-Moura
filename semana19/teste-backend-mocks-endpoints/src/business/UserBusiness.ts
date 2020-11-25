@@ -4,6 +4,7 @@ import userDatabase, { UserDatabase } from "../data/UserDatabase";
 import hashGenerator, { HashGenerator } from "../services/hashGenerator";
 import idGenerator, { IdGenerator } from "../services/idGenerator";
 import tokenGenerator, { TokenGenerator } from "../services/tokenGenerator";
+import BaseDataBase from "../data/BaseDatabase";
 
 export class UserBusiness {
 
@@ -85,6 +86,21 @@ export class UserBusiness {
          });
 
          return { accessToken };
+      } catch (error) {
+         throw new CustomError(error.statusCode, error.message)
+      }
+   }
+
+   public async getUserById(id: string){
+      try {
+         if(!id) throw new CustomError(400,"Invalid ID");
+
+         const user: User | undefined = await this.userDatabase.getUserById(id)
+
+         if(!user) throw new CustomError(401,"usuario não encontrado");
+
+         return user
+         
       } catch (error) {
          throw new CustomError(error.statusCode, error.message)
       }
