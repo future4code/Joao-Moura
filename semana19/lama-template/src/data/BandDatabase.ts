@@ -1,3 +1,4 @@
+import { BandInputDTO, BandOutputDTO, GetBandInputDTO } from "../model/Band";
 import { BaseDatabase } from "./BaseDatabase";
 
 export class BandDatabase extends BaseDatabase{
@@ -18,6 +19,27 @@ export class BandDatabase extends BaseDatabase{
             if(error.sqlMessage.includes("Duplicate entry")){
                 throw new Error("band already be registered");
             }
+            throw new Error(error.sqlMessage || error.message);
+        }
+    }
+
+    public async getInfBand(search: GetBandInputDTO):Promise<BandOutputDTO>{
+        try {
+            const [ result ] = await this.getConnection()
+                                .select("*")
+                                .from(BandDatabase.TABLE_NAME)
+                                .where({id: search.type})
+                                .orWhere({name: search.type}) 
+            const band: BandOutputDTO = {
+                id: result.id,
+                name: result.name,
+                musicGenre: result.music_genre,
+                responsible: result.responsible
+            }
+
+            return band
+
+        } catch (error) {
             throw new Error(error.sqlMessage || error.message);
         }
     }
