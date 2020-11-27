@@ -36,3 +36,15 @@ export interface BandInputDTO {
     responsible: string,
     token?: string
 }
+
+export interface BandOutputDTO {
+    id:string,
+    name: string,
+    musicGenre: string,
+    responsible: string,
+}
+
+export interface GetBandInputDTO {
+    type: string,
+    token?: string
+}
