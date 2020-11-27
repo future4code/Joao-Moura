@@ -12,8 +12,12 @@ export class BandDatabase extends BaseDatabase{
         try {
             await this.getConnection()
             .insert({id, name, music_genre, responsible})
+            .into(BandDatabase.TABLE_NAME)
 
         } catch (error) {
+            if(error.sqlMessage.includes("Duplicate entry")){
+                throw new Error("band already be registered");
+            }
             throw new Error(error.sqlMessage || error.message);
         }
     }
